@@ -1,0 +1,27 @@
+.showcase {
+  padding: 8rem 0;
+  min-height: 80rem;
+  display: flex;
+  flex-direction: column;
+  &__container {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 50rem;
+  }
+
+  &__desc {
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--givi-black);
+  }
+}

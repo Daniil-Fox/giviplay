@@ -1,0 +1,305 @@
+import gsap from "gsap";
+import { ScrambleTextPlugin, ScrollTrigger, SplitText } from "gsap/all";
+
+gsap.registerPlugin(SplitText, ScrollTrigger, ScrambleTextPlugin);
+
+// Общие настройки для анимаций
+const defaultEase = "power3.out";
+const defaultDuration = 0.8;
+
+// Инициализация анимаций после загрузки шрифтов
+document.fonts.ready.then(() => {
+  initHeaderAnimation();
+  initHeroAnimation();
+  initShowcaseAnimation();
+  initTakeAnimation();
+  initCatalogAnimation();
+  initFindAnimation();
+});
+
+// Анимация хедера
+function initHeaderAnimation() {
+  const header = document.querySelector(".header");
+  if (!header) return;
+
+  gsap.from(".header__logo", {
+    duration: 0.6,
+    y: -30,
+    opacity: 0,
+    ease: defaultEase,
+  });
+
+  gsap.from(".nav__item", {
+    duration: 0.5,
+    y: -20,
+    opacity: 0,
+    stagger: 0.05,
+    ease: defaultEase,
+    delay: 0.2,
+  });
+
+  gsap.from(".header__button", {
+    duration: 0.5,
+    scale: 0,
+    opacity: 0,
+    stagger: 0.1,
+    ease: "back.out(1.7)",
+    delay: 0.3,
+  });
+}
+
+// Анимация hero секции
+function initHeroAnimation() {
+  const containerHero = document.querySelector(".hero__container");
+  const titleHero = document.querySelector(".hero__title");
+  const descHero = document.querySelector(".hero__desc");
+  if (!titleHero || !descHero) return;
+
+  const timeline = gsap.timeline();
+
+  let splitTitle = SplitText.create(titleHero, {
+    type: "words, lines",
+    mask: "lines",
+    autoSplit: true,
+  });
+  let splitDesc = SplitText.create(descHero, {
+    type: "words, lines",
+    mask: "lines",
+    autoSplit: true,
+  });
+
+  timeline
+    .from(splitTitle.lines, {
+      duration: 0.8,
+      yPercent: 100,
+      opacity: 0,
+      stagger: 0.2,
+      ease: "expo.out",
+    })
+    .from(
+      splitDesc.lines,
+      {
+        duration: 0.8,
+        yPercent: -100,
+        opacity: 0,
+        stagger: 0.2,
+        ease: "expo.out",
+      },
+      "-=0.2"
+    )
+    .from(
+      ".hero__btn",
+      {
+        opacity: 0,
+        y: 30,
+        stagger: 0.15,
+        ease: defaultEase,
+      },
+      "-=0.3"
+    );
+
+  gsap.to(containerHero, {
+    yPercent: 30,
+
+    scrollTrigger: {
+      trigger: ".hero",
+      start: "top top",
+      scrub: 0.5,
+    },
+  });
+  gsap.to(".hero__img", {
+    yPercent: 10,
+
+    scrollTrigger: {
+      trigger: ".hero",
+      start: "top top",
+      scrub: 0.5,
+    },
+  });
+}
+
+// Анимация showcase секции
+function initShowcaseAnimation() {
+  const showcase = document.querySelector(".showcase");
+  if (!showcase) return;
+
+  gsap.from(".showcase__title", {
+    scrollTrigger: {
+      trigger: showcase,
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+    duration: defaultDuration,
+    y: 50,
+    opacity: 0,
+    ease: defaultEase,
+  });
+
+  gsap.from(".showcase__desc li", {
+    scrollTrigger: {
+      trigger: showcase,
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+    duration: 0.6,
+    x: -30,
+    opacity: 0,
+    stagger: 0.15,
+    ease: defaultEase,
+    delay: 0.2,
+  });
+}
+
+// Анимация take секции
+function initTakeAnimation() {
+  const take = document.querySelector(".take");
+  if (!take) return;
+
+  gsap.from(".take__title", {
+    scrollTrigger: {
+      trigger: take,
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+    duration: defaultDuration,
+    y: 40,
+    opacity: 0,
+    ease: defaultEase,
+  });
+
+  gsap.from(".take__item", {
+    scrollTrigger: {
+      trigger: take,
+      start: "top 75%",
+      toggleActions: "play none none none",
+    },
+    duration: 0.7,
+    y: 60,
+    opacity: 0,
+    scale: 0.9,
+    stagger: {
+      amount: 0.4,
+      from: "start",
+    },
+    ease: "power2.out",
+    delay: 0.2,
+  });
+}
+
+// Анимация catalog секции
+function initCatalogAnimation() {
+  const catalog = document.querySelector(".catalog");
+  if (!catalog) return;
+
+  gsap.from(".catalog__title", {
+    scrollTrigger: {
+      trigger: catalog,
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+    duration: defaultDuration,
+    y: 40,
+    opacity: 0,
+    ease: defaultEase,
+  });
+
+  gsap.from(".catalog__desc", {
+    scrollTrigger: {
+      trigger: catalog,
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+    duration: 0.6,
+    y: 20,
+    opacity: 0,
+    ease: defaultEase,
+    delay: 0.15,
+  });
+
+  gsap.from(".catalog__btn", {
+    scrollTrigger: {
+      trigger: catalog,
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+    duration: 0.6,
+    scale: 0.8,
+    opacity: 0,
+    ease: "back.out(1.7)",
+    delay: 0.3,
+  });
+
+  gsap.from(".catalog__item", {
+    scrollTrigger: {
+      trigger: catalog,
+      start: "top 70%",
+      toggleActions: "play none none none",
+    },
+    duration: 0.7,
+    y: 80,
+    opacity: 0,
+    stagger: {
+      amount: 0.5,
+      from: "start",
+    },
+    ease: "power2.out",
+    delay: 0.4,
+  });
+}
+
+// Анимация find секции
+function initFindAnimation() {
+  const find = document.querySelector(".find");
+  if (!find) return;
+
+  gsap.from(".find__title", {
+    scrollTrigger: {
+      trigger: find,
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+    duration: defaultDuration,
+    y: 50,
+    opacity: 0,
+    ease: defaultEase,
+  });
+
+  gsap.from(".find__desc", {
+    scrollTrigger: {
+      trigger: find,
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+    duration: 0.6,
+    y: 30,
+    opacity: 0,
+    ease: defaultEase,
+    delay: 0.2,
+  });
+
+  gsap.from(".find-form", {
+    scrollTrigger: {
+      trigger: find,
+      start: "top 75%",
+      toggleActions: "play none none none",
+    },
+    duration: 0.8,
+    y: 60,
+    opacity: 0,
+    ease: "power2.out",
+    delay: 0.4,
+  });
+
+  gsap.from(".find__video", {
+    scrollTrigger: {
+      trigger: find,
+      start: "top 75%",
+      toggleActions: "play none none none",
+    },
+    duration: 0.8,
+    scale: 0.95,
+    opacity: 0,
+    ease: defaultEase,
+    delay: 0.5,
+  });
+}

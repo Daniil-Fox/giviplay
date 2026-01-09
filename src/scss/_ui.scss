@@ -1,0 +1,74 @@
+/* Titles ============================= */
+.title-lg {
+  margin: 0;
+  font-family: var(--second-family);
+  font-weight: 600;
+  font-size: 7rem;
+  text-transform: uppercase;
+  color: var(--givi-yellow);
+}
+.title-md {
+  margin: 0;
+  font-family: var(--second-family);
+  font-weight: 600;
+  font-size: 4.8rem;
+  text-transform: uppercase;
+  color: #000;
+}
+
+/* Buttons ============================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 1.8rem;
+  color: var(--givi-black);
+  text-transform: uppercase;
+
+  background-color: var(--givi-yellow);
+  padding: 1rem 2rem;
+
+  transition-property: color, background-color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+
+  &_grey {
+    background-color: #f5f5f5;
+  }
+  &_white {
+    background-color: var(--white);
+  }
+  @include hover {
+    color: var(--givi-black);
+    background-color: var(--givi-yellow-hover);
+  }
+  &:focus {
+    color: var(--givi-black);
+    outline: none;
+    background-color: var(--givi-yellow-hover);
+  }
+  &:active {
+    color: var(--givi-black);
+    background-color: var(--givi-yellow);
+  }
+}
+
+.link-btn {
+  transition-property: color;
+  transition-duration: 0.3s;
+  transition-timing-function: 0.3s;
+
+  @include hover {
+    color: var(--givi-yellow);
+  }
+  &:focus {
+    outline: none;
+    color: var(--givi-yellow);
+  }
+  &:active {
+    color: var(--givi-yellow);
+  }
+}

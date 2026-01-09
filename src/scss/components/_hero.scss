@@ -1,0 +1,70 @@
+.hero {
+  padding: 16.8rem 0;
+  background-color: #050d14;
+  min-height: 95.3rem;
+  overflow: hidden;
+
+  position: relative;
+  &:not(:last-child) {
+    margin-bottom: 8rem;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translateY(50%);
+    width: 150rem;
+    height: 150rem;
+    border-radius: 100%;
+    pointer-events: none;
+    user-select: none;
+    background-image: radial-gradient(
+      50% 50% at 50% 50%,
+      rgb(19, 95, 123) 0%,
+      rgb(19, 95, 123, 0) 100%
+    );
+  }
+
+  &__container {
+    position: static;
+    display: flex;
+  }
+
+  &__img {
+    position: absolute;
+    z-index: 2;
+    right: 8rem;
+    bottom: 0;
+    display: block;
+    width: 112.2rem;
+    height: auto;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  &__title {
+    margin-bottom: 5.6rem;
+    max-width: 72rem;
+  }
+
+  &__desc {
+    color: var(--white);
+    max-width: 35.6rem;
+    line-height: 1.5;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    max-width: 49.6rem;
+  }
+
+  &__btn {
+    padding: 1.4rem 3.5rem;
+    font-size: 2.4rem;
+  }
+}

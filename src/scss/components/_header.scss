@@ -1,0 +1,153 @@
+.header {
+  padding: 2.5rem 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 1rem 6rem 0 rgba(0, 0, 0, 0.05);
+  transition-property: transform;
+  transition-duration: 0.3s;
+  transition-timing-function: 0.3s;
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  &__logo {
+    display: block;
+    width: 12.7rem;
+    height: 2rem;
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      fill: var(--white);
+
+      transition-property: fill;
+      transition-duration: 0.3s;
+      transition-timing-function: 0.3s;
+
+      @include hover {
+        fill: var(--givi-yellow);
+      }
+      &:focus {
+        outline: none;
+        fill: var(--givi-yellow);
+      }
+      &:active {
+        fill: var(--givi-yellow);
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  &__button {
+    fill: var(--white);
+    svg {
+      width: 100%;
+      height: 100%;
+      fill: var(--white);
+
+      transition-property: fill;
+      transition-duration: 0.3s;
+      transition-timing-function: 0.3s;
+
+      @include hover {
+        fill: var(--givi-yellow);
+      }
+      &:focus {
+        outline: none;
+        fill: var(--givi-yellow);
+      }
+      &:active {
+        fill: var(--givi-yellow);
+      }
+    }
+    &_profile {
+      display: block;
+      width: 2.4rem;
+      height: 3.4rem;
+    }
+    &_cart {
+      display: block;
+      width: 2.9rem;
+      height: 2.9rem;
+    }
+  }
+}
+
+.header--fixed {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: var(--white);
+
+  .header {
+    &__logo {
+      svg {
+        fill: var(--givi-black);
+        @include hover {
+          fill: var(--givi-yellow-hover);
+        }
+
+        &:focus {
+          outline: none;
+          fill: var(--givi-yellow-hover);
+        }
+        &:active {
+          fill: var(--givi-yellow);
+        }
+      }
+    }
+  }
+
+  .header__button {
+    svg {
+      fill: var(--givi-black);
+      @include hover {
+        fill: var(--givi-yellow-hover);
+      }
+
+      &:focus {
+        outline: none;
+        fill: var(--givi-yellow-hover);
+      }
+      &:active {
+        fill: var(--givi-yellow);
+      }
+    }
+  }
+
+  .nav__list {
+    .nav__link {
+      color: var(--givi-black);
+
+      @include hover {
+        color: var(--givi-yellow);
+      }
+      &:focus {
+        outline: none;
+        color: var(--givi-yellow);
+      }
+      &:active {
+        color: var(--givi-yellow);
+      }
+    }
+  }
+}
+
+.header--hidden {
+  transform: translateY(-200%);
+}

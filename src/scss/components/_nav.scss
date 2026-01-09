@@ -1,0 +1,28 @@
+.nav {
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  &__link {
+    font-weight: 400;
+    font-size: 2.2rem;
+    color: var(--white);
+
+    transition-property: color;
+    transition-duration: 0.3s;
+    transition-timing-function: 0.3s;
+
+    @include hover {
+      color: var(--givi-yellow);
+    }
+    &:focus {
+      outline: none;
+      color: var(--givi-yellow);
+    }
+    &:active {
+      color: var(--givi-yellow);
+    }
+  }
+}
