@@ -21051,6 +21051,7 @@ document.fonts.ready.then(() => {
   initTakeAnimation();
   initCatalogAnimation();
   initFindAnimation();
+  initPacksAnimation();
 });
 
 // Анимация хедера
@@ -21305,6 +21306,129 @@ function initFindAnimation() {
     opacity: 0,
     ease: defaultEase,
     delay: 0.5
+  });
+}
+
+// Анимация packs секции
+function initPacksAnimation() {
+  const packs = document.querySelector(".packs");
+  if (!packs) return;
+
+  // Анимация заголовка
+  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(".packs__title", {
+    scrollTrigger: {
+      trigger: packs,
+      start: "top 80%",
+      toggleActions: "play none none none"
+    },
+    duration: defaultDuration,
+    y: 50,
+    opacity: 0,
+    ease: defaultEase
+  });
+
+  // Анимация карточек (слайдов)
+  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(".pack", {
+    scrollTrigger: {
+      trigger: packs,
+      start: "top 75%",
+      toggleActions: "play none none none"
+    },
+    duration: 0.8,
+    y: 80,
+    opacity: 0,
+    scale: 0.92,
+    stagger: {
+      amount: 0.5,
+      from: "start"
+    },
+    ease: "power2.out",
+    delay: 0.2
+  });
+
+  // Анимация изображений в карточках
+  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(".pack__img", {
+    scrollTrigger: {
+      trigger: packs,
+      start: "top 75%",
+      toggleActions: "play none none none"
+    },
+    duration: 0.9,
+    scale: 1.1,
+    opacity: 0,
+    stagger: {
+      amount: 0.5,
+      from: "start"
+    },
+    ease: "power2.out",
+    delay: 0.3
+  });
+
+  // Анимация контента карточек
+  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(".pack__title", {
+    scrollTrigger: {
+      trigger: packs,
+      start: "top 75%",
+      toggleActions: "play none none none"
+    },
+    duration: 0.7,
+    y: 30,
+    opacity: 0,
+    stagger: {
+      amount: 0.5,
+      from: "start"
+    },
+    ease: defaultEase,
+    delay: 0.5
+  });
+  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(".pack__desc", {
+    scrollTrigger: {
+      trigger: packs,
+      start: "top 75%",
+      toggleActions: "play none none none"
+    },
+    duration: 0.6,
+    y: 20,
+    opacity: 0,
+    stagger: {
+      amount: 0.5,
+      from: "start"
+    },
+    ease: defaultEase,
+    delay: 0.65
+  });
+  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(".pack__prices", {
+    scrollTrigger: {
+      trigger: packs,
+      start: "top 75%",
+      toggleActions: "play none none none"
+    },
+    duration: 0.6,
+    x: -30,
+    opacity: 0,
+    stagger: {
+      amount: 0.5,
+      from: "start"
+    },
+    ease: defaultEase,
+    delay: 0.8
+  });
+  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(".pack__btn", {
+    scrollTrigger: {
+      trigger: packs,
+      start: "top 75%",
+      toggleActions: "play none none none"
+    },
+    duration: 0.5,
+    y: 20,
+    opacity: 0,
+    scale: 0.9,
+    stagger: {
+      amount: 0.3,
+      from: "start"
+    },
+    ease: "back.out(1.5)",
+    delay: 0.95
   });
 }
 
@@ -21570,7 +21694,7 @@ __webpack_require__.r(__webpack_exports__);
     return header.offsetHeight + marginTop + marginBottom;
   }
   function setBodyPadding(pad) {
-    if (header.classList.contains(".header_main")) return;
+    if (header.classList.contains("header_main")) return;
     document.body.style.paddingTop = pad ? getHeaderFullHeight() + "px" : "";
   }
   function onScroll() {
@@ -21633,6 +21757,10 @@ __webpack_require__.r(__webpack_exports__);
 swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper.use([swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Pagination, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Navigation]);
 new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(".catalog__container", {
   slidesPerView: "auto",
+  spaceBetween: 20
+});
+new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(".packs__slider", {
+  slidesPerView: 4,
   spaceBetween: 20
 });
 

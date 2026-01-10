@@ -15,6 +15,7 @@ document.fonts.ready.then(() => {
   initTakeAnimation();
   initCatalogAnimation();
   initFindAnimation();
+  initPacksAnimation();
 });
 
 // Анимация хедера
@@ -301,5 +302,131 @@ function initFindAnimation() {
     opacity: 0,
     ease: defaultEase,
     delay: 0.5,
+  });
+}
+
+// Анимация packs секции
+function initPacksAnimation() {
+  const packs = document.querySelector(".packs");
+  if (!packs) return;
+
+  // Анимация заголовка
+  gsap.from(".packs__title", {
+    scrollTrigger: {
+      trigger: packs,
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+    duration: defaultDuration,
+    y: 50,
+    opacity: 0,
+    ease: defaultEase,
+  });
+
+  // Анимация карточек (слайдов)
+  gsap.from(".pack", {
+    scrollTrigger: {
+      trigger: packs,
+      start: "top 75%",
+      toggleActions: "play none none none",
+    },
+    duration: 0.8,
+    y: 80,
+    opacity: 0,
+    scale: 0.92,
+    stagger: {
+      amount: 0.5,
+      from: "start",
+    },
+    ease: "power2.out",
+    delay: 0.2,
+  });
+
+  // Анимация изображений в карточках
+  gsap.from(".pack__img", {
+    scrollTrigger: {
+      trigger: packs,
+      start: "top 75%",
+      toggleActions: "play none none none",
+    },
+    duration: 0.9,
+    scale: 1.1,
+    opacity: 0,
+    stagger: {
+      amount: 0.5,
+      from: "start",
+    },
+    ease: "power2.out",
+    delay: 0.3,
+  });
+
+  // Анимация контента карточек
+  gsap.from(".pack__title", {
+    scrollTrigger: {
+      trigger: packs,
+      start: "top 75%",
+      toggleActions: "play none none none",
+    },
+    duration: 0.7,
+    y: 30,
+    opacity: 0,
+    stagger: {
+      amount: 0.5,
+      from: "start",
+    },
+    ease: defaultEase,
+    delay: 0.5,
+  });
+
+  gsap.from(".pack__desc", {
+    scrollTrigger: {
+      trigger: packs,
+      start: "top 75%",
+      toggleActions: "play none none none",
+    },
+    duration: 0.6,
+    y: 20,
+    opacity: 0,
+    stagger: {
+      amount: 0.5,
+      from: "start",
+    },
+    ease: defaultEase,
+    delay: 0.65,
+  });
+
+  gsap.from(".pack__prices", {
+    scrollTrigger: {
+      trigger: packs,
+      start: "top 75%",
+      toggleActions: "play none none none",
+    },
+    duration: 0.6,
+    x: -30,
+    opacity: 0,
+    stagger: {
+      amount: 0.5,
+      from: "start",
+    },
+    ease: defaultEase,
+    delay: 0.8,
+  });
+
+  gsap.from(".pack__btn", {
+    scrollTrigger: {
+      trigger: packs,
+      start: "top 75%",
+      toggleActions: "play none none none",
+    },
+    duration: 0.5,
+    y: 20,
+    opacity: 0,
+    scale: 0.9,
+    stagger: {
+      amount: 0.3,
+      from: "start",
+    },
+    ease: "back.out(1.5)",
+    delay: 0.95,
   });
 }

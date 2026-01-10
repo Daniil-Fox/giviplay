@@ -42,7 +42,7 @@
   }
 
   function setBodyPadding(pad) {
-    if (header.classList.contains(".header_main")) return;
+    if (header.classList.contains("header_main")) return;
     document.body.style.paddingTop = pad ? getHeaderFullHeight() + "px" : "";
   }
 
