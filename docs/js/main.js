@@ -21017,6 +21017,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_find_form_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/find-form.js */ "./src/js/components/find-form.js");
 /* harmony import */ var _components_animations_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/animations.js */ "./src/js/components/animations.js");
 /* harmony import */ var _components_header_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/header.js */ "./src/js/components/header.js");
+/* harmony import */ var _components_faq_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/faq.js */ "./src/js/components/faq.js");
+
 
 
 
@@ -21052,6 +21054,12 @@ document.fonts.ready.then(() => {
   initCatalogAnimation();
   initFindAnimation();
   initPacksAnimation();
+  initBenefitsAnimation();
+  initGuideAnimation();
+  initConsultAnimation();
+  initFaqAnimation();
+  initCtaAnimation();
+  initFooterAnimation();
 });
 
 // Анимация хедера
@@ -21429,6 +21437,351 @@ function initPacksAnimation() {
     },
     ease: "back.out(1.5)",
     delay: 0.95
+  });
+}
+
+// Анимация benefits секции с эффектом наложения
+function initBenefitsAnimation() {
+  const benefits = document.querySelector(".benefits");
+  if (!benefits) return;
+
+  // Устанавливаем начальное состояние - секция ниже своего места
+  // gsap.set(benefits, {
+  //   y: 200,
+  // });
+
+  // Анимация "наезжания" секции наверх с эффектом наложения
+  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(benefits, {
+    y: 400,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: benefits,
+      start: "top 120%",
+      end: "top 50%",
+      scrub: 1.2
+    }
+  });
+
+  // Анимация появления контента внутри секции через timeline
+  const benefitsTimeline = gsap__WEBPACK_IMPORTED_MODULE_0__["default"].timeline({
+    scrollTrigger: {
+      trigger: benefits,
+      start: "top 75%",
+      toggleActions: "play none none none"
+    }
+  });
+  benefitsTimeline.from(".benefits__title", {
+    duration: defaultDuration,
+    y: 40,
+    opacity: 0,
+    ease: defaultEase
+  }).from(".benefits__item", {
+    duration: 0.7,
+    x: -50,
+    opacity: 0,
+    stagger: {
+      amount: 0.6,
+      from: "start"
+    },
+    ease: "power2.out"
+  }, "-=0.3").from(".benefits__img", {
+    duration: 1,
+    scale: 0.85,
+    opacity: 0,
+    ease: "power2.out"
+  }, "-=0.4").from(".benefits__socials", {
+    duration: 0.6,
+    y: 30,
+    opacity: 0,
+    ease: defaultEase
+  }, "-=0.3");
+}
+
+// Анимация guide секции с clip-path
+function initGuideAnimation() {
+  const guide = document.querySelector(".guide");
+  if (!guide) return;
+  const guideItems = guide.querySelectorAll(".guide__item");
+  const guideImg = guide.querySelector(".guide__img");
+
+  // Анимация заголовка
+  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(".guide__title", {
+    scrollTrigger: {
+      trigger: guide,
+      start: "top 80%",
+      toggleActions: "play none none none"
+    },
+    duration: defaultDuration,
+    y: 40,
+    opacity: 0,
+    ease: defaultEase
+  });
+
+  // Timeline для последовательного раскрытия clip-path карточек
+  const guideTimeline = gsap__WEBPACK_IMPORTED_MODULE_0__["default"].timeline({
+    scrollTrigger: {
+      trigger: guide,
+      start: "top 75%",
+      toggleActions: "play none none none"
+    }
+  });
+
+  // Последовательно раскрываем каждую карточку через clip-path
+  guideItems.forEach((item, index) => {
+    guideTimeline.to(item, {
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+      duration: 0.6,
+      ease: "power2.out"
+    }, index === 0 ? 0.2 : "-=0.3");
+  });
+
+  // Раскрываем изображение после карточек
+  if (guideImg) {
+    guideTimeline.to(guideImg, {
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+      duration: 0.8,
+      ease: "power2.out"
+    }, "-=0.2");
+  }
+
+  // Анимация контента внутри карточек
+  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(".guide__item-capture", {
+    scrollTrigger: {
+      trigger: guide,
+      start: "top 75%",
+      toggleActions: "play none none none"
+    },
+    duration: 0.6,
+    y: 20,
+    opacity: 0,
+    stagger: {
+      amount: 0.8,
+      from: "start"
+    },
+    ease: defaultEase,
+    delay: 0.4
+  });
+  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(".guide__item-icon", {
+    scrollTrigger: {
+      trigger: guide,
+      start: "top 75%",
+      toggleActions: "play none none none"
+    },
+    duration: 0.5,
+    scale: 0,
+    opacity: 0,
+    stagger: {
+      amount: 0.8,
+      from: "start"
+    },
+    ease: "back.out(1.7)",
+    delay: 0.6
+  });
+}
+
+// Анимация consult секции с эффектом наложения
+function initConsultAnimation() {
+  const consult = document.querySelector(".consult");
+  if (!consult) return;
+
+  // Анимация "наезжания" секции наверх с эффектом наложения
+  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(consult, {
+    y: 400,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: consult,
+      start: "top 120%",
+      end: "top 50%",
+      scrub: 1.2
+    }
+  });
+
+  // Анимация появления контента внутри секции через timeline
+  const consultTimeline = gsap__WEBPACK_IMPORTED_MODULE_0__["default"].timeline({
+    scrollTrigger: {
+      trigger: consult,
+      start: "top 75%",
+      toggleActions: "play none none none"
+    }
+  });
+  consultTimeline.from(".consult__title", {
+    duration: defaultDuration,
+    y: 40,
+    opacity: 0,
+    ease: defaultEase
+  }).from(".consult__desc", {
+    duration: 0.7,
+    y: 30,
+    opacity: 0,
+    ease: defaultEase
+  }, "-=0.3").from(".consult__btn", {
+    duration: 0.6,
+    scale: 0.9,
+    opacity: 0,
+    ease: "back.out(1.7)"
+  }, "-=0.2").from(".consult__img", {
+    duration: 1,
+    scale: 0.85,
+    opacity: 0,
+    ease: "power2.out"
+  }, "-=0.4");
+}
+
+// Анимация FAQ секции
+function initFaqAnimation() {
+  const faq = document.querySelector(".faq");
+  if (!faq) return;
+
+  // Анимация заголовка
+  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(".faq__title", {
+    scrollTrigger: {
+      trigger: faq,
+      start: "top 80%",
+      toggleActions: "play none none none"
+    },
+    duration: defaultDuration,
+    y: 40,
+    opacity: 0,
+    ease: defaultEase
+  });
+
+  // Анимация карточек FAQ через timeline
+  const faqTimeline = gsap__WEBPACK_IMPORTED_MODULE_0__["default"].timeline({
+    scrollTrigger: {
+      trigger: faq,
+      start: "top 75%",
+      toggleActions: "play none none none"
+    }
+  });
+  faqTimeline.to(".faq__item", {
+    clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+    duration: 0.7,
+    stagger: {
+      amount: 1,
+      from: "start"
+    },
+    ease: "power2.out",
+    delay: 0.2
+  });
+}
+
+// Анимация CTA секции
+function initCtaAnimation() {
+  const cta = document.querySelector(".cta");
+  if (!cta) return;
+
+  // Timeline для контента CTA
+  const ctaTimeline = gsap__WEBPACK_IMPORTED_MODULE_0__["default"].timeline({
+    scrollTrigger: {
+      trigger: cta,
+      start: "top 80%",
+      toggleActions: "play none none none"
+    }
+  });
+  ctaTimeline.from(".cta__title", {
+    duration: defaultDuration,
+    y: 50,
+    opacity: 0,
+    ease: defaultEase
+  }).from(".cta__btn", {
+    duration: 0.6,
+    y: 30,
+    opacity: 0,
+    stagger: {
+      amount: 0.3,
+      from: "start"
+    },
+    ease: "power2.out"
+  }, "-=0.3").to(".cta__img", {
+    clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+    duration: 1,
+    ease: "power2.out"
+  }, "-=0.5");
+}
+
+// Анимация Footer секции
+function initFooterAnimation() {
+  const footer = document.querySelector(".footer");
+  if (!footer) return;
+
+  // Timeline для элементов футера
+  const footerTimeline = gsap__WEBPACK_IMPORTED_MODULE_0__["default"].timeline({
+    scrollTrigger: {
+      trigger: footer,
+      start: "top 85%",
+      toggleActions: "play none none none"
+    }
+  });
+
+  // footerTimeline
+  //   .from(".footer__logo", {
+  //     duration: 0.6,
+  //     y: -20,
+  //     opacity: 0,
+  //     ease: defaultEase,
+  //   })
+  //   .from(
+  //     ".footer__socials .socials__item",
+  //     {
+  //       duration: 0.5,
+  //       scale: 0,
+  //       opacity: 0,
+  //       stagger: 0.1,
+  //       ease: "back.out(1.7)",
+  //     },
+  //     "-=0.2"
+  //   )
+  //   .from(
+  //     ".footer__nav ul",
+  //     {
+  //       duration: 0.6,
+  //       x: -30,
+  //       opacity: 0,
+  //       stagger: {
+  //         amount: 0.4,
+  //         from: "start",
+  //       },
+  //       ease: defaultEase,
+  //     },
+  //     "-=0.3"
+  //   )
+  //   .from(
+  //     ".footer__right .footer__item",
+  //     {
+  //       duration: 0.5,
+  //       y: 20,
+  //       opacity: 0,
+  //       stagger: 0.15,
+  //       ease: defaultEase,
+  //     },
+  //     "-=0.4"
+  //   );
+}
+
+/***/ },
+
+/***/ "./src/js/components/faq.js"
+/*!**********************************!*\
+  !*** ./src/js/components/faq.js ***!
+  \**********************************/
+(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+const faq = document.querySelector(".faq");
+if (faq) {
+  const items = faq.querySelectorAll(".faq__item");
+  items.forEach(item => {
+    const content = item.querySelector(".faq__item-content");
+    item.addEventListener("click", e => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+      btn.classList.toggle("faq__item-btn--active");
+    });
   });
 }
 

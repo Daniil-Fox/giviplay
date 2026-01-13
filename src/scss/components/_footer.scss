@@ -1,0 +1,61 @@
+.footer {
+  padding: 8rem 0;
+
+  &__container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18rem;
+  }
+  &__logo {
+  }
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-grow: 1;
+    ul {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    li a {
+      color: var(--givi-black);
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2rem;
+  }
+
+  &__link {
+    font-weight: 400;
+    font-size: 2.2rem;
+    color: rgba(0, 0, 0, 0.45);
+  }
+
+  &__link[href] {
+    transition-property: color;
+    transition-duration: 0.3s;
+    transition-timing-function: 0.3s;
+
+    @include hover {
+      color: var(--givi-yellow);
+    }
+    &:focus {
+      outline: none;
+      color: var(--givi-yellow);
+    }
+    &:active {
+      color: var(--givi-yellow);
+    }
+  }
+}

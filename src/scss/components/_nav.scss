@@ -1,11 +1,14 @@
 .nav {
-  &__list {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     align-items: center;
     gap: 3rem;
   }
 
-  &__link {
+  li a {
     font-weight: 400;
     font-size: 2.2rem;
     color: var(--white);

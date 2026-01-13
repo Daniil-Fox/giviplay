@@ -1,0 +1,39 @@
+.socials {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 0;
+    }
+  }
+  &__link {
+    display: block;
+    width: 6rem;
+    height: 6rem;
+    background-color: var(--givi-yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-property: background-color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    @include hover {
+      background-color: var(--givi-yellow-hover);
+    }
+    &:focus {
+      outline: none;
+      background-color: var(--givi-yellow-hover);
+    }
+    &:active {
+      background-color: var(--givi-yellow);
+    }
+    img {
+      width: 3rem;
+      height: 3rem;
+      object-fit: contain;
+    }
+  }
+}
