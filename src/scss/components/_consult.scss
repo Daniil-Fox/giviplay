@@ -10,6 +10,14 @@
   overflow: hidden;
   position: relative;
   z-index: 10;
+
+  @include mobile {
+    margin: 0;
+    padding: 7.5rem 0;
+    background-color: transparent;
+    color: var(--givi-black);
+    min-height: unset;
+  }
   .container {
     width: 100%;
     flex-grow: 1;
@@ -42,6 +50,10 @@
         rgb(19, 95, 123) 0%,
         rgb(19, 95, 123, 0) 100%
       );
+
+      @include mobile {
+        display: none;
+      }
     }
   }
   &__img {
@@ -51,13 +63,25 @@
     z-index: 2;
     width: 122rem;
     height: auto;
-
+    @include mobile {
+      width: 100%;
+      position: static;
+      display: none;
+    }
     img {
       display: block;
       width: 100%;
       height: auto;
       object-fit: contain;
       object-position: bottom;
+    }
+
+    &_mob {
+      display: none;
+      @include mobile {
+        display: block;
+        margin-bottom: 4rem;
+      }
     }
   }
   &__content {
@@ -69,10 +93,28 @@
     flex-direction: column;
     justify-content: space-between;
     max-width: 50rem;
+
+    @include mobile {
+      text-align: left;
+      align-items: stretch;
+      max-width: 100%;
+    }
+  }
+
+  &__desc {
+    margin: 0;
+
+    @include mobile {
+      margin-bottom: 4rem;
+    }
   }
 
   &__title {
     color: var(--white);
+    @include mobile {
+      margin-bottom: 4rem;
+      color: var(--givi-black);
+    }
   }
 
   &__btn {
@@ -80,5 +122,9 @@
     width: 100%;
     padding: 2.1rem 3.5rem;
     font-size: 2.4rem;
+
+    @include mobile {
+      max-width: 100%;
+    }
   }
 }

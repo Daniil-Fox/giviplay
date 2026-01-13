@@ -16,7 +16,7 @@ if (faq) {
         content.style.maxHeight = content.scrollHeight + "px";
       }
 
-      btn.classList.toggle("faq__item-btn--active");
+      item.classList.toggle("faq__item_active");
     });
   });
 }

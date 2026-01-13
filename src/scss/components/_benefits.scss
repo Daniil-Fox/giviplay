@@ -10,6 +10,13 @@
   overflow: hidden;
   position: relative;
   z-index: 10;
+
+  @include mobile {
+    padding: 7.5rem 0;
+    margin: 0;
+    background-color: unset;
+    color: var(--givi-black);
+  }
   .container {
     width: 100%;
     flex-grow: 1;
@@ -25,6 +32,10 @@
     gap: 4rem;
     position: relative;
     z-index: 2;
+
+    @include mobile {
+      flex-direction: column-reverse;
+    }
     &::after {
       content: "";
       position: absolute;
@@ -41,11 +52,20 @@
         rgb(19, 95, 123) 0%,
         rgb(19, 95, 123, 0) 100%
       );
+
+      @include mobile {
+        display: none;
+      }
     }
   }
   &__title {
     color: var(--white);
     margin-bottom: 6rem;
+
+    @include mobile {
+      color: var(--givi-black);
+      margin-bottom: 4rem;
+    }
   }
 
   &__list {
@@ -53,12 +73,21 @@
     display: flex;
     flex-direction: column;
     gap: 4rem;
+
+    @include mobile {
+      max-width: 100%;
+      gap: 2rem;
+    }
   }
 
   &__item {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+    @include mobile {
+      display: block;
+    }
   }
 
   &__item-value {
@@ -67,6 +96,13 @@
     font-size: 3.2rem;
     text-transform: uppercase;
     color: var(--givi-yellow);
+
+    @include mobile {
+      display: inline;
+      font-size: inherit;
+      color: inherit;
+      font-family: inherit;
+    }
   }
 
   &__img {
@@ -81,6 +117,36 @@
       width: 100%;
       max-height: 100%;
       object-fit: contain;
+    }
+
+    @include mobile {
+      position: static;
+      width: 100%;
+      bottom: unset;
+      left: unset;
+      right: unset;
+      display: none;
+      margin-bottom: 4rem;
+    }
+
+    &_mob {
+      display: none;
+      @include mobile {
+        display: block;
+      }
+    }
+  }
+
+  &__socials {
+    @include mobile {
+      width: 100%;
+      order: -10;
+      .socials__item {
+        flex: 1;
+      }
+      .socials__link {
+        width: auto;
+      }
     }
   }
 }

@@ -1,11 +1,20 @@
 .footer {
+  box-shadow: 0 10px 60px 0 rgba(0, 0, 0, 0.05);
   padding: 8rem 0;
-
+  @include mobile {
+    padding: 4rem 0;
+  }
   &__container {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     gap: 18rem;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 5rem;
+    }
   }
   &__logo {
   }
@@ -20,9 +29,17 @@
     justify-content: space-between;
     align-items: flex-start;
     flex-grow: 1;
+    @include mobile {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 2rem;
+    }
     ul {
       flex-direction: column;
       align-items: stretch;
+      @include mobile {
+        gap: 2rem;
+      }
     }
     li a {
       color: var(--givi-black);
@@ -34,6 +51,10 @@
     flex-direction: column;
     align-items: flex-end;
     gap: 2rem;
+
+    @include mobile {
+      align-items: flex-start;
+    }
   }
 
   &__link {

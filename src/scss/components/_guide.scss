@@ -1,5 +1,9 @@
 .guide {
   padding: 8rem 0;
+
+  @include mobile {
+    padding: 7.5rem 0;
+  }
   &__title {
     margin-bottom: 4rem;
   }
@@ -8,9 +12,15 @@
     flex-wrap: wrap;
     gap: 2rem;
     counter-reset: counter;
-
+    @include mobile {
+      flex-direction: column;
+    }
     &:not(:last-child) {
       margin-bottom: 4rem;
+
+      @include mobile {
+        margin-bottom: 0;
+      }
     }
   }
 
@@ -27,6 +37,12 @@
     justify-content: space-between;
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
     counter-increment: counter;
+
+    @include mobile {
+      flex-basis: unset;
+      padding: 3.5rem 4rem;
+      min-height: 20rem;
+    }
   }
 
   &__item-bottom {
@@ -56,6 +72,10 @@
   &__img {
     height: 35.2rem;
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+
+    @include mobile {
+      display: none;
+    }
     img {
       display: block;
       width: 100%;

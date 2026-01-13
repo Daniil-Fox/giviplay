@@ -39,6 +39,9 @@
     li:not(:last-child) {
       margin-bottom: 0.8rem;
     }
+    @include mobile {
+      font-weight: 400;
+    }
   }
 
   &__prices {

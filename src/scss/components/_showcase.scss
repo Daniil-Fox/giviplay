@@ -3,6 +3,11 @@
   min-height: 80rem;
   display: flex;
   flex-direction: column;
+
+  @include mobile {
+    min-height: unset;
+    padding: 7.5rem 0;
+  }
   &__container {
     width: 100%;
     flex-grow: 1;
@@ -17,11 +22,23 @@
     flex-direction: column;
     justify-content: space-between;
     max-width: 50rem;
+
+    @include mobile {
+      max-width: 100%;
+      gap: 2rem;
+    }
   }
 
   &__desc {
     font-size: 22px;
     line-height: 1.5;
     color: var(--givi-black);
+
+    ul,
+    ol {
+      margin: 0;
+      padding: 0;
+      padding-left: 2.5rem;
+    }
   }
 }

@@ -11,6 +11,10 @@
   scroll-behavior: smooth;
 
   font-size: calc(100vw / 192);
+
+  @include mobile {
+    font-size: calc(100vw / 57.6);
+  }
 }
 
 .page__body {

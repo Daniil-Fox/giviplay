@@ -10,6 +10,10 @@
     .swiper-slide {
       // width: calc(100% / 4 - 20px);
       height: auto;
+
+      @include mobile {
+        width: 44rem;
+      }
     }
   }
 }
