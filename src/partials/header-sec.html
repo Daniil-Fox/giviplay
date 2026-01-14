@@ -1,0 +1,56 @@
+<header class="header header_main header_sec">
+  <div class="header__container container">
+    <a href="/" class="header__logo logo">
+      <svg class="" width="127" height="20">
+        <use xlink:href="img/sprite.svg#logo"></use>
+      </svg>
+    </a>
+
+    <nav class="header__nav nav">
+      <ul class="nav__list list-reset">
+        <li class="nav__item">
+          <a href="#" class="nav__link">Главная</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Каталог</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Сценарии и удержание</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Идеи и темы</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Свет и съёмка</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Монтаж</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Жанры и форматы</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Бонусы</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      <button class="btn-reset header__button header__button_profile" type="button">
+        <svg class="" width="24" height="34">
+          <use xlink:href="img/sprite.svg#profile"></use>
+        </svg>
+      </button>
+      <button class="btn-reset header__button header__button_cart" type="button">
+        <svg class="" width="29" height="29">
+          <use xlink:href="img/sprite.svg#cart"></use>
+        </svg>
+      </button>
+      <button class="btn-reset burger header__burger" aria-label="Открыть меню" aria-expanded="false" data-burger>
+        <span class="burger__line"></span>
+      </button>
+    </div>
+
+  </div>
+  @include('./menu.html')
+</header>

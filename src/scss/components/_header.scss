@@ -6,7 +6,7 @@
   width: 100%;
   z-index: 1000;
   box-shadow: 0 1rem 6rem 0 rgba(0, 0, 0, 0.05);
-  transition-property: transform;
+  transition-property: transform, background-color;
   transition-duration: 0.3s;
   transition-timing-function: 0.3s;
 
@@ -84,6 +84,67 @@
   top: 0;
   width: 100%;
   z-index: 100;
+  background-color: var(--white);
+
+  .header {
+    &__logo {
+      svg {
+        fill: var(--givi-black);
+        @include hover {
+          fill: var(--givi-yellow-hover);
+        }
+
+        &:focus {
+          outline: none;
+          fill: var(--givi-yellow-hover);
+        }
+        &:active {
+          fill: var(--givi-yellow);
+        }
+      }
+    }
+  }
+
+  .header__button {
+    svg {
+      fill: var(--givi-black);
+      @include hover {
+        fill: var(--givi-yellow-hover);
+      }
+
+      &:focus {
+        outline: none;
+        fill: var(--givi-yellow-hover);
+      }
+      &:active {
+        fill: var(--givi-yellow);
+      }
+    }
+  }
+
+  .header__burger {
+    color: var(--givi-black);
+  }
+
+  .nav__list {
+    .nav__link {
+      color: var(--givi-black);
+
+      @include hover {
+        color: var(--givi-yellow);
+      }
+      &:focus {
+        outline: none;
+        color: var(--givi-yellow);
+      }
+      &:active {
+        color: var(--givi-yellow);
+      }
+    }
+  }
+}
+
+.header_sec {
   background-color: var(--white);
 
   .header {

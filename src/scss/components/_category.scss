@@ -1,0 +1,11 @@
+.category {
+  padding: 4rem 0 10rem;
+  &__title {
+    margin-bottom: 4rem;
+  }
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+  }
+}
