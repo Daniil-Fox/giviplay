@@ -2,10 +2,18 @@
   padding: 2rem 0 8rem;
   &__title {
     margin-bottom: 4rem;
+    @include mobile {
+      margin-bottom: 6rem;
+    }
   }
   &__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 4rem;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: 7rem;
+    }
   }
 }
