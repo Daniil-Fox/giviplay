@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#111111">
+  <title>Giviplay</title>
+  <link rel="preload" href="fonts/NotoSans-Light.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/NotoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/NotoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/UNCAGE-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/UNCAGE-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/UNCAGE-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/vendor.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script defer src="js/main.js"></script>
+</head>
+
+
+<body class="page__body">
+  <div class="site-container pt">
+    <header class="header header_main header_sec">
+  <div class="header__container container">
+    <a href="/" class="header__logo logo">
+      <svg class="" width="127" height="20">
+        <use xlink:href="img/sprite.svg#logo"></use>
+      </svg>
+    </a>
+
+    <nav class="header__nav nav">
+      <ul class="nav__list list-reset">
+        <li class="nav__item">
+          <a href="#" class="nav__link">Главная</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Каталог</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Сценарии и удержание</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Идеи и темы</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Свет и съёмка</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Монтаж</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Жанры и форматы</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Бонусы</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      <button class="btn-reset header__button header__button_profile" type="button">
+        <svg class="" width="24" height="34">
+          <use xlink:href="img/sprite.svg#profile"></use>
+        </svg>
+      </button>
+      <button class="btn-reset header__button header__button_cart" type="button">
+        <svg class="" width="29" height="29">
+          <use xlink:href="img/sprite.svg#cart"></use>
+        </svg>
+      </button>
+      <button class="btn-reset burger header__burger" aria-label="Открыть меню" aria-expanded="false" data-burger>
+        <span class="burger__line"></span>
+      </button>
+    </div>
+
+  </div>
+  <div class="menu" data-menu>
+  <div class="menu__overlay" data-menu-overlay></div>
+
+  <div class="menu__content">
+    <nav class="menu__nav nav">
+      <ul class="">
+        <li>
+          <a href="#">Главная</a>
+        </li>
+        <li>
+          <a href="#">Каталог</a>
+        </li>
+        <li>
+          <a href="#">Сценарии и удержание</a>
+        </li>
+        <li>
+          <a href="#">Идеи и темы</a>
+        </li>
+        <li>
+          <a href="#">Свет и съёмка</a>
+        </li>
+        <li>
+          <a href="#">Монтаж</a>
+        </li>
+        <li>
+          <a href="#">Жанры и форматы</a>
+        </li>
+        <li>
+          <a href="#">Бонусы</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+</header>
+    <main class="main">
+      <section class="cart">
+  <div class="container">
+    <div class="breadcrumbs">
+  <span>
+    <span>
+      <a href="./">Главная</a>
+    </span>
+    <span>
+      <span>Страница</span>
+    </span>
+  </span>
+</div>
+
+    <h1 class="cart__title title-md">
+      Корзина
+    </h1>
+
+    <div class="cart__box">
+      <div class="cart__controls">
+        <label class="cart__check check">
+          <input type="checkbox" name="Выбрать все" class="visually-hidden">
+          <div></div>
+          <span>выбрать все</span>
+        </label>
+
+        <a href="#" class="btn-reset cart__clear">
+          <svg class="" width="24" height="24">
+            <use xlink:href="img/sprite.svg#delete"></use>
+          </svg>
+        </a>
+      </div>
+
+      <div class="cart__container">
+        <div class="cart__items">
+          <article class="cart__item cart-item">
+            <label class="cart-item__check check">
+              <input type="checkbox" name="Выбрать" class="visually-hidden">
+              <div></div>
+            </label>
+            <div class="cart-item__cover">
+              <img src="./img/cart/cover.webp" alt="">
+            </div>
+            <div class="cart-item__content">
+              <h5 class="cart-item__title">Съёмка с естественным светом в домашних условиях</h5>
+
+              <div class="cart-item__controls">
+                <div class="cart-item__prices">
+                  <div class="cart-item__price">999р</div>
+                  <div class="cart-item__price cart-item__price_old">1200р</div>
+                </div>
+
+                <a href="#" class="btn-reset cart-item__rm">
+                  <svg class="" width="24" height="24">
+                    <use xlink:href="img/sprite.svg#delete"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+          <article class="cart__item cart-item">
+            <label class="cart-item__check check">
+              <input type="checkbox" name="Выбрать" class="visually-hidden">
+              <div></div>
+            </label>
+            <div class="cart-item__cover">
+              <img src="./img/cart/cover.webp" alt="">
+            </div>
+            <div class="cart-item__content">
+              <h5 class="cart-item__title">Съёмка с естественным светом в домашних условиях</h5>
+
+              <div class="cart-item__controls">
+                <div class="cart-item__prices">
+                  <div class="cart-item__price">999р</div>
+                  <div class="cart-item__price cart-item__price_old">1200р</div>
+                </div>
+
+                <a href="#" class="btn-reset cart-item__rm">
+                  <svg class="" width="24" height="24">
+                    <use xlink:href="img/sprite.svg#delete"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+          <article class="cart__item cart-item">
+            <label class="cart-item__check check">
+              <input type="checkbox" name="Выбрать" class="visually-hidden">
+              <div></div>
+            </label>
+            <div class="cart-item__cover">
+              <img src="./img/cart/cover.webp" alt="">
+            </div>
+            <div class="cart-item__content">
+              <h5 class="cart-item__title">Съёмка с естественным светом в домашних условиях</h5>
+
+              <div class="cart-item__controls">
+                <div class="cart-item__prices">
+                  <div class="cart-item__price">999р</div>
+                  <div class="cart-item__price cart-item__price_old">1200р</div>
+                </div>
+
+                <a href="#" class="btn-reset cart-item__rm">
+                  <svg class="" width="24" height="24">
+                    <use xlink:href="img/sprite.svg#delete"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+          <article class="cart__item cart-item">
+            <label class="cart-item__check check">
+              <input type="checkbox" name="Выбрать" class="visually-hidden">
+              <div></div>
+            </label>
+            <div class="cart-item__cover">
+              <img src="./img/cart/cover.webp" alt="">
+            </div>
+            <div class="cart-item__content">
+              <h5 class="cart-item__title">Съёмка с естественным светом в домашних условиях</h5>
+
+              <div class="cart-item__controls">
+                <div class="cart-item__prices">
+                  <div class="cart-item__price">999р</div>
+                  <div class="cart-item__price cart-item__price_old">1200р</div>
+                </div>
+
+                <a href="#" class="btn-reset cart-item__rm">
+                  <svg class="" width="24" height="24">
+                    <use xlink:href="img/sprite.svg#delete"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+          <article class="cart__item cart-item">
+            <label class="cart-item__check check">
+              <input type="checkbox" name="Выбрать" class="visually-hidden">
+              <div></div>
+            </label>
+            <div class="cart-item__cover">
+              <img src="./img/cart/cover.webp" alt="">
+            </div>
+            <div class="cart-item__content">
+              <h5 class="cart-item__title">Съёмка с естественным светом в домашних условиях</h5>
+
+              <div class="cart-item__controls">
+                <div class="cart-item__prices">
+                  <div class="cart-item__price">999р</div>
+                  <div class="cart-item__price cart-item__price_old">1200р</div>
+                </div>
+
+                <a href="#" class="btn-reset cart-item__rm">
+                  <svg class="" width="24" height="24">
+                    <use xlink:href="img/sprite.svg#delete"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="cart__summary summary">
+          <h4 class="summary__title title-sm">Моя корзина</h4>
+
+          <ul class="summary__list list-reset">
+            <li>
+              Уроков (5)
+
+              <span>5 200 Р</span>
+            </li>
+            <li>
+              Скидка
+
+              <span>-1 800 Р</span>
+            </li>
+          </ul>
+
+          <div class="summary__total title-sm">
+            <span>Итого</span>
+            3 400 Р
+          </div>
+
+          <div class="summary__total summary__total_mob">
+            3996 Р
+
+            <span>4800 р</span>
+          </div>
+
+          <div class="summary__buttons">
+            <a href="#" class="btn btn-reset summary__btn">
+              оплатить
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+      <section class="consult">
+  <div class="container">
+    <div class="consult__container">
+      <div class="consult__content">
+        <h2 class="title-md consult__title">Личная консультация с&nbsp;Гиви</h2>
+        <div class="consult__img consult__img_mob">
+          <img src="./img/givi-camera.webp" alt="">
+        </div>
+        <p class="consult__desc">
+          Продающее описание зачем это нужно.<br>
+          Какие бонусы вы получите.
+        </p>
+
+        <a href="#" class="btn-reset btn consult__btn">
+          Записаться
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="consult__img">
+    <img src="./img/givi.webp" alt="">
+  </div>
+</section>
+    </main>
+    <footer class="footer">
+  <div class="container">
+    <div class="footer__container">
+      <div class="footer__left">
+        <a href="#" class="footer__logo logo">
+          <svg class="">
+            <use xlink:href="img/sprite.svg#logo"></use>
+          </svg>
+        </a>
+
+        <ul class="list-reset socials footer__socials">
+          <li class="socials__item">
+            <a href="#" class="socials__link socials__link_fb" target="_blank" aria-label="Наша страница в Facebook">
+              <img src="./img/svg/youtube.svg" width="30" height="30" alt="">
+            </a>
+          </li>
+          <li class="socials__item">
+            <a href="#" class="socials__link socials__link_fb" target="_blank" aria-label="Наша страница в Facebook">
+              <img src="./img/svg/tg.svg" width="30" height="30" alt="">
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <nav class="footer__nav nav">
+        <ul>
+          <li>
+            <a href="#">Главная</a>
+          </li>
+          <li>
+            <a href="#">Каталог</a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <a href="#">Сценарии и удержание</a>
+          </li>
+          <li>
+            <a href="#">Идеи и темы</a>
+          </li>
+          <li>
+            <a href="#">Свет и съёмка</a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <a href="#">Монтаж</a>
+          </li>
+          <li>
+            <a href="#">Жанры и форматы</a>
+          </li>
+          <li>
+            <a href="#">Бонусы</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="footer__right">
+        <div class="footer__item">
+          <a href="#" class="footer__link">
+            Политика конфиденциальности
+          </a>
+        </div>
+        <div class="footer__item">
+          <small class="footer__link">
+            ©2026 Гивиплей
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+  </div>
+</body>
+
+</html>

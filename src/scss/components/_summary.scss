@@ -1,0 +1,110 @@
+.summary {
+  padding: 4rem;
+  background-color: var(--white);
+  box-shadow: 0 -15px 60px 0 rgba(0, 0, 0, 0.07);
+
+  @include mobile {
+    margin-left: calc(-1 * var(--container-offset));
+    margin-right: calc(-1 * var(--container-offset));
+    padding-left: var(--container-offset);
+    padding-right: var(--container-offset);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 3rem;
+    margin-top: auto;
+  }
+  &__title {
+    margin-bottom: 3rem;
+
+    @include mobile {
+      display: none;
+    }
+  }
+  &__list {
+    font-weight: 400;
+    font-size: 1.8rem;
+    color: rgba(0, 0, 0, 0.45);
+    &:not(:last-child) {
+      margin-bottom: 4rem;
+    }
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &:not(:last-child) {
+        margin-bottom: 2rem;
+      }
+    }
+    span {
+      color: var(--givi-black);
+    }
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    span {
+      color: rgba(0, 0, 0, 0.45);
+    }
+    &:not(:last-child) {
+      margin-bottom: 4rem;
+      @include mobile {
+        margin-bottom: 0;
+      }
+    }
+    @include mobile {
+      display: none;
+    }
+    &_mob {
+      display: none;
+      @include mobile {
+        display: flex;
+        justify-content: flex-start;
+        gap: 1rem;
+        font-family: var(--second-family);
+        font-weight: 500;
+        font-size: 3.2rem;
+        text-transform: uppercase;
+        color: var(--givi-black);
+
+        span {
+          font-size: 2.2rem;
+          text-decoration: line-through;
+          color: rgba(0, 0, 0, 0.25);
+        }
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    & > * {
+      flex: 1;
+    }
+  }
+
+  &__btn {
+    font-weight: 500;
+    font-family: var(--second-family);
+    font-size: 2.4rem;
+    padding: 2.4rem 3.5rem 1.8rem;
+
+    @include mobile {
+      font-size: 1.8rem;
+      font-weight: 400;
+      text-transform: lowercase;
+      padding: 1.3rem 2.1rem;
+    }
+  }
+}

@@ -18,10 +18,13 @@ document.fonts.ready.then(() => {
   initPacksAnimation();
   initBenefitsAnimation();
   initGuideAnimation();
-  initConsultAnimation();
   initFaqAnimation();
   initCtaAnimation();
   initFooterAnimation();
+
+  if (window.innerWidth > 576) {
+    initConsultAnimation();
+  }
 });
 
 // Анимация хедера
