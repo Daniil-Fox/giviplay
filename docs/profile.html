@@ -128,11 +128,22 @@
       <h1 class="title-md profile__title">
         мои видео
       </h1>
-      <button class="btn-reset btn btn_grey profile__btn" data-target="filters">
+      <button class="btn-reset btn btn_grey profile__btn" data-target="filters-table">
         Фильтры
       </button>
 
       <div class="filters__all filters-table" id="filters">
+  <div class="filters-table__heading">
+    <p class="title-sm">
+      Фильтры
+    </p>
+
+    <button class="btn-reset filters-table__close">
+      <svg class="" width="24" height="24">
+        <use xlink:href="img/sprite.svg#close"></use>
+      </svg>
+    </button>
+  </div>
   <div class="filters-table__content">
     <div class="filters-table__box">
       <div class="filters-table__header">
@@ -193,7 +204,7 @@
 
   <div class="filters-table__actions">
     <a href="#" class="btn btn-reset filters-table__btn">Показать 5 видео</a>
-    <a href="#" class="btn btn_grey btn-reset filters-table__btn">Сбросить</a>
+    <a href="#" class="btn btn_grey btn-reset filters-table__btn">сброс</a>
   </div>
 </div>
     </div>
