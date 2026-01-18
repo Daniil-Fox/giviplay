@@ -1,0 +1,70 @@
+.filters {
+  @include mobile {
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: 3;
+      pointer-events: none;
+      left: calc(-1 * var(--container-offset));
+      width: 2rem;
+      top: 0;
+
+      height: 100%;
+      background-image: linear-gradient(to right, #ffffff, transparent);
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 3;
+      pointer-events: none;
+      right: calc(-1 * var(--container-offset));
+      width: 2rem;
+      top: 0;
+
+      height: 100%;
+      background-image: linear-gradient(to left, #ffffff, transparent);
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  }
+  &__active {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+    @include mobile {
+      margin: 0 calc(-1 * var(--container-offset));
+      padding: 0 var(--container-offset);
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      position: relative;
+
+
+    }
+  }
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 500;
+    font-size: 1.8rem;
+    color: #000;
+    line-height: 1.2;
+    white-space: nowrap;
+    padding: 1.2rem 2rem 1.5rem;
+    line-height: 1;
+    background-color: #f5f5f5;
+
+    svg {
+      width: 1.4rem;
+      height: 1.4rem;
+      stroke: #000;
+      stroke-width: 2px;
+    }
+  }
+}

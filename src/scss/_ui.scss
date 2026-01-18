@@ -62,7 +62,7 @@
     color: var(--givi-black);
     background-color: var(--givi-yellow-hover);
   }
-  &:focus {
+  &:focus-visible {
     color: var(--givi-black);
     outline: none;
     background-color: var(--givi-yellow-hover);
@@ -81,7 +81,7 @@
   @include hover {
     color: var(--givi-yellow);
   }
-  &:focus {
+  &:focus-visible {
     outline: none;
     color: var(--givi-yellow);
   }
