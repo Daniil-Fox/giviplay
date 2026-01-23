@@ -4,7 +4,7 @@ const filtersTable = document.querySelector('.filters-table')
 
 const filtersBtn = document.querySelectorAll('[data-target=filters-table]')
 
-if(filtersBtn || filtersTable){
+if(filtersTable){
   const tween = gsap.to(filtersTable, {
     clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
     duration: 0.4

@@ -23,6 +23,8 @@
   min-height: 100%;
   font-size: 2.2rem;
   position: relative;
+  display: flex;
+  flex-direction: column;
   &.menu-open {
     overflow: hidden;
 
@@ -71,7 +73,13 @@ a {
 }
 
 .site-container {
-  // overflow: hidden; // если используете на сайте position: sticky - уберите эту настройку
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex-grow: 1;
 }
 
 .is-hidden {
@@ -147,4 +155,8 @@ a {
 
 .pt {
   padding-top: 9rem;
+}
+*::selection {
+  background-color: var(--givi-yellow-hover);
+  color: #000000;
 }

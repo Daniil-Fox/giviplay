@@ -131,8 +131,112 @@ function initHeroAnimation() {
 // Анимация showcase секции
 function initShowcaseAnimation() {
   const showcase = document.querySelector(".showcase");
-  if (!showcase) return;
+  const covers = document.querySelector(".showcase__covers");
+  if (!showcase || !covers) return;
 
+  const items = document.querySelectorAll(".showcase__item");
+  const decor = document.querySelectorAll(".showcase__decor");
+  const allElements = [...items, ...decor];
+
+  if (allElements.length === 0) return;
+
+  // Вычисляем центр контейнера
+  const coversRect = covers.getBoundingClientRect();
+  const centerX = coversRect.width / 2;
+  const centerY = coversRect.height / 2;
+
+  // Вычисляем смещения от центра для каждого элемента
+  const offsets = new Map();
+  allElements.forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    const elementCenterX = rect.left - coversRect.left + el.offsetWidth / 2;
+    const elementCenterY = rect.top - coversRect.top + el.offsetHeight / 2;
+
+    offsets.set(el, {
+      x: centerX - elementCenterX,
+      y: centerY - elementCenterY,
+    });
+  });
+
+  // Timeline для разлета элементов при скролле
+  const showcaseTimeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: showcase,
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+  });
+
+  // Разлет элементов из центра на свои места через gsap.from
+  allElements.forEach((el, index) => {
+    const offset = offsets.get(el);
+    showcaseTimeline.from(
+      el,
+      {
+        x: offset.x,
+        y: offset.y,
+        scale: 0.6,
+        opacity: 0,
+        duration: 1.5,
+        ease: "power3.out",
+      },
+      index * 0.1
+    );
+  });
+
+  // Анимация шатания (постоянная, после разлета)
+  const wiggleAnimations = new Map();
+  let isSectionVisible = false;
+
+  // Проверка видимости секции
+  function checkSectionVisibility() {
+    const rect = showcase.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
+    const visibilityPercent = (visibleHeight / rect.height) * 100;
+    const wasVisible = isSectionVisible;
+    isSectionVisible = visibilityPercent >= 5;
+
+    // Останавливаем или возобновляем анимации в зависимости от видимости
+    if (wasVisible !== isSectionVisible) {
+      wiggleAnimations.forEach((anim) => {
+        if (isSectionVisible) {
+          anim.resume();
+        } else {
+          anim.pause();
+        }
+      });
+    }
+  }
+
+  // Слушаем скролл для проверки видимости
+  window.addEventListener("scroll", checkSectionVisibility, { passive: true });
+  checkSectionVisibility();
+
+  showcaseTimeline.call(() => {
+    allElements.forEach((el) => {
+      const randomDelay = Math.random() * 0.5;
+      const randomDuration = 3 + Math.random() * 2;
+      // Увеличиваем силу покачивания (было 1-2.5, теперь 2-4)
+      const randomRotation = 2 + Math.random() * 2;
+
+      const anim = gsap.to(el, {
+        rotationZ: `+=${randomRotation}`,
+        rotationY: `+=${randomRotation * 0.5}`,
+        rotationX: `+=${randomRotation * 0.3}`,
+        duration: randomDuration,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+        delay: randomDelay,
+        paused: !isSectionVisible, // Пауза если секция не видна
+      });
+
+      wiggleAnimations.set(el, anim);
+    });
+  });
+
+  // Анимация контента
   gsap.from(".showcase__title", {
     scrollTrigger: {
       trigger: showcase,
@@ -164,6 +268,7 @@ function initShowcaseAnimation() {
 function initTakeAnimation() {
   const take = document.querySelector(".take");
   if (!take) return;
+  const takeItems = document.querySelectorAll(".take__item");
 
   gsap.from(".take__title", {
     scrollTrigger: {
@@ -177,7 +282,7 @@ function initTakeAnimation() {
     ease: defaultEase,
   });
 
-  gsap.from(".take__item", {
+  gsap.from(takeItems, {
     scrollTrigger: {
       trigger: take,
       start: "top 75%",
@@ -193,6 +298,13 @@ function initTakeAnimation() {
     },
     ease: "power2.out",
     delay: 0.2,
+
+    onComplete: () => {
+      takeItems.forEach((item, idx) => {
+        item.style.setProperty('--highlight', '1')
+        item.style.setProperty('--delay', idx * 100 + 'ms')
+      })
+    }
   });
 }
 
@@ -496,7 +608,7 @@ function initBenefitsAnimation() {
       ".benefits__img",
       {
         duration: 1,
-        scale: 0.85,
+        y: 100,
         opacity: 0,
         ease: "power2.out",
       },
@@ -663,7 +775,7 @@ function initConsultAnimation() {
       ".consult__img",
       {
         duration: 1,
-        scale: 0.85,
+        y: 100,
         opacity: 0,
         ease: "power2.out",
       },
@@ -745,15 +857,7 @@ function initCtaAnimation() {
       },
       "-=0.3"
     )
-    .to(
-      ".cta__img",
-      {
-        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-        duration: 1,
-        ease: "power2.out",
-      },
-      "-=0.5"
-    );
+
 }
 
 // Анимация Footer секции

@@ -3,12 +3,19 @@
   min-height: 80rem;
   display: flex;
   flex-direction: column;
-
+  // overflow: hidden;
   @include mobile {
     min-height: unset;
     padding: 7.5rem 0;
   }
+  .container {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
   &__container {
+    position: relative;
     width: 100%;
     flex-grow: 1;
     display: flex;
@@ -16,11 +23,130 @@
     height: 100%;
   }
 
+  &__covers {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    height: 100%;
+    // pointer-events: none;
+    user-select: none;
+    width: calc(100% - 50rem);
+
+    perspective: 1600px;
+    transform-style: preserve-3d;
+  }
+
+  &__item {
+    position: absolute;
+
+    z-index: 1;
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+
+  &__item_1 {
+    width: 40rem;
+    left: 0;
+    top: 2rem;
+    transform: translate3d(25rem, 6rem, -10rem) rotateX(-10deg) rotateY(30deg) rotateZ(5deg)  skewX(5deg);
+  }
+  &__item_2 {
+    width: 62.8rem;
+    right: 0;
+    top: 0;
+
+    transform: translate3d(0rem, 0, -10rem) rotateX(-10deg) rotateY(-40deg) rotateZ(-4deg) skewX(0deg);
+  }
+  &__item_3 {
+    width: 56rem;
+    left: 0;
+    bottom: 0;
+
+    transform: translate3d(18rem, 3rem, -10rem) rotateX(5deg) rotateY(42deg) rotateZ(-6deg) skewX(0deg);
+  }
+  &__item_4 {
+    width: 40rem;
+    right: 0;
+    bottom: 0;
+
+    transform: translate3d(-18rem, 4rem, -10rem) rotateX(30deg) rotateY(-45deg) rotateZ(18deg)  skewX(0deg);
+  }
+
+
+  &__decor {
+    position: absolute;
+    z-index: 1;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__decor_1 {
+    top: 14rem;
+    left: 1rem;
+    width: 32rem;
+    height: auto;
+    z-index: 4;
+    transform: rotateZ(-16deg) translateZ(0rem);
+  }
+
+  &__decor_2 {
+    top: 14rem;
+    left: 3rem;
+    width: 5rem;
+    height: auto;
+    z-index: 4;
+    transform: rotateZ(-17deg) translateX(10rem) translateY(50rem) translateZ(20rem);
+  }
+
+  &__decor_3 {
+    bottom: 0rem;
+    left: 50%;
+    width: 34.4rem;
+    height: auto;
+    z-index: 4;
+    transform: translateX(-45%) translateY(50%) translateZ(2rem);
+  }
+
+  &__decor_4 {
+    top: 50%;
+    right: 3rem;
+    width: 14rem;
+    height: auto;
+    z-index: 4;
+    transform: rotateZ(11deg) translateX(0rem) translateY(0rem) translateZ(9rem);
+  }
+
+  &__decor_5 {
+    top: -4.5rem;
+    right: 0rem;
+    width: 19rem;
+    height: auto;
+    z-index: 4;
+    transform: rotateZ(11deg) translateX(0rem) translateY(0rem) translateZ(14rem);
+  }
+
+  &__decor_6 {
+    left: 25%;
+    top: -4.5rem;
+    width: 19rem;
+    height: auto;
+    z-index: 4;
+    transform: rotateZ(3deg) translateX(0rem) translateY(0rem) translateZ(-12rem);
+  }
+
   &__content {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    // justify-content: space-between;
+    gap: 4rem;
     max-width: 50rem;
 
     @include mobile {

@@ -49,8 +49,8 @@
       border-radius: 100%;
       background-image: radial-gradient(
         50% 50% at 50% 50%,
-        rgb(19, 95, 123) 0%,
-        rgb(19, 95, 123, 0) 100%
+        #FFE400 0%,
+        #ffe60000 100%
       );
 
       @include mobile {
@@ -114,6 +114,7 @@
     height: auto;
 
     img {
+      display: block;
       width: 100%;
       max-height: 100%;
       object-fit: contain;

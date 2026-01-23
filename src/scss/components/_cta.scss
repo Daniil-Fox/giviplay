@@ -4,14 +4,8 @@
     padding-top: 7.5rem;
   }
   &__container {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap: 4rem;
-    @include mobile {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
+    display: flex;
+
   }
 
   &__content {
@@ -20,32 +14,42 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
+    width: 100%;
+    max-width: 66rem;
+    flex-shrink: 0;
     @include mobile {
       gap: 4rem;
     }
   }
 
+  &__row {
+    position: relative;
+    width: 100%;
+
+    &_1 {
+      height: 34rem;
+    }
+    &_2 {
+      margin-top: -8rem;
+      height: 30rem;
+    }
+    &_3 {
+      height: 27rem;
+      margin-top: -10rem;
+    }
+  }
+
   &__img {
-    grid-column: 7 span;
+    flex-grow: 1;
     min-height: 72rem;
     position: relative;
-    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    display: flex;
+    flex-direction: column;
     @include mobile {
       min-height: unset;
       display: none;
     }
-    img {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
 
-      @include mobile {
-        position: static;
-      }
-    }
 
     &_mob {
       display: none;
@@ -53,6 +57,71 @@
         display: block;
       }
     }
+  }
+
+  &__img-item {
+    position: absolute;
+    height: auto;
+
+  }
+
+  &__img-item_1 {
+    left: 0;
+    top: 4.5rem;
+    width: 25.4rem;
+  }
+  &__img-item_2 {
+    left: 29rem;
+    top: 10rem;
+    width: 22.6rem;
+  }
+  &__img-item_3 {
+    left: 54rem;
+    top: 8rem;
+    width: 22.7rem;
+  }
+  &__img-item_4 {
+    left: 80rem;
+    top: 4rem;
+    width: 34.5rem;
+  }
+
+  &__img-item_5 {
+    left: 0;
+    top: .5rem;
+    width: 28.5rem;
+  }
+  &__img-item_6 {
+    left: 29rem;
+    top: 2.5rem;
+    width: 22.6rem;
+  }
+  &__img-item_7 {
+    left: 54rem;
+    top: 0rem;
+    width: 30.1rem;
+  }
+  &__img-item_8 {
+    right: 1rem;
+    top: 7.4rem;
+    width: 22.4rem;
+  }
+
+  &__img-item_9 {
+    left: 10rem;
+    top: unset;
+    bottom: 0;
+    width: 25.6rem;
+  }
+  &__img-item_10 {
+    left: 36rem;
+    top: 0rem;
+    width: 22.6rem;
+  }
+  &__img-item_11 {
+    right: 27rem;
+    top: 1.2rem;
+    width: 22.6rem;
   }
 
   &__actions {
