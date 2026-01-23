@@ -5,6 +5,7 @@
   flex-direction: column;
   // overflow: hidden;
   @include mobile {
+    overflow: hidden;
     min-height: unset;
     padding: 7.5rem 0;
   }

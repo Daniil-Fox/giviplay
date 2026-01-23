@@ -997,6 +997,7 @@ a {
 }
 @media (max-width: 576px) {
   .showcase {
+    overflow: hidden;
     min-height: unset;
     padding: 7.5rem 0;
   }
@@ -1178,6 +1179,7 @@ a {
 }
 
 .take {
+  overflow: hidden;
   padding: 8rem 0;
 }
 @media (max-width: 576px) {
@@ -1767,6 +1769,7 @@ a {
 }
 
 .packs {
+  overflow: hidden;
   padding: 8rem 0;
 }
 .packs__title {
