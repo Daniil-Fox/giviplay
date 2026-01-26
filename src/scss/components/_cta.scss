@@ -149,6 +149,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    user-select: none;
+    pointer-events: none;
     @include mobile {
       min-height: unset;
       display: none;
@@ -193,6 +195,7 @@
     bottom: 1rem;
     width: 18rem;
     height: auto;
+
     @include mobile {
       display: none;
     }
@@ -206,6 +209,8 @@
   &__img-item {
     position: absolute;
     height: auto;
+    user-select: none;
+    pointer-events: none;
 
   }
 

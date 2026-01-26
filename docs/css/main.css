@@ -2962,6 +2962,11 @@ a {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
 }
 @media (max-width: 576px) {
   .cta__img {
@@ -3030,6 +3035,11 @@ a {
 .cta__img-item {
   position: absolute;
   height: auto;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
 }
 .cta__img-item_1 {
   left: 0;
@@ -3530,6 +3540,7 @@ a {
   margin: 2rem 0;
   background-color: #000;
   color: var(--white);
+  overflow: hidden;
 }
 @media (max-width: 576px) {
   .get-pack {
@@ -3640,7 +3651,10 @@ a {
     justify-content: flex-start;
   }
 }
-.get-pack__img {
+.get-pack__actions {
+  margin-right: 10rem;
+}
+.get-pack__wrapper {
   min-height: 40rem;
   -ms-flex-preferred-size: 66.7rem;
   flex-basis: 66.7rem;
@@ -3649,24 +3663,71 @@ a {
   -ms-flex-negative: 0;
   flex-shrink: 0;
   position: relative;
+  margin-bottom: -6rem;
 }
-@media (max-width: 576px) {
-  .get-pack__img {
-    width: auto;
-    min-height: 50rem;
-    margin-top: auto;
-    -ms-flex-preferred-size: unset;
-    flex-basis: unset;
-    margin-left: calc(-1 * var(--container-offset));
-    margin-right: calc(-1 * var(--container-offset));
-  }
+.get-pack__img {
+  position: relative;
+  width: 100%;
 }
 .get-pack__img img {
+  width: 100%;
+}
+.get-pack__img-board {
   position: absolute;
-  left: 0;
-  top: 0;
+  z-index: 5;
+  bottom: 1rem;
+  left: -11rem;
+  width: 22rem;
+  height: 22rem;
+}
+.get-pack__img-board img {
+  display: block;
   width: 100%;
   height: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+.get-pack__img-effect {
+  position: absolute;
+  top: 10rem;
+  left: 40%;
+  width: 9.4rem;
+  height: 9.4rem;
+}
+.get-pack__img-effect img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+.get-pack__img-spotlight {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  right: 0;
+  width: 13.3rem;
+  height: 13.3rem;
+  -webkit-transform: translate(40%, -20%);
+  -ms-transform: translate(40%, -20%);
+  transform: translate(40%, -20%);
+}
+.get-pack__img-spotlight img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+.get-pack__row {
+  position: relative;
+}
+.get-pack__row:not(:first-child) {
+  margin-top: -5rem;
+}
+.get-pack__row_3 {
+  width: 75%;
+  margin: 0 auto;
 }
 .get-pack__buttons {
   display: -webkit-box;
