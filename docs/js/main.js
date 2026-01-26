@@ -21768,30 +21768,124 @@ function initFaqAnimation() {
 function initCtaAnimation() {
   const cta = document.querySelector(".cta");
   if (!cta) return;
+  const WIGGLE_CLASS = "cta--wiggle";
+  const WIGGLE_ACTIVE_CLASS = "cta--wiggle-active";
 
-  // Timeline для контента CTA
-  const ctaTimeline = gsap__WEBPACK_IMPORTED_MODULE_0__["default"].timeline({
-    scrollTrigger: {
-      trigger: cta,
-      start: "top 80%",
-      toggleActions: "play none none none"
+  // Включаем/выключаем CSS-покачивание по видимости секции
+  gsap_all__WEBPACK_IMPORTED_MODULE_1__.ScrollTrigger.create({
+    trigger: cta,
+    start: "top 95%",
+    end: "bottom 5%",
+    toggleClass: {
+      targets: cta,
+      className: WIGGLE_ACTIVE_CLASS
     }
   });
-  ctaTimeline.from(".cta__title", {
-    duration: defaultDuration,
-    y: 50,
-    opacity: 0,
-    ease: defaultEase
-  }).from(".cta__btn", {
-    duration: 0.6,
-    y: 30,
-    opacity: 0,
-    stagger: {
-      amount: 0.3,
-      from: "start"
+  const imgMobile = cta.querySelector(".cta__content .cta__img_mob");
+  const imgDesktop = cta.querySelector(".cta__container > .cta__img");
+
+  // В CTA есть ДВА набора картинок (mobile + desktop), с одинаковыми классами внутри.
+  // Поэтому анимацию появления делаем через matchMedia и анимируем только ВИДИМЫЙ набор.
+  gsap_all__WEBPACK_IMPORTED_MODULE_1__.ScrollTrigger.matchMedia({
+    "(max-width: 576px)": () => {
+      const tl = gsap__WEBPACK_IMPORTED_MODULE_0__["default"].timeline({
+        scrollTrigger: {
+          trigger: cta,
+          start: "top 80%",
+          toggleActions: "play none none none"
+        }
+      });
+      tl.from(".cta__title", {
+        duration: defaultDuration,
+        y: 50,
+        opacity: 0,
+        ease: defaultEase
+      });
+      if (imgMobile) {
+        tl.from(imgMobile, {
+          duration: 0.7,
+          y: 30,
+          opacity: 0,
+          ease: defaultEase
+        }, "-=0.35").from(imgMobile.querySelectorAll(".cta__megaphone, .cta__playback"), {
+          duration: 0.7,
+          scale: 0.92,
+          opacity: 0,
+          ease: "power2.out",
+          stagger: 0.08
+        }, "-=0.55").from(imgMobile.querySelectorAll(".cta__img-item"), {
+          duration: 0.8,
+          y: 35,
+          opacity: 0,
+          scale: 0.98,
+          ease: "power2.out",
+          stagger: 0.05
+        }, "-=0.6");
+      }
+      tl.from(".cta__btn", {
+        duration: 0.6,
+        y: 30,
+        opacity: 0,
+        stagger: {
+          amount: 0.3,
+          from: "start"
+        },
+        ease: "power2.out"
+      }, "-=0.3").call(() => {
+        cta.classList.add(WIGGLE_CLASS);
+      });
+      return () => tl.kill();
     },
-    ease: "power2.out"
-  }, "-=0.3");
+    "(min-width: 577px)": () => {
+      const tl = gsap__WEBPACK_IMPORTED_MODULE_0__["default"].timeline({
+        scrollTrigger: {
+          trigger: cta,
+          start: "top 80%",
+          toggleActions: "play none none none"
+        }
+      });
+      tl.from(".cta__title", {
+        duration: defaultDuration,
+        y: 50,
+        opacity: 0,
+        ease: defaultEase
+      });
+      if (imgDesktop) {
+        tl.from(imgDesktop, {
+          duration: 0.7,
+          y: 40,
+          opacity: 0,
+          ease: defaultEase
+        }, "-=0.45").from(imgDesktop.querySelectorAll(".cta__megaphone, .cta__playback"), {
+          duration: 0.7,
+          scale: 0.92,
+          opacity: 0,
+          ease: "power2.out",
+          stagger: 0.08
+        }, "-=0.55").from(imgDesktop.querySelectorAll(".cta__img-item"), {
+          duration: 0.8,
+          y: 35,
+          opacity: 0,
+          scale: 0.98,
+          ease: "power2.out",
+          stagger: 0.05
+        }, "-=0.6");
+      }
+      tl.from(".cta__btn", {
+        duration: 0.6,
+        y: 30,
+        opacity: 0,
+        stagger: {
+          amount: 0.3,
+          from: "start"
+        },
+        ease: "power2.out"
+      }, "-=0.3").call(() => {
+        cta.classList.add(WIGGLE_CLASS);
+      });
+      return () => tl.kill();
+    }
+  });
 }
 
 // Анимация Footer секции
