@@ -21221,55 +21221,21 @@ function initShowcaseAnimation() {
     }, index * 0.1);
   });
 
-  // Анимация шатания (постоянная, после разлета)
-  const wiggleAnimations = new Map();
-  let isSectionVisible = false;
-
-  // Проверка видимости секции
-  function checkSectionVisibility() {
-    const rect = showcase.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
-    const visibilityPercent = visibleHeight / rect.height * 100;
-    const wasVisible = isSectionVisible;
-    isSectionVisible = visibilityPercent >= 5;
-
-    // Останавливаем или возобновляем анимации в зависимости от видимости
-    if (wasVisible !== isSectionVisible) {
-      wiggleAnimations.forEach(anim => {
-        if (isSectionVisible) {
-          anim.resume();
-        } else {
-          anim.pause();
-        }
-      });
+  // CSS-покачивание: после разлёта просто добавляем модификатор
+  // и включаем/выключаем анимацию по видимости через класс.
+  const WIGGLE_CLASS = "showcase--wiggle";
+  const WIGGLE_ACTIVE_CLASS = "showcase--wiggle-active";
+  gsap_all__WEBPACK_IMPORTED_MODULE_1__.ScrollTrigger.create({
+    trigger: showcase,
+    start: "top 95%",
+    end: "bottom 5%",
+    toggleClass: {
+      targets: showcase,
+      className: WIGGLE_ACTIVE_CLASS
     }
-  }
-
-  // Слушаем скролл для проверки видимости
-  window.addEventListener("scroll", checkSectionVisibility, {
-    passive: true
   });
-  checkSectionVisibility();
   showcaseTimeline.call(() => {
-    allElements.forEach(el => {
-      const randomDelay = Math.random() * 0.5;
-      const randomDuration = 3 + Math.random() * 2;
-      // Увеличиваем силу покачивания (было 1-2.5, теперь 2-4)
-      const randomRotation = 2 + Math.random() * 2;
-      const anim = gsap__WEBPACK_IMPORTED_MODULE_0__["default"].to(el, {
-        rotationZ: `+=${randomRotation}`,
-        rotationY: `+=${randomRotation * 0.5}`,
-        rotationX: `+=${randomRotation * 0.3}`,
-        duration: randomDuration,
-        ease: "sine.inOut",
-        repeat: -1,
-        yoyo: true,
-        delay: randomDelay,
-        paused: !isSectionVisible // Пауза если секция не видна
-      });
-      wiggleAnimations.set(el, anim);
-    });
+    showcase.classList.add(WIGGLE_CLASS);
   });
 
   // Анимация контента

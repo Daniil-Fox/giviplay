@@ -3,6 +3,98 @@
   min-height: 80rem;
   display: flex;
   flex-direction: column;
+
+  // CSS-покачивание: включается классами из JS после разлёта
+  &--wiggle {
+    // базовые амплитуды (desktop)
+    --showcase-wiggle-x-pos: 3px;
+    --showcase-wiggle-x-neg: -3px;
+    --showcase-wiggle-y-pos: 4px;
+    --showcase-wiggle-y-neg: -4px;
+    --showcase-wiggle-rot-pos: 3.6deg;
+    --showcase-wiggle-rot-neg: -3.6deg;
+
+    @include mobile {
+      // на мобилке мягче, чтобы не обрезалось и не “ломало” композицию
+      --showcase-wiggle-x-pos: 1px;
+      --showcase-wiggle-x-neg: -1px;
+      --showcase-wiggle-y-pos: 2px;
+      --showcase-wiggle-y-neg: -2px;
+      --showcase-wiggle-rot-pos: 1.8deg;
+      --showcase-wiggle-rot-neg: -1.8deg;
+    }
+
+    // Анимируем ВНУТРЕННИЕ img, чтобы не трогать сложные 3D transform у контейнеров
+    .showcase__item img,
+    .showcase__decor img {
+      animation-name: showcase-wiggle;
+      // чуть более “синусно” и мягко, чем дефолтный ease-in-out
+      animation-timing-function: cubic-bezier(0.37, 0, 0.63, 1);
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-play-state: paused;
+      will-change: transform;
+      transform-origin: 50% 50%;
+      transform: translate3d(0, 0, 0) rotateZ(0deg);
+
+      // Anti-aliasing / “лесенки” fix for transformed images
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
+      outline: 1px solid transparent;
+    }
+
+    &.showcase--wiggle-active {
+      .showcase__item img,
+      .showcase__decor img {
+        animation-play-state: running;
+      }
+    }
+
+    // Лёгкая “рандомизация” через разные длительности/задержки
+    // desktop: медленнее и плавнее
+    .showcase__item_1 img { animation-duration: 7.6s; animation-delay: 0.05s; }
+    .showcase__item_2 img { animation-duration: 6.8s; animation-delay: 0.18s; }
+    .showcase__item_3 img { animation-duration: 8.4s; animation-delay: 0.12s; }
+    .showcase__item_4 img { animation-duration: 7.1s; animation-delay: 0.22s; }
+
+    .showcase__decor_1 img { animation-duration: 9.0s; animation-delay: 0.08s; }
+    .showcase__decor_2 img { animation-duration: 8.2s; animation-delay: 0.16s; }
+    .showcase__decor_3 img { animation-duration: 9.6s; animation-delay: 0.10s; }
+    .showcase__decor_4 img { animation-duration: 7.9s; animation-delay: 0.20s; }
+    .showcase__decor_5 img { animation-duration: 8.7s; animation-delay: 0.14s; }
+    .showcase__decor_6 img { animation-duration: 8.4s; animation-delay: 0.06s; }
+
+    // mobile: оставляем текущую скорость (чуть быстрее, чем desktop)
+    @include mobile {
+      .showcase__item_1 img { animation-duration: 5.2s; }
+      .showcase__item_2 img { animation-duration: 4.6s; }
+      .showcase__item_3 img { animation-duration: 5.8s; }
+      .showcase__item_4 img { animation-duration: 4.9s; }
+
+      .showcase__decor_1 img { animation-duration: 6.2s; }
+      .showcase__decor_2 img { animation-duration: 5.6s; }
+      .showcase__decor_3 img { animation-duration: 6.8s; }
+      .showcase__decor_4 img { animation-duration: 5.3s; }
+      .showcase__decor_5 img { animation-duration: 6.0s; }
+      .showcase__decor_6 img { animation-duration: 5.9s; }
+    }
+  }
+
+  @keyframes showcase-wiggle {
+    0% {
+      transform: translate3d(0, 0, 0) rotateZ(0deg);
+    }
+    50% {
+      transform: translate3d(var(--showcase-wiggle-x-pos), var(--showcase-wiggle-y-pos), 0)
+        rotateZ(var(--showcase-wiggle-rot-pos));
+    }
+    100% {
+      transform: translate3d(var(--showcase-wiggle-x-neg), var(--showcase-wiggle-y-neg), 0)
+        rotateZ(var(--showcase-wiggle-rot-neg));
+    }
+  }
   // overflow: hidden;
   @include mobile {
     overflow: hidden;
@@ -22,6 +114,10 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+
+    @include mobile {
+      padding-top: 58rem;
+    }
   }
 
   &__covers {
@@ -36,6 +132,11 @@
 
     perspective: 1600px;
     transform-style: preserve-3d;
+
+    @include mobile {
+      width: 100%;
+      height: 50%;
+    }
   }
 
   &__item {
@@ -54,6 +155,12 @@
     left: 0;
     top: 2rem;
     transform: translate3d(25rem, 6rem, -10rem) rotateX(-10deg) rotateY(30deg) rotateZ(5deg)  skewX(5deg);
+
+    @include mobile {
+      width: 24rem;
+
+      transform: translate3d(-0.5rem, 0rem, 0rem) rotateX(-10deg) rotateY(35deg) rotateZ(3deg)  skewX(0deg);
+    }
   }
   &__item_2 {
     width: 62.8rem;
@@ -61,6 +168,12 @@
     top: 0;
 
     transform: translate3d(0rem, 0, -10rem) rotateX(-10deg) rotateY(-40deg) rotateZ(-4deg) skewX(0deg);
+
+    @include mobile {
+      width: 32rem;
+      right: -8rem;
+      transform: translate3d(-2rem, 0rem, 4rem) rotateX(15deg) rotateY(-28deg) rotateZ(5deg) skewX(0deg);
+    }
   }
   &__item_3 {
     width: 56rem;
@@ -68,6 +181,13 @@
     bottom: 0;
 
     transform: translate3d(18rem, 3rem, -10rem) rotateX(5deg) rotateY(42deg) rotateZ(-6deg) skewX(0deg);
+
+    @include mobile {
+      width: 38rem;
+      left: -10rem;
+
+      transform: translate3d(0rem, 0rem, -10rem) rotateX(5deg) rotateY(42deg) rotateZ(-6deg) skewX(0deg);
+    }
   }
   &__item_4 {
     width: 40rem;
@@ -75,6 +195,13 @@
     bottom: 0;
 
     transform: translate3d(-18rem, 4rem, -10rem) rotateX(30deg) rotateY(-45deg) rotateZ(18deg)  skewX(0deg);
+
+    @include mobile {
+      width: 26rem;
+      bottom: 2rem;
+      transform: translate3d(2rem, 0rem, 0rem) rotateX(23deg) rotateY(
+        -45deg) rotateZ(20deg) skewX(0deg);
+    }
   }
 
 
@@ -95,6 +222,13 @@
     height: auto;
     z-index: 4;
     transform: rotateZ(-16deg) translateZ(0rem);
+
+    @include mobile {
+      top: -12rem;
+      left: -12rem;
+      width: 20rem;
+      transform: rotateZ(-16deg) translateZ(-8rem);
+    }
   }
 
   &__decor_2 {
@@ -104,6 +238,13 @@
     height: auto;
     z-index: 4;
     transform: rotateZ(-17deg) translateX(10rem) translateY(50rem) translateZ(20rem);
+
+    @include mobile {
+      width: 3.2rem;
+      top: unset;
+      bottom: 4rem;
+      transform: rotateZ(-17deg) translateX(0rem) translateY(0rem) translateZ(20rem);
+    }
   }
 
   &__decor_3 {
@@ -113,6 +254,11 @@
     height: auto;
     z-index: 4;
     transform: translateX(-45%) translateY(50%) translateZ(2rem);
+
+    @include mobile {
+      width: 18rem;
+      bottom: 3rem;
+    }
   }
 
   &__decor_4 {
@@ -122,7 +268,13 @@
     height: auto;
     z-index: 4;
     transform: rotateZ(11deg) translateX(0rem) translateY(0rem) translateZ(9rem);
-  }
+    @include mobile {
+      width: 8rem;
+      top: 40%;
+      transform: rotateZ(11deg) translateX(0rem) translateY(0rem) translateZ(4rem);
+      right: -1rem;
+    }
+   }
 
   &__decor_5 {
     top: -4.5rem;
@@ -131,6 +283,12 @@
     height: auto;
     z-index: 4;
     transform: rotateZ(11deg) translateX(0rem) translateY(0rem) translateZ(14rem);
+
+    @include mobile {
+      width: 15rem;
+      right: -4rem;
+      top: -6rem;
+    }
   }
 
   &__decor_6 {
@@ -140,6 +298,12 @@
     height: auto;
     z-index: 4;
     transform: rotateZ(3deg) translateX(0rem) translateY(0rem) translateZ(-12rem);
+
+    @include mobile {
+      width: 11rem;
+      left: 50%;
+      top: -9rem;
+    }
   }
 
   &__content {
