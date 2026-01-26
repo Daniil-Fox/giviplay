@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+@include('partials/head.html')
+
+<body class="page__body">
+  <div class="site-container pt">
+    @include('partials/header-sec.html')
+    <main class="main">
+      <section class="video-sec">
+        <div class="container">
+          @include('./partials/breadcrumbs.html')
+
+          <div
+            class="video-sec__video"
+            data-video-file=""
+            data-video-poster=""
+          ></div>
+        </div>
+      </section>
+    </main>
+    @include('partials/footer.html')
+  </div>
+</body>
+
+</html>

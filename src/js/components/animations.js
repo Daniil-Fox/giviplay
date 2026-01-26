@@ -16,6 +16,7 @@ document.fonts.ready.then(() => {
   initCatalogAnimation();
   initFindAnimation();
   initPacksAnimation();
+  initGetPackAnimation();
   initBenefitsAnimation();
   initGuideAnimation();
   initFaqAnimation();
@@ -947,6 +948,34 @@ function initCtaAnimation() {
     },
   });
 
+}
+
+// Анимация get-pack секции (проявление полос слева направо)
+function initGetPackAnimation() {
+  const getPack = document.querySelector(".get-pack");
+  if (!getPack) return;
+
+  const rows = getPack.querySelectorAll(".get-pack__row");
+  if (!rows.length) return;
+
+  const fromClip = "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)";
+  const toClip = "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)";
+
+  // на всякий случай синхронизируем с CSS-начальным состоянием
+  gsap.set(rows, { clipPath: fromClip, webkitClipPath: fromClip });
+
+  gsap.to(rows, {
+    clipPath: toClip,
+    webkitClipPath: toClip,
+    duration: 0.9,
+    ease: "power2.out",
+    stagger: 0.12,
+    scrollTrigger: {
+      trigger: getPack,
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+  });
 }
 
 // Анимация Footer секции

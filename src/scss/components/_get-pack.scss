@@ -177,7 +177,9 @@
 
   &__row {
     position: relative;
-
+    clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+    -webkit-clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+    will-change: clip-path;
     &:not(:first-child){
       margin-top: -5rem;
       @include mobile {
