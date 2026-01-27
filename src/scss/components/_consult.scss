@@ -64,8 +64,7 @@
     width: 122rem;
     height: auto;
     @include mobile {
-      width: 100%;
-      position: static;
+
       display: none;
     }
     img {
@@ -79,8 +78,30 @@
     &_mob {
       display: none;
       @include mobile {
+        padding-top: 6rem;
         display: block;
         margin-bottom: 4rem;
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        background-color: var(--givi-black);
+        &::after {
+          content: "";
+          position: absolute;
+          z-index: -1;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -30%);
+          width: 60rem;
+          pointer-events: none;
+          aspect-ratio: 1 / 1;
+          border-radius: 100%;
+          background-image: radial-gradient(
+            50% 50% at 50% 50%,
+            #FFE400 0%,
+            #ffe60000 100%
+          );
+        }
       }
     }
   }
