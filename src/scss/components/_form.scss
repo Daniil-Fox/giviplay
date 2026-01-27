@@ -1,0 +1,43 @@
+.form {
+  &__field {
+    display: block;
+    width: 100%;
+    position: relative;
+    background-color: #F5F5F5;
+    height: 7rem;
+  }
+
+  &__label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: 400;
+    font-size: 1.8rem;
+    color: rgba(0, 0, 0, 0.25);
+    transform: translate(3rem, 2.2rem);
+
+    transition-property: transform, color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+  }
+
+  &__input {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+
+    font-weight: 400;
+    font-size: 1.8rem;
+    color: var(--givi-black);
+    padding: 0 3rem;
+    &:focus {
+      outline: none;
+
+      & ~ .form__label {
+        transform: translate(3rem, 0.5rem);
+      }
+    }
+  }
+}

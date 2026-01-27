@@ -1,5 +1,6 @@
 .video-sec {
-  padding: 4rem 0 8rem;
+  background-color: var(--white);
+  padding: 4rem 0 6rem;
 
   @include mobile {
     padding: 3rem 0 6rem;
@@ -9,16 +10,88 @@
     position: relative;
     width: 100%;
     margin: 0 auto;
-    background: #000;
-    border-radius: 1.2rem;
+    background: var(--givi-black);
     overflow: hidden;
 
     max-height: 69rem;
     height: 100%;
+
     @include mobile {
-      border-radius: 0.8rem;
+      max-height: unset;
+      aspect-ratio: 16 / 9;
     }
   }
+
+
+  &__desc {
+    font-weight: 300;
+    p {
+      margin: 0;
+    }
+    p:not(:last-child){
+      margin-bottom: .5rem;
+    }
+  }
+  &__cats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    font-weight: 400;
+    font-size: 2.2rem;
+    color: #bfbfbf;
+    @include mobile {
+      order: -1;
+    }
+    a {
+      color: inherit;
+
+      @include hover {
+        color: var(--givi-yellow);
+      }
+      &:focus-visible {
+        outline: none;
+        color: var(--givi-yellow);
+      }
+
+    }
+  }
+  &__top {
+    margin-bottom: 5rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  &__container {
+    padding: 4rem 0;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 6rem;
+
+    @include mobile {
+      padding: 5rem 0 4rem;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__content {
+    grid-column: 7 span;
+  }
+
+
+  &__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    grid-column: 5 span;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
 }
 
 .video-player {
