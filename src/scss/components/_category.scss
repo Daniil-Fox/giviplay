@@ -1,5 +1,8 @@
 .category {
   padding: 2rem 0 8rem;
+  overflow: hidden;
+
+
   &__title {
     margin-bottom: 4rem;
     @include mobile {
@@ -14,6 +17,34 @@
     @include mobile {
       grid-template-columns: 1fr;
       gap: 7rem;
+    }
+  }
+
+  &__slider {
+    overflow: visible;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 4rem;
+  }
+
+  &__link {
+    padding: 1.2rem 4rem 1.7rem;
+    text-transform: lowercase;
+  }
+
+  &_catalog {
+    padding: 0;
+    .category__title {
+      margin-bottom: 0;
+    }
+
+    &:not(:last-child){
+      margin-bottom: 8rem;
     }
   }
 }

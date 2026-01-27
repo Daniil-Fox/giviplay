@@ -21021,7 +21021,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_cart_sticky_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/cart-sticky.js */ "./src/js/components/cart-sticky.js");
 /* harmony import */ var _components_filters_table_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/filters-table.js */ "./src/js/components/filters-table.js");
 /* harmony import */ var _components_video_player_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/video-player.js */ "./src/js/components/video-player.js");
-/* harmony import */ var _functions_burger_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./functions/burger.js */ "./src/js/functions/burger.js");
+/* harmony import */ var _components_notes_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/notes.js */ "./src/js/components/notes.js");
+/* harmony import */ var _functions_burger_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./functions/burger.js */ "./src/js/functions/burger.js");
+
 
 
 
@@ -22545,6 +22547,63 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ },
 
+/***/ "./src/js/components/notes.js"
+/*!************************************!*\
+  !*** ./src/js/components/notes.js ***!
+  \************************************/
+(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+// Dropdown для кнопки действий заметки на странице видео
+(function initNotesDropdown() {
+  const actionsBlocks = document.querySelectorAll(".notes__item-actions");
+  if (!actionsBlocks.length) return;
+  actionsBlocks.forEach(actions => {
+    const toggleBtn = actions.querySelector(".notes__item-actions__open");
+    const wrapper = actions.querySelector(".notes__item-actions__dropdown-wrapper");
+    const dropdown = actions.querySelector(".notes__item-actions__dropdown");
+    if (!toggleBtn || !wrapper || !dropdown) return;
+    let isOpen = false;
+    function open() {
+      const height = dropdown.scrollHeight;
+      wrapper.style.maxHeight = `${height}px`;
+      actions.classList.add("notes__item-actions_open");
+      isOpen = true;
+    }
+    function close() {
+      wrapper.style.maxHeight = "0px";
+      actions.classList.remove("notes__item-actions_open");
+      isOpen = false;
+    }
+    toggleBtn.addEventListener("click", e => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (isOpen) {
+        close();
+      } else {
+        open();
+      }
+    });
+
+    // Пересчитываем высоту при ресайзе, если дропдаун открыт
+    window.addEventListener("resize", () => {
+      if (!isOpen) return;
+      const height = dropdown.scrollHeight;
+      wrapper.style.maxHeight = `${height}px`;
+    });
+
+    // Клик вне блока действий — закрываем дропдаун
+    document.addEventListener("click", e => {
+      if (!isOpen) return;
+      if (!actions.contains(e.target)) {
+        close();
+      }
+    });
+  });
+})();
+
+/***/ },
+
 /***/ "./src/js/components/sliders.js"
 /*!**************************************!*\
   !*** ./src/js/components/sliders.js ***!
@@ -22583,6 +22642,15 @@ new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(".packs__slider", {
     }
   }
 });
+const categorySliders = document.querySelectorAll('.category__slider');
+if (categorySliders.length > 0) {
+  categorySliders.forEach(slider => {
+    new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(slider, {
+      slidesPerView: 3,
+      spaceBetween: 40
+    });
+  });
+}
 
 /***/ },
 

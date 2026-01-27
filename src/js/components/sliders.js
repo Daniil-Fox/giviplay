@@ -32,3 +32,15 @@ new Swiper(".packs__slider", {
     },
   },
 });
+
+
+const categorySliders = document.querySelectorAll('.category__slider')
+
+if(categorySliders.length > 0){
+  categorySliders.forEach(slider => {
+    new Swiper(slider, {
+      slidesPerView: 3,
+      spaceBetween: 40
+    })
+  })
+}

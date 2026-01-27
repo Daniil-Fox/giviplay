@@ -6,6 +6,7 @@ import "./components/faq.js";
 import "./components/cart-sticky.js";
 import "./components/filters-table.js";
 import "./components/video-player.js";
+import "./components/notes.js";
 
 // funcs
 import { burger } from "./functions/burger.js";

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+@include('partials/head.html')
+
+<body class="page__body">
+  <div class="site-container pt">
+    @include('partials/header-sec.html')
+    <main class="main">
+      <section class="main-catalog">
+        <div class="container">
+          @include('./partials/breadcrumbs.html')
+
+          <div class="main-catalog__header">
+            <h1 class="title-md main-catalog__title">
+              Каталог
+            </h1>
+
+            <div class="main-catalog__actions">
+              <form class="main-catalog__search form">
+                <label class="form__field">
+                  <input type="text" class="form__input">
+                  <span class="form__label">
+                    поиск
+                  </span>
+                </label>
+              </form>
+
+              <div class="main-catalog__buttons">
+                <a href="#" class="btn-reset btn main-catalog__btn">по категориям</a>
+                <a href="#" class="btn-reset btn btn_grey main-catalog__btn">все уроки</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        @include('partials/category-catalog.html')
+        @include('partials/category-catalog.html')
+        @include('partials/category-catalog.html')
+        @include('partials/category-catalog.html')
+        @include('partials/consult.html')
+      </section>
+
+    </main>
+    @include('partials/footer.html')
+  </div>
+</body>
+
+</html>

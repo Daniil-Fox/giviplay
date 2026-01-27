@@ -1,7 +1,7 @@
 .product {
   display: flex;
   flex-direction: column;
-  cursor: help;
+  cursor: pointer;
   &__img {
     position: relative;
     overflow: hidden;
@@ -13,6 +13,8 @@
       top: 0;
       width: 100%;
       height: 100%;
+
+      transition: transform .6s ease;
     }
   }
 
@@ -158,6 +160,14 @@
     .product__buy {
       margin-top: auto;
       width: 100%;
+    }
+  }
+
+
+
+  @include hover {
+  .product__img img {
+    transform: scale(1.1);
     }
   }
 }
