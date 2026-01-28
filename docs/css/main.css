@@ -5570,6 +5570,7 @@ a {
   padding: 8rem;
   -ms-flex-negative: 0;
   flex-shrink: 0;
+  overflow-y: auto;
 }
 @media (max-width: 576px) {
   .modal__body {
@@ -5629,7 +5630,6 @@ a {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    overflow-y: auto;
     min-height: unset;
   }
 }
@@ -5759,4 +5759,104 @@ a {
 }
 .modal__video {
   background-color: var(--givi-black);
+}
+.modal__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 6rem;
+}
+@media (max-width: 576px) {
+  .modal__row {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 4rem;
+  }
+}
+.modal__row > * {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.modal__lesson-img {
+  margin-bottom: 2rem;
+  height: 19.5rem;
+  width: 100%;
+}
+@media (max-width: 576px) {
+  .modal__lesson-img {
+    height: 20.7rem;
+  }
+}
+.modal__lesson-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.modal__lesson-title {
+  margin: 0;
+  font-weight: 400;
+  font-size: 2.2rem;
+  color: var(--givi-black);
+}
+.modal__desc .modal__text {
+  margin-bottom: 0;
+}
+.modal__pack-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  gap: 4rem;
+}
+@media (max-width: 576px) {
+  .modal__pack-info {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+.modal__pack-info > * {
+  margin-bottom: 0;
+}
+.modal__pack-info > *:first-child {
+  -ms-flex-preferred-size: 43.6rem;
+  flex-basis: 43.6rem;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-box-flex: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+}
+@media (max-width: 576px) {
+  .modal__pack-info > *:first-child {
+    -webkit-box-flex: unset;
+    -ms-flex: unset;
+    flex: unset;
+  }
+}
+.modal__pack-info > *:last-child {
+  -ms-flex-preferred-size: 51.2rem;
+  flex-basis: 51.2rem;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-box-flex: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+}
+@media (max-width: 576px) {
+  .modal__pack-info > *:last-child {
+    -webkit-box-flex: unset;
+    -ms-flex: unset;
+    flex: unset;
+  }
+}
+.modal_pack .modal__body {
+  max-width: 124rem;
 }/*# sourceMappingURL=main.css.map */

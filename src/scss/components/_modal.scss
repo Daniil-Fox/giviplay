@@ -41,10 +41,11 @@
     background-color: var(--white);
     padding: 8rem;
     flex-shrink: 0;
-
+    overflow-y: auto;
     @include mobile {
       max-width: 100%;
       height: 100%;
+
       padding: 5rem 4rem;
     }
   }
@@ -89,7 +90,6 @@
     @include mobile {
       height: 100%;
       flex-direction: column;
-      overflow-y: auto;
       min-height: unset;
     }
   }
@@ -197,6 +197,88 @@
   }
   &__video {
     background-color: var(--givi-black);
+  }
+
+
+  &__row {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 6rem;
+    @include mobile {
+      flex-direction: column;
+      gap: 4rem;
+    }
+    & > * {
+      flex: 1;
+    }
+  }
+
+  &__lesson {
+    &-img {
+      margin-bottom: 2rem;
+      height: 19.5rem;
+      width: 100%;
+      @include mobile {
+        height: 20.7rem;
+      }
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &-title {
+      margin: 0;
+      font-weight: 400;
+      font-size: 2.2rem;
+      color: var(--givi-black);
+    }
+  }
+
+  &__desc &__text {
+    margin-bottom: 0;
+  }
+
+  &__pack-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+
+
+    @include mobile {
+      flex-direction: column;
+    }
+
+    & > * {
+      margin-bottom: 0;
+    }
+    & > *:first-child {
+      flex-basis: 43.6rem;
+      flex-shrink: 0;
+      flex-grow: 0;
+
+      @include mobile {
+        flex: unset;
+      }
+    }
+    & > *:last-child {
+      flex-basis: 51.2rem;
+      flex-shrink: 0;
+      flex-grow: 0;
+
+      @include mobile {
+        flex: unset;
+      }
+    }
+  }
+
+
+  &_pack {
+    .modal__body {
+
+    max-width: 124rem;
+    }
   }
 
 }
