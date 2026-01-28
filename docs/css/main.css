@@ -5857,6 +5857,38 @@ a {
     flex: unset;
   }
 }
+.modal__recs-actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+@media (max-width: 576px) {
+  .modal__recs-actions {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+.modal__recs-actions > * {
+  -ms-flex-preferred-size: 48.3rem;
+  flex-basis: 48.3rem;
+}
+@media (max-width: 576px) {
+  .modal__recs-actions > * {
+    -ms-flex-preferred-size: unset;
+    flex-basis: unset;
+  }
+}
 .modal_pack .modal__body {
   max-width: 124rem;
+}
+.modal_recs .modal__body {
+  max-width: 176rem;
+}
+.modal_recs .modal__lesson-img {
+  height: 29.2rem;
 }/*# sourceMappingURL=main.css.map */

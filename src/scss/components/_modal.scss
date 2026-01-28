@@ -274,11 +274,40 @@
   }
 
 
+
+  &__recs-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    @include mobile {
+      flex-direction: column;
+    }
+    & > * {
+      flex-basis: 48.3rem;
+
+      @include mobile {
+        flex-basis: unset;
+      }
+    }
+  }
+
   &_pack {
     .modal__body {
 
-    max-width: 124rem;
+      max-width: 124rem;
     }
   }
+
+  &_recs {
+    .modal__body {
+
+      max-width: 176rem;
+    }
+
+    .modal__lesson-img {
+      height: 29.2rem;
+    }
+  }
+
 
 }
