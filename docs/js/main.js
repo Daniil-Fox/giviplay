@@ -22615,7 +22615,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper_modules__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/modules */ "./node_modules/swiper/modules/index.mjs");
 
 
-swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper.use([swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Pagination, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Navigation]);
+swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper.use([swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Pagination, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Navigation, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Thumbs]);
 new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(".catalog__container", {
   slidesPerView: "auto",
   spaceBetween: 20,
@@ -22649,6 +22649,30 @@ if (categorySliders.length > 0) {
       slidesPerView: 3,
       spaceBetween: 40
     });
+  });
+}
+const modalSlider = document.querySelector('.modal__media');
+if (modalSlider) {
+  const main = modalSlider.querySelector('.modal__slider');
+  const thumbs = modalSlider.querySelector('.modal__thumbs');
+  const thumbsSlider = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(thumbs, {
+    slidesPerView: 4,
+    spaceBetween: 9,
+    breakpoints: {
+      320: {
+        spaceBetween: 4
+      },
+      577: {
+        spaceBetween: 9
+      }
+    }
+  });
+  const mainSlider = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(main, {
+    slidesPerView: 1,
+    spaceBetween: 40,
+    thumbs: {
+      swiper: thumbsSlider
+    }
   });
 }
 
@@ -23020,12 +23044,63 @@ class VideoPlayer {
     return `${m}:${s.toString().padStart(2, "0")}`;
   }
 }
+const videoPlayerInstances = new WeakMap();
+function initVideoPlayerInstance(container) {
+  if (!container) return null;
+  let instance = videoPlayerInstances.get(container);
+  if (!instance) {
+    instance = new VideoPlayer(container);
+    videoPlayerInstances.set(container, instance);
+  } else {
+    // Переинициализация: перечитать data-атрибуты и обновить src/poster
+    instance.loadVideoSource();
+  }
+  return instance;
+}
 
-// Инициализация
-(function initVideoPlayer() {
-  const container = document.querySelector(".video-sec__video");
-  if (container) {
-    new VideoPlayer(container);
+// Глобальный объект для управления плеерами
+window.GiviVideoPlayer = {
+  // Инициализировать все плееры по data-атрибуту
+  initAll() {
+    const containers = document.querySelectorAll("[data-video-player]");
+    containers.forEach(container => initVideoPlayerInstance(container));
+  },
+  // Инициализировать один/несколько плееров
+  // target: Element | NodeList | Array<Element> | CSS‑селектор (string)
+  init(target) {
+    if (!target) return;
+    if (typeof target === "string") {
+      document.querySelectorAll(target).forEach(el => initVideoPlayerInstance(el));
+    } else if (target instanceof Element) {
+      initVideoPlayerInstance(target);
+    } else if (target.length && target.forEach) {
+      target.forEach(el => {
+        if (el instanceof Element) {
+          initVideoPlayerInstance(el);
+        }
+      });
+    }
+  },
+  // Переинициализировать конкретный блок: перечитать его data-video-* и обновить видео
+  // target: Element | CSS‑селектор (string)
+  reload(target) {
+    if (!target) return;
+    let el = target;
+    if (typeof target === "string") {
+      el = document.querySelector(target);
+    }
+    if (!el || !(el instanceof Element)) return;
+    const instance = videoPlayerInstances.get(el) || initVideoPlayerInstance(el);
+    if (instance) {
+      instance.loadVideoSource();
+    }
+  }
+};
+
+// Автоинициализация по data-атрибуту
+(function initVideoPlayers() {
+  if (window.GiviVideoPlayer && typeof window.GiviVideoPlayer.initAll === "function") {
+    window.GiviVideoPlayer.initAll();
   }
 })();
 

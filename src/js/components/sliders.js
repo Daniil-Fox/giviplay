@@ -1,7 +1,7 @@
 import { Swiper } from "swiper";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination, Thumbs } from "swiper/modules";
 
-Swiper.use([Pagination, Navigation]);
+Swiper.use([Pagination, Navigation, Thumbs]);
 
 new Swiper(".catalog__container", {
   slidesPerView: "auto",
@@ -42,5 +42,36 @@ if(categorySliders.length > 0){
       slidesPerView: 3,
       spaceBetween: 40
     })
+  })
+}
+
+
+const modalSlider = document.querySelector('.modal__media')
+
+if(modalSlider){
+  const main = modalSlider.querySelector('.modal__slider')
+  const thumbs = modalSlider.querySelector('.modal__thumbs')
+
+  const thumbsSlider = new Swiper(thumbs, {
+    slidesPerView: 4,
+    spaceBetween: 9,
+
+    breakpoints: {
+      320: {
+        spaceBetween: 4
+      },
+      577: {
+        spaceBetween: 9
+      }
+    }
+  })
+
+  const mainSlider = new Swiper(main, {
+    slidesPerView: 1,
+    spaceBetween: 40,
+
+    thumbs: {
+      swiper: thumbsSlider
+    }
   })
 }

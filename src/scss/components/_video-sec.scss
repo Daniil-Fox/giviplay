@@ -13,11 +13,10 @@
     background: var(--givi-black);
     overflow: hidden;
 
-    max-height: 69rem;
-    height: 100%;
+    height: 69rem;
 
     @include mobile {
-      max-height: unset;
+      height: unset;
       aspect-ratio: 16 / 9;
     }
   }
@@ -86,7 +85,8 @@
     flex-direction: column;
     gap: 4rem;
     grid-column: 5 span;
-
+    max-width: 100%;
+    min-width: 0;
     @include mobile {
       display: none;
     }
@@ -106,6 +106,7 @@
     width: auto;
     margin: 0 auto;
     height: 100%;
+    width: 100%;
     object-fit: contain;
     display: block;
     aspect-ratio: 16 / 9;
