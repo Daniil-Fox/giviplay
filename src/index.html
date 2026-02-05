@@ -4,6 +4,32 @@
 @include('partials/head.html')
 
 <body class="page__body">
+  <div class="split-overlay">
+    <div class="preloader__inner">
+      <div class="preloader__label">Загружаем GIVI&nbsp;PLAY</div>
+      <div class="preloader__progress">
+        <div class="preloader__progress-bar" data-preloader-bar></div>
+      </div>
+      <div class="preloader__percent">
+        <span class="preloader__percent-value" data-preloader-percent>0</span><span
+          class="preloader__percent-sign">%</span>
+      </div>
+    </div>
+  </div>
+  <div class="preloader" data-preloader>
+    <div class="preloader__inner">
+      <div class="preloader__label">
+        <img src="./img/svg/logo.svg" alt="GIVI PLAY">
+      </div>
+      <div class="preloader__progress">
+        <div class="preloader__progress-bar" data-preloader-bar></div>
+      </div>
+      <div class="preloader__percent">
+        <span class="preloader__percent-value" data-preloader-percent>0</span><span
+          class="preloader__percent-sign">%</span>
+      </div>
+    </div>
+  </div>
   <div class="site-container">
     @include('partials/header.html')
     <main class="main">

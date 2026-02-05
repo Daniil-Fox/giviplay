@@ -20,6 +20,32 @@
 
 
 <body class="page__body">
+  <div class="split-overlay">
+    <div class="preloader__inner">
+      <div class="preloader__label">Загружаем GIVI&nbsp;PLAY</div>
+      <div class="preloader__progress">
+        <div class="preloader__progress-bar" data-preloader-bar></div>
+      </div>
+      <div class="preloader__percent">
+        <span class="preloader__percent-value" data-preloader-percent>0</span><span
+          class="preloader__percent-sign">%</span>
+      </div>
+    </div>
+  </div>
+  <div class="preloader" data-preloader>
+    <div class="preloader__inner">
+      <div class="preloader__label">
+        <img src="./img/svg/logo.svg" alt="GIVI PLAY">
+      </div>
+      <div class="preloader__progress">
+        <div class="preloader__progress-bar" data-preloader-bar></div>
+      </div>
+      <div class="preloader__percent">
+        <span class="preloader__percent-value" data-preloader-percent>0</span><span
+          class="preloader__percent-sign">%</span>
+      </div>
+    </div>
+  </div>
   <div class="site-container">
     <header class="header header_main">
   <div class="header__container container">
@@ -59,15 +85,25 @@
     </nav>
 
     <div class="header__actions">
-      <button class="btn-reset header__button header__button_profile" type="button">
+      <div class="btn-reset header__button header__button_profile" type="button" data-dropdown-wrapper>
         <svg class="" width="24" height="34">
           <use xlink:href="img/sprite.svg#profile"></use>
         </svg>
-      </button>
+
+        <div class="dropdown">
+          <div class="dropdown__content">
+            <a href="#" class="dropdown__item btn-reset">мои видео</a>
+            <a href="#" class="dropdown__item btn-reset">настройка</a>
+            <a href="#" class="dropdown__item btn-reset">выход</a>
+          </div>
+        </div>
+      </div>
       <button class="btn-reset header__button header__button_cart" type="button">
         <svg class="" width="29" height="29">
           <use xlink:href="img/sprite.svg#cart"></use>
         </svg>
+
+        <span class="header__button-counter">1</span>
       </button>
       <button class="btn-reset burger header__burger" aria-label="Открыть меню" aria-expanded="false" data-burger>
         <span class="burger__line"></span>
@@ -364,13 +400,30 @@
       </div>
 
     </div>
-    <div class="hero__img">
-      <picture>
-        <source srcset="./img/givi2.webp" media="(max-width: 576px)" type="image/webp">
-        <source srcset="./img/givi.webp" type="image/webp">
-        <img loading="lazy" src="./img/givi.jpg" class="image" width="" height="" alt="">
-      </picture>
+    <div class="hero__media">
+      <video autoplay muted loop playsinline>
+        <source src="/showreel-mobile.mp4" media="(max-width: 576px)" type="video/mp4">
+        <source src="/showreel-desktop.mp4" type="video/mp4">
+      </video>
     </div>
+    <button class="hero__sound-toggle btn-reset" type="button" aria-label="Включить звук" aria-pressed="false"
+      data-hero-sound-toggle>
+      <span class="hero__sound-toggle-icons" aria-hidden="true">
+        <svg class="hero__sound-toggle-icon hero__sound-toggle-icon_on" width="20" height="20" viewBox="0 0 24 24"
+          fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+          <path d="M15.5 8.5C16.9 9.9 16.9 14.1 15.5 15.5" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" />
+          <path d="M18.5 5.5C21 8 21 16 18.5 18.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <svg class="hero__sound-toggle-icon hero__sound-toggle-icon_off" width="20" height="20" viewBox="0 0 24 24"
+          fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+          <path d="M16 9L22 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          <path d="M22 9L16 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </span>
+    </button>
   </div>
 </section>
       <section class="showcase">
@@ -748,6 +801,19 @@
                   </label>
                 </div>
               </div>
+              <div class="find-form__slide">
+                <div class="find-form__heading">
+                  <div class="find-form__ready">
+                    <div></div>
+                    <span>Квиз пройден</span>
+                  </div>
+                </div>
+                <div class="find__video find__video_mob">
+                  <img loading="lazy" src="./img/quiz-ready.webp" aria-hidden="true" class="image" width="576"
+                    height="300" alt="">
+                  <img loading="lazy" src="./img/quiz-ready.webp" alt="Квиз пройден" aria-hidden="true">
+                </div>
+              </div>
             </div>
           </div>
           <div class="find-form__actions">
@@ -757,11 +823,8 @@
         </form>
       </div>
       <div class="find__video">
-        <picture>
-          <source srcset="./img/quiz-mob.webp" media="(max-width: 576px)" type="image/webp">
-          <source srcset="./img/quiz.webp" type="image/webp">
-          <img loading="lazy" src="./img/quiz.webp" class="image" width="1144" height="779" alt="">
-        </picture>
+        <img loading="lazy" src="./img/quiz.webp" class="image" width="1144" height="779" alt="" aria-hidden="true">
+        <img loading="lazy" src="./img/quiz-ready.webp" alt="Квиз пройден" aria-hidden="true">
       </div>
     </div>
   </div>
@@ -946,7 +1009,6 @@
         </h2>
         <div class="benefits__img benefits__img_mob">
           <picture>
-            <source srcset="./img/givi-camera.webp" type="image/webp" media="(max-width: 576px)">
             <source srcset="./img/givi.webp" type="image/webp">
             <img loading="lazy" src="./img/givi.webp" class="image" width="" height="" alt="">
           </picture>
@@ -988,7 +1050,6 @@
 
       <div class="benefits__img">
         <picture>
-          <source srcset="./img/benefits-mob.webp" type="image/webp" media="(max-width: 576px)">
           <source srcset="./img/benefits.webp" type="image/webp">
           <img loading="lazy" src="./img/benefits.webp" class="image" width="" height="" alt="">
         </picture>

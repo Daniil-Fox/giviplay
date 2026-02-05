@@ -39,3 +39,42 @@
 @import "./components/form";
 @import "./components/main-catalog";
 @import "./components/modal";
+@import "./components/preloader";
+@import "./components/dropdown";
+@import "./components/profile-settings";
+.main-catalog__products-wrap {
+  position: relative;
+  min-height: 20rem;
+}
+.main-catalog__products-wrap.is-loading .catalog-products-content {
+  -webkit-filter: blur(4px);
+  filter: blur(4px);
+  pointer-events: none;
+}
+.main-catalog__products-wrap.is-loading::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4rem;
+  height: 4rem;
+  margin: -2rem 0 0 -2rem;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  -webkit-animation: catalog-loader-spin 0.7s linear infinite;
+  animation: catalog-loader-spin 0.7s linear infinite;
+  z-index: 1;
+}
+@-webkit-keyframes catalog-loader-spin {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes catalog-loader-spin {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

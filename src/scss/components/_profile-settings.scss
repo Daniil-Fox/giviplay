@@ -1,0 +1,21 @@
+.settings {
+  padding: 4rem 0 10rem;
+  @include mobile {
+    padding: 5rem 0 15rem;
+  }
+  &__title {
+    margin-bottom: 4rem;
+    @include mobile {
+      margin-bottom: 6rem;
+    }
+  }
+
+  &__form {
+    max-width: 60rem;
+
+    @include mobile {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}

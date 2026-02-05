@@ -5,36 +5,20 @@
   overflow: hidden;
 
   position: relative;
-
-  @include mobile {
-    height: 95vh;
-    min-height: unset;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
-
-  &:not(:last-child) {
-    margin-bottom: 8rem;
-    @include mobile {
-      margin-bottom: 7.5rem;
-    }
-  }
   &::after {
     content: "";
     position: absolute;
-    right: 0;
+    z-index: 3;
+    left: 0;
     bottom: 0;
-    transform: translateY(50%);
-    width: 150rem;
-    height: 150rem;
-    border-radius: 100%;
+    width: 95rem;
+    height: 100%;
     pointer-events: none;
     user-select: none;
-    background-image: radial-gradient(
-      50% 50% at 50% 50%,
-      rgb(19, 95, 123) 0%,
-      rgb(19, 95, 123, 0) 100%
+    background-image: linear-gradient(
+      to left,
+      rgba(28, 28, 28, 0) 0%,
+      #1c1c1c 55%
     );
 
     @include mobile {
@@ -43,6 +27,21 @@
       // bottom: unset;
       // top: 0;
       // transform: translateX(10%) translateY(-40%);
+    }
+  }
+  @include mobile {
+    height: 95vh;
+    min-height: unset;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 5rem 0;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 8rem;
+    @include mobile {
+      margin-bottom: 7.5rem;
     }
   }
 
@@ -61,19 +60,19 @@
     }
   }
 
-  &__img {
+  &__media {
     position: absolute;
     z-index: 2;
-    right: 8rem;
+    right: 0;
     bottom: 0;
     display: block;
-    width: 112.2rem;
-    height: auto;
+    width: 150.2rem;
+    height: 100%;
     pointer-events: none;
 
     @include mobile {
       width: 100%;
-      height: 64.8rem;
+      height: 80%;
       bottom: unset;
       top: 0rem;
       right: 0;
@@ -89,13 +88,92 @@
         background: linear-gradient(
           to bottom,
           rgba(28, 28, 28, 0) 0%,
-          #1c1c1c 50%
+          #1c1c1c 40%
         );
       }
     }
-    img {
+    img,
+    video {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__sound-toggle {
+    position: absolute;
+    z-index: 6;
+    right: 3.2rem;
+    bottom: 3.2rem;
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--white);
+    pointer-events: auto;
+
+    background: rgba(28, 28, 28, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(12px);
+
+    transition: transform 0.2s ease, background-color 0.2s ease,
+      border-color 0.2s ease;
+
+    @include mobile {
+      right: 1.6rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4.4rem;
+      height: 4.4rem;
+    }
+
+    &:hover {
+      transform: translateY(-1px);
+      background: rgba(28, 28, 28, 0.6);
+      border-color: rgba(255, 255, 255, 0.26);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.55);
+      outline-offset: 2px;
+    }
+  }
+
+  &__sound-toggle-icons {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &__sound-toggle-icon {
+    position: absolute;
+    inset: 0;
+    width: 2rem;
+    height: 2rem;
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  // По умолчанию видео muted => показываем "off"
+  &__sound-toggle-icon_off {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &__sound-toggle.is-unmuted {
+    .hero__sound-toggle-icon_off {
+      opacity: 0;
+      transform: scale(0.92);
+    }
+    .hero__sound-toggle-icon_on {
+      opacity: 1;
+      transform: scale(1);
     }
   }
   &__title {
@@ -112,6 +190,8 @@
     }
   }
   &__desc {
+    margin: 0;
+    margin-bottom: 8.8rem;
     color: var(--white);
     max-width: 35.6rem;
     line-height: 1.5;

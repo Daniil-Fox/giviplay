@@ -36,11 +36,19 @@
     </nav>
 
     <div class="header__actions">
-      <button class="btn-reset header__button header__button_profile" type="button">
+      <div class="btn-reset header__button header__button_profile" type="button" data-dropdown-wrapper>
         <svg class="" width="24" height="34">
           <use xlink:href="img/sprite.svg#profile"></use>
         </svg>
-      </button>
+
+        <div class="dropdown">
+          <div class="dropdown__content">
+            <a href="#" class="dropdown__item btn-reset">мои видео</a>
+            <a href="#" class="dropdown__item btn-reset">настройка</a>
+            <a href="#" class="dropdown__item btn-reset">выход</a>
+          </div>
+        </div>
+      </div>
       <button class="btn-reset header__button header__button_cart" type="button">
         <svg class="" width="29" height="29">
           <use xlink:href="img/sprite.svg#cart"></use>

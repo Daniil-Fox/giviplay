@@ -63,9 +63,25 @@
       height: 3.4rem;
     }
     &_cart {
+      position: relative;
       display: block;
       width: 2.9rem;
       height: 2.9rem;
+    }
+
+    &-counter {
+      position: absolute;
+      top: -0.5rem;
+      right: -0.5rem;
+      width: 1.6rem;
+      height: 1.6rem;
+      background-color: var(--givi-yellow);
+      border-radius: 50%;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--givi-black);
+      text-align: center;
+      line-height: 1.6rem;
     }
   }
 

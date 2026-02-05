@@ -19,12 +19,29 @@
       </div>
 
     </div>
-    <div class="hero__img">
-      <picture>
-        <source srcset="./img/givi2.webp" media="(max-width: 576px)" type="image/webp">
-        <source srcset="./img/givi.webp" type="image/webp">
-        <img loading="lazy" src="./img/givi.jpg" class="image" width="" height="" alt="">
-      </picture>
+    <div class="hero__media">
+      <video autoplay muted loop playsinline>
+        <source src="/showreel-mobile.mp4" media="(max-width: 576px)" type="video/mp4">
+        <source src="/showreel-desktop.mp4" type="video/mp4">
+      </video>
     </div>
+    <button class="hero__sound-toggle btn-reset" type="button" aria-label="Включить звук" aria-pressed="false"
+      data-hero-sound-toggle>
+      <span class="hero__sound-toggle-icons" aria-hidden="true">
+        <svg class="hero__sound-toggle-icon hero__sound-toggle-icon_on" width="20" height="20" viewBox="0 0 24 24"
+          fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+          <path d="M15.5 8.5C16.9 9.9 16.9 14.1 15.5 15.5" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" />
+          <path d="M18.5 5.5C21 8 21 16 18.5 18.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <svg class="hero__sound-toggle-icon hero__sound-toggle-icon_off" width="20" height="20" viewBox="0 0 24 24"
+          fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+          <path d="M16 9L22 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          <path d="M22 9L16 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </span>
+    </button>
   </div>
 </section>

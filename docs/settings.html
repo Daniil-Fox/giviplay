@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#111111">
+  <title>Giviplay</title>
+  <link rel="preload" href="fonts/NotoSans-Light.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/NotoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/NotoSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/UNCAGE-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/UNCAGE-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/UNCAGE-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/vendor.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script defer src="js/main.js"></script>
+</head>
+
+
+<body class="page__body">
+  <div class="site-container pt">
+    <header class="header header_main header_sec">
+  <div class="header__container container">
+    <a href="/" class="header__logo logo">
+      <svg class="" width="127" height="20">
+        <use xlink:href="img/sprite.svg#logo"></use>
+      </svg>
+    </a>
+
+    <nav class="header__nav nav">
+      <ul class="nav__list list-reset">
+        <li class="nav__item">
+          <a href="#" class="nav__link">Главная</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Каталог</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Сценарии и удержание</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Идеи и темы</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Свет и съёмка</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Монтаж</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Жанры и форматы</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Бонусы</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      <div class="btn-reset header__button header__button_profile" type="button" data-dropdown-wrapper>
+        <svg class="" width="24" height="34">
+          <use xlink:href="img/sprite.svg#profile"></use>
+        </svg>
+
+        <div class="dropdown">
+          <div class="dropdown__content">
+            <a href="#" class="dropdown__item btn-reset">мои видео</a>
+            <a href="#" class="dropdown__item btn-reset">настройка</a>
+            <a href="#" class="dropdown__item btn-reset">выход</a>
+          </div>
+        </div>
+      </div>
+      <button class="btn-reset header__button header__button_cart" type="button">
+        <svg class="" width="29" height="29">
+          <use xlink:href="img/sprite.svg#cart"></use>
+        </svg>
+      </button>
+      <button class="btn-reset burger header__burger" aria-label="Открыть меню" aria-expanded="false" data-burger>
+        <span class="burger__line"></span>
+      </button>
+    </div>
+
+  </div>
+  <div class="menu" data-menu>
+  <div class="menu__overlay" data-menu-overlay></div>
+
+  <div class="menu__content">
+    <nav class="menu__nav nav">
+      <ul class="">
+        <li>
+          <a href="#">Главная</a>
+        </li>
+        <li>
+          <a href="#">Каталог</a>
+        </li>
+        <li>
+          <a href="#">Сценарии и удержание</a>
+        </li>
+        <li>
+          <a href="#">Идеи и темы</a>
+        </li>
+        <li>
+          <a href="#">Свет и съёмка</a>
+        </li>
+        <li>
+          <a href="#">Монтаж</a>
+        </li>
+        <li>
+          <a href="#">Жанры и форматы</a>
+        </li>
+        <li>
+          <a href="#">Бонусы</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+</header>
+
+<div class="modal">
+  <div class="modal__overlay"></div>
+
+  <div class="modal__body">
+    <div class="modal__header">
+      <p class="modal__title title-md">
+        Съёмка с естественным светом
+        в домашних условиях
+      </p>
+      <button class="btn-reset modal__close">
+        <svg class="" width="27" height="27">
+          <use xlink:href="img/sprite.svg#close"></use>
+        </svg>
+      </button>
+    </div>
+
+    <div class="modal__content">
+      <div class="modal__media">
+        <div class="modal__slider swiper swiper-no-swiping">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="modal__slider-item">
+                <div class="modal__video video-player__video" data-video-player data-video-file=""
+                  data-video-poster="./img/cart/cover.webp"></div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="modal__slider-item">
+                <div class="modal__video video-player__video" data-video-player data-video-file=""
+                  data-video-poster="./img/cart/cover.webp"></div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="modal__slider-item">
+                <div class="modal__video video-player__video" data-video-player data-video-file=""
+                  data-video-poster="./img/cart/cover.webp"></div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="modal__slider-item">
+                <div class="modal__video video-player__video" data-video-player data-video-file=""
+                  data-video-poster="./img/cart/cover.webp"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal__thumbs swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="modal__slider-item">
+                <img class="modal__poster" src="./img/cart/cover.webp">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="modal__slider-item">
+                <img class="modal__poster" src="./img/cart/cover.webp">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="modal__slider-item">
+                <img class="modal__poster" src="./img/cart/cover.webp">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="modal__slider-item">
+                <img class="modal__poster" src="./img/cart/cover.webp">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal__info">
+        <div class="modal__cats">
+          <a href="#">Сценарии и удержание</a>
+        </div>
+        <div class="modal__text">
+          <p>
+            Если вас пролистывают в первые секунды, вам может помочь этот урок.
+          </p>
+          <p>
+            Хуки под разные форматы + что ставить в начало
+          </p>
+        </div>
+
+        <div class="modal__prices">
+          <div class="modal__price">999р</div>
+          <div class="modal__price modal__price_old">1200р</div>
+        </div>
+
+        <div class="modal__actions">
+          <a href="#" class="btn btn-reset modal__btn">
+            купить
+          </a>
+          <a href="#" class="btn btn_grey btn-reset modal__btn modal__btn_incart">
+            в корзину
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal modal_pack">
+  <div class="modal__overlay"></div>
+
+  <div class="modal__body">
+    <div class="modal__header">
+      <p class="modal__title title-md">
+        набор <span>старт</span>
+      </p>
+      <button class="btn-reset modal__close">
+        <svg class="" width="27" height="27">
+          <use xlink:href="img/sprite.svg#close"></use>
+        </svg>
+      </button>
+    </div>
+
+    <div class="modal__row">
+      <div class="modal__lesson">
+        <div class="modal__lesson-img">
+          <img src="./img/cart/cover.webp" alt="">
+        </div>
+        <p class="modal__lesson-title">
+          Как расположить себя в кадре
+        </p>
+      </div>
+      <div class="modal__lesson">
+        <div class="modal__lesson-img">
+          <img src="./img/cart/cover.webp" alt="">
+        </div>
+        <p class="modal__lesson-title">
+          Как расположить себя в кадре
+        </p>
+      </div>
+      <div class="modal__lesson">
+        <div class="modal__lesson-img">
+          <img src="./img/cart/cover.webp" alt="">
+        </div>
+        <p class="modal__lesson-title">
+          Как расположить себя в кадре
+        </p>
+      </div>
+    </div>
+
+    <div class="modal__pack-info">
+      <div class="modal__desc">
+        <div class="modal__cats">
+          <a href="#">Сценарии и удержание</a>
+        </div>
+        <div class="modal__text">
+          <p>
+            Если вас пролистывают в первые секунды, вам может помочь этот урок.
+          </p>
+          <p>
+            Хуки под разные форматы + что ставить в начало
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="modal__prices">
+          <div class="modal__price">999р</div>
+          <div class="modal__price modal__price_old">1200р</div>
+        </div>
+
+        <div class="modal__actions">
+          <a href="#" class="btn btn-reset modal__btn">
+            купить
+          </a>
+          <a href="#" class="btn btn_grey btn-reset modal__btn modal__btn_incart">
+            в корзину
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="modal modal_recs">
+  <div class="modal__overlay"></div>
+
+  <div class="modal__body">
+    <div class="modal__header">
+      <p class="modal__title title-md">
+        Рекомендую эти уроки
+      </p>
+      <button class="btn-reset modal__close">
+        <svg class="" width="27" height="27">
+          <use xlink:href="img/sprite.svg#close"></use>
+        </svg>
+      </button>
+    </div>
+
+    <div class="modal__row">
+      <div class="modal__lesson">
+        <div class="modal__lesson-img">
+          <img src="./img/cart/cover.webp" alt="">
+        </div>
+        <p class="modal__lesson-title">
+          Как расположить себя в кадре
+        </p>
+      </div>
+      <div class="modal__lesson">
+        <div class="modal__lesson-img">
+          <img src="./img/cart/cover.webp" alt="">
+        </div>
+        <p class="modal__lesson-title">
+          Как расположить себя в кадре
+        </p>
+      </div>
+      <div class="modal__lesson">
+        <div class="modal__lesson-img">
+          <img src="./img/cart/cover.webp" alt="">
+        </div>
+        <p class="modal__lesson-title">
+          Как расположить себя в кадре
+        </p>
+      </div>
+    </div>
+
+    <div class="modal__recs-actions">
+      <a href="#" class="btn btn-reset modal__btn">
+        Забрать уроки
+      </a>
+      <a href="#" class="btn btn_grey btn-reset modal__btn modal__btn_incart">
+        Перейти в каталог
+      </a>
+    </div>
+  </div>
+</div>
+    <main class="main">
+      <section class="settings">
+        <div class="container">
+          <div class="breadcrumbs">
+  <span>
+    <span>
+      <a href="./">Главная</a>
+    </span>
+    <span>
+      <span>Страница</span>
+    </span>
+  </span>
+</div>
+          <h1 class="title-md settings__title">Настройки профиля</h1>
+          <form class="form settings__form">
+            <label class="form__field filled">
+              <input type="email" class="form__input" value="tralala@gmail.com" disabled>
+              <span class="form__label">
+                email
+              </span>
+            </label>
+            <label class="form__field filled">
+              <input type="password" class="form__input" value="somepassowrd" disabled>
+              <span class="form__label">
+                пароль
+              </span>
+
+              <span class="show-password is-hidden">
+                <img src="./img/svg/show-password.svg" alt="Посмотреть пароль">
+              </span>
+            </label>
+            <label class="form__field is-hidden">
+              <input type="password" class="form__input " value="somepassowrd">
+              <span class="form__label">
+                повторите пароль
+              </span>
+
+              <span class="show-password is-hidden">
+                <img src="./img/svg/show-password.svg" alt="Посмотреть пароль">
+              </span>
+            </label>
+
+            <div class="btn btn-reset form__btn">Редактировать</div>
+            <button class="btn-reset btn form__btn is-hidden">готово</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+  <div class="container">
+    <div class="footer__container">
+      <div class="footer__left">
+        <a href="#" class="footer__logo logo">
+          <svg class="">
+            <use xlink:href="img/sprite.svg#logo"></use>
+          </svg>
+        </a>
+
+        <ul class="list-reset socials footer__socials">
+          <li class="socials__item">
+            <a href="#" class="socials__link socials__link_fb" target="_blank" aria-label="Наша страница в Facebook">
+              <img src="./img/svg/youtube.svg" width="30" height="30" alt="">
+            </a>
+          </li>
+          <li class="socials__item">
+            <a href="#" class="socials__link socials__link_fb" target="_blank" aria-label="Наша страница в Facebook">
+              <img src="./img/svg/tg.svg" width="30" height="30" alt="">
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <nav class="footer__nav nav">
+        <ul>
+          <li>
+            <a href="#">Главная</a>
+          </li>
+          <li>
+            <a href="#">Каталог</a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <a href="#">Сценарии и удержание</a>
+          </li>
+          <li>
+            <a href="#">Идеи и темы</a>
+          </li>
+          <li>
+            <a href="#">Свет и съёмка</a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <a href="#">Монтаж</a>
+          </li>
+          <li>
+            <a href="#">Жанры и форматы</a>
+          </li>
+          <li>
+            <a href="#">Бонусы</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="footer__right">
+        <div class="footer__item">
+          <a href="#" class="footer__link">
+            Политика конфиденциальности
+          </a>
+        </div>
+        <div class="footer__item">
+          <small class="footer__link">
+            ©2026 Гивиплей
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+  </div>
+</body>
+
+</html>

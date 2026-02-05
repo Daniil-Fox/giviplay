@@ -39,6 +39,12 @@
     li:not(:last-child) {
       margin-bottom: 0.8rem;
     }
+    p {
+      margin: 0;
+      &:not(:last-child) {
+        margin-bottom: 0.5em;
+      }
+    }
     @include mobile {
       font-weight: 400;
     }

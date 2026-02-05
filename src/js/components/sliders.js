@@ -33,24 +33,59 @@ new Swiper(".packs__slider", {
   },
 });
 
+const categorySliders = document.querySelectorAll(".category__slider");
+const categorySwiperInstances = [];
 
-const categorySliders = document.querySelectorAll('.category__slider')
-
-if(categorySliders.length > 0){
-  categorySliders.forEach(slider => {
-    new Swiper(slider, {
+const createCategorySliders = (slidersList) => {
+  const list = slidersList || document.querySelectorAll(".category__slider");
+  list.forEach((slider) => {
+    const instance = new Swiper(slider, {
       slidesPerView: 3,
-      spaceBetween: 40
-    })
-  })
+      spaceBetween: 40,
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 30,
+        },
+        577: {
+          slidesPerView: 3,
+          spaceBetween: 40,
+        },
+      },
+    });
+    categorySwiperInstances.push(instance);
+  });
+};
+
+const destroyCategorySliders = () => {
+  categorySwiperInstances.forEach((swiper) => {
+    if (swiper && typeof swiper.destroy === "function") {
+      swiper.destroy(true, true);
+    }
+  });
+  categorySwiperInstances.length = 0;
+};
+
+if (categorySliders.length > 0) {
+  createCategorySliders(categorySliders);
+
+  window.reinitCategorySliders = () => {
+    destroyCategorySliders();
+    createCategorySliders();
+  };
+
+  // Триггер по кастомному событию (вызвать: dispatchEvent(new CustomEvent('reinitCategorySliders')))
+  window.addEventListener(
+    "reinitCategorySliders",
+    window.reinitCategorySliders
+  );
 }
 
+const modalSlider = document.querySelector(".modal__media");
 
-const modalSlider = document.querySelector('.modal__media')
-
-if(modalSlider){
-  const main = modalSlider.querySelector('.modal__slider')
-  const thumbs = modalSlider.querySelector('.modal__thumbs')
+if (modalSlider) {
+  const main = modalSlider.querySelector(".modal__slider");
+  const thumbs = modalSlider.querySelector(".modal__thumbs");
 
   const thumbsSlider = new Swiper(thumbs, {
     slidesPerView: 4,
@@ -58,20 +93,20 @@ if(modalSlider){
 
     breakpoints: {
       320: {
-        spaceBetween: 4
+        spaceBetween: 4,
       },
       577: {
-        spaceBetween: 9
-      }
-    }
-  })
+        spaceBetween: 9,
+      },
+    },
+  });
 
   const mainSlider = new Swiper(main, {
     slidesPerView: 1,
     spaceBetween: 40,
 
     thumbs: {
-      swiper: thumbsSlider
-    }
-  })
+      swiper: thumbsSlider,
+    },
+  });
 }

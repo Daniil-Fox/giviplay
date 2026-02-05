@@ -12,10 +12,13 @@
   align-items: center;
   justify-content: center;
 
-  transition-duration: .3s;
+  transition-duration: 0.3s;
   transition-property: opacity;
   transition-timing-function: ease;
-  &.active {
+  &#product-modal {
+    z-index: 1001;
+  }
+  &.is-active {
     opacity: 1;
     pointer-events: all;
   }
@@ -70,6 +73,9 @@
     height: 2.8rem;
     color: #000;
     flex-shrink: 0;
+    transition-property: transform;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
     @include mobile {
       width: 2.4rem;
       height: 2.4rem;
@@ -79,6 +85,10 @@
       height: 100%;
       stroke: currentColor;
       stroke-width: 2px;
+    }
+
+    @include hover {
+      transform: rotate(90deg);
     }
   }
 
@@ -116,7 +126,6 @@
     }
   }
 
-
   &__cats {
     margin-bottom: 1rem;
     display: flex;
@@ -139,7 +148,6 @@
         outline: none;
         color: var(--givi-yellow);
       }
-
     }
   }
 
@@ -149,7 +157,7 @@
     line-height: 1.25;
     p {
       margin: 0;
-      &:not(:last-child){
+      &:not(:last-child) {
         margin-bottom: 0.6em;
       }
     }
@@ -187,18 +195,40 @@
     font-size: 2.4rem;
     padding: 1.8rem;
   }
-  &__slider, &__thumbs {
+  &__slider,
+  &__thumbs {
     width: 100%;
     min-width: 0;
     max-width: 100%;
   }
   &__slider {
     margin-bottom: 1rem;
+    .modal__slider-item {
+      height: 38rem;
+      @include mobile {
+        height: 24.6rem;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  &__thumbs {
+    .modal__slider-item {
+      height: 9rem;
+      @include mobile {
+        height: 6.4rem;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
   &__video {
     background-color: var(--givi-black);
   }
-
 
   &__row {
     display: flex;
@@ -245,7 +275,6 @@
     justify-content: space-between;
     gap: 4rem;
 
-
     @include mobile {
       flex-direction: column;
     }
@@ -273,8 +302,6 @@
     }
   }
 
-
-
   &__recs-actions {
     display: flex;
     gap: 1rem;
@@ -293,14 +320,12 @@
 
   &_pack {
     .modal__body {
-
       max-width: 124rem;
     }
   }
 
   &_recs {
     .modal__body {
-
       max-width: 176rem;
     }
 
@@ -308,6 +333,4 @@
       height: 29.2rem;
     }
   }
-
-
 }

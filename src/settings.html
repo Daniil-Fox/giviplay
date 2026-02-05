@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+@include('partials/head.html')
+
+<body class="page__body">
+  <div class="site-container pt">
+    @include('partials/header-sec.html')
+    <main class="main">
+      <section class="settings">
+        <div class="container">
+          @include('./partials/breadcrumbs.html')
+          <h1 class="title-md settings__title">Настройки профиля</h1>
+          <form class="form settings__form">
+            <label class="form__field filled">
+              <input type="email" class="form__input" value="tralala@gmail.com" disabled>
+              <span class="form__label">
+                email
+              </span>
+            </label>
+            <label class="form__field filled">
+              <input type="password" class="form__input" value="somepassowrd" disabled>
+              <span class="form__label">
+                пароль
+              </span>
+
+              <span class="show-password is-hidden">
+                <img src="./img/svg/show-password.svg" alt="Посмотреть пароль">
+              </span>
+            </label>
+            <label class="form__field is-hidden">
+              <input type="password" class="form__input " value="somepassowrd">
+              <span class="form__label">
+                повторите пароль
+              </span>
+
+              <span class="show-password is-hidden">
+                <img src="./img/svg/show-password.svg" alt="Посмотреть пароль">
+              </span>
+            </label>
+
+            <div class="btn btn-reset form__btn">Редактировать</div>
+            <button class="btn-reset btn form__btn is-hidden">готово</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    @include('partials/footer.html')
+  </div>
+</body>
+
+</html>

@@ -36,20 +36,78 @@
     flex-grow: 1;
   }
   &__video {
+    background-color: var(--givi-black);
+    background-image: radial-gradient(
+      50% 50% at 50% 50%,
+      rgb(255, 228, 0) 0%,
+      rgb(255, 228, 0, 0) 100%
+    );
+    background-size: 200% 200%;
+    background-position: center top;
+    position: relative;
+    flex-grow: 1;
+    min-height: 77.9rem;
+    overflow: hidden;
     @include mobile {
       display: none;
     }
-    flex-grow: 1;
-
-    min-height: 77.9rem;
-    video,
     img {
       position: absolute;
+      z-index: 2;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.4s ease-out,
+        transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    // Картинка результата по умолчанию спрятана под основной
+    img:last-child {
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(12%);
+    }
+
+    // На последнем слайде: основная картинка тухнет, результат — выезжает снизу
+    &--ready {
+      img:first-child {
+        opacity: 0;
+        transform: translateY(-4%);
+      }
+
+      img:last-child {
+        z-index: 2;
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    &_mob {
+      display: none;
+
+      @include mobile {
+        min-height: 35rem;
+        display: block;
+
+        // На мобильных показываем итоговую картинку сразу,
+        // без перекрытий и скрытия как на десктопе
+        picture {
+          opacity: 1;
+          transform: translateY(0);
+          position: relative;
+          inset: 0;
+        }
+      }
     }
   }
 }

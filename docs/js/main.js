@@ -21017,12 +21017,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_find_form_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/find-form.js */ "./src/js/components/find-form.js");
 /* harmony import */ var _components_animations_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/animations.js */ "./src/js/components/animations.js");
 /* harmony import */ var _components_header_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/header.js */ "./src/js/components/header.js");
-/* harmony import */ var _components_faq_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/faq.js */ "./src/js/components/faq.js");
-/* harmony import */ var _components_cart_sticky_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/cart-sticky.js */ "./src/js/components/cart-sticky.js");
-/* harmony import */ var _components_filters_table_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/filters-table.js */ "./src/js/components/filters-table.js");
-/* harmony import */ var _components_video_player_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/video-player.js */ "./src/js/components/video-player.js");
-/* harmony import */ var _components_notes_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/notes.js */ "./src/js/components/notes.js");
-/* harmony import */ var _functions_burger_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./functions/burger.js */ "./src/js/functions/burger.js");
+/* harmony import */ var _components_preloader_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/preloader.js */ "./src/js/components/preloader.js");
+/* harmony import */ var _components_video_embed_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/video-embed.js */ "./src/js/components/video-embed.js");
+/* harmony import */ var _components_dropdown_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/dropdown.js */ "./src/js/components/dropdown.js");
+/* harmony import */ var _components_faq_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/faq.js */ "./src/js/components/faq.js");
+/* harmony import */ var _components_cart_sticky_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/cart-sticky.js */ "./src/js/components/cart-sticky.js");
+/* harmony import */ var _components_filters_table_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/filters-table.js */ "./src/js/components/filters-table.js");
+/* harmony import */ var _components_notes_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/notes.js */ "./src/js/components/notes.js");
+/* harmony import */ var _components_hero_sound_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/hero-sound.js */ "./src/js/components/hero-sound.js");
+/* harmony import */ var _functions_burger_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./functions/burger.js */ "./src/js/functions/burger.js");
 
 
 
@@ -21030,6 +21033,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+// import "./components/video-player.js";
 
 
 
@@ -21167,7 +21174,7 @@ function initHeroAnimation() {
       scrub: 0.5
     }
   });
-  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].to(".hero__img", {
+  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].to(".hero__media", {
     yPercent: 10,
     scrollTrigger: {
       trigger: ".hero",
@@ -21242,19 +21249,6 @@ function initShowcaseAnimation() {
   showcaseTimeline.call(() => {
     showcase.classList.add(WIGGLE_CLASS);
   });
-
-  // Анимация контента
-  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(".showcase__title", {
-    scrollTrigger: {
-      trigger: showcase,
-      start: "top 80%",
-      toggleActions: "play none none none"
-    },
-    duration: defaultDuration,
-    y: 50,
-    opacity: 0,
-    ease: defaultEase
-  });
   gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(".showcase__desc li", {
     scrollTrigger: {
       trigger: showcase,
@@ -21275,17 +21269,6 @@ function initTakeAnimation() {
   const take = document.querySelector(".take");
   if (!take) return;
   const takeItems = document.querySelectorAll(".take__item");
-  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(".take__title", {
-    scrollTrigger: {
-      trigger: take,
-      start: "top 80%",
-      toggleActions: "play none none none"
-    },
-    duration: defaultDuration,
-    y: 40,
-    opacity: 0,
-    ease: defaultEase
-  });
   gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(takeItems, {
     scrollTrigger: {
       trigger: take,
@@ -21304,8 +21287,8 @@ function initTakeAnimation() {
     delay: 0.2,
     onComplete: () => {
       takeItems.forEach((item, idx) => {
-        item.style.setProperty('--highlight', '1');
-        item.style.setProperty('--delay', idx * 100 + 'ms');
+        item.style.setProperty("--highlight", "1");
+        item.style.setProperty("--delay", idx * 100 + "ms");
       });
     }
   });
@@ -21315,17 +21298,6 @@ function initTakeAnimation() {
 function initCatalogAnimation() {
   const catalog = document.querySelector(".catalog");
   if (!catalog) return;
-  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(".catalog__title", {
-    scrollTrigger: {
-      trigger: catalog,
-      start: "top 80%",
-      toggleActions: "play none none none"
-    },
-    duration: defaultDuration,
-    y: 40,
-    opacity: 0,
-    ease: defaultEase
-  });
   gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(".catalog__desc", {
     scrollTrigger: {
       trigger: catalog,
@@ -21372,17 +21344,6 @@ function initCatalogAnimation() {
 function initFindAnimation() {
   const find = document.querySelector(".find");
   if (!find) return;
-  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(".find__title", {
-    scrollTrigger: {
-      trigger: find,
-      start: "top 80%",
-      toggleActions: "play none none none"
-    },
-    duration: defaultDuration,
-    y: 50,
-    opacity: 0,
-    ease: defaultEase
-  });
   gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(".find__desc", {
     scrollTrigger: {
       trigger: find,
@@ -21425,19 +21386,6 @@ function initFindAnimation() {
 function initPacksAnimation() {
   const packs = document.querySelector(".packs");
   if (!packs) return;
-
-  // Анимация заголовка
-  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(".packs__title", {
-    scrollTrigger: {
-      trigger: packs,
-      start: "top 80%",
-      toggleActions: "play none none none"
-    },
-    duration: defaultDuration,
-    y: 50,
-    opacity: 0,
-    ease: defaultEase
-  });
 
   // Анимация карточек (слайдов)
   gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(".pack", {
@@ -21554,18 +21502,6 @@ function initBenefitsAnimation() {
   //   y: 200,
   // });
 
-  // Анимация "наезжания" секции наверх с эффектом наложения
-  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(benefits, {
-    y: 400,
-    ease: "power3.out",
-    scrollTrigger: {
-      trigger: benefits,
-      start: "top 120%",
-      end: "top 50%",
-      scrub: 1.2
-    }
-  });
-
   // Анимация появления контента внутри секции через timeline
   const benefitsTimeline = gsap__WEBPACK_IMPORTED_MODULE_0__["default"].timeline({
     scrollTrigger: {
@@ -21574,12 +21510,7 @@ function initBenefitsAnimation() {
       toggleActions: "play none none none"
     }
   });
-  benefitsTimeline.from(".benefits__title", {
-    duration: defaultDuration,
-    y: 40,
-    opacity: 0,
-    ease: defaultEase
-  }).from(".benefits__item", {
+  benefitsTimeline.from(".benefits__item", {
     duration: 0.7,
     x: -50,
     opacity: 0,
@@ -21607,19 +21538,6 @@ function initGuideAnimation() {
   if (!guide) return;
   const guideItems = guide.querySelectorAll(".guide__item");
   const guideImg = guide.querySelector(".guide__img");
-
-  // Анимация заголовка
-  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(".guide__title", {
-    scrollTrigger: {
-      trigger: guide,
-      start: "top 80%",
-      toggleActions: "play none none none"
-    },
-    duration: defaultDuration,
-    y: 40,
-    opacity: 0,
-    ease: defaultEase
-  });
 
   // Timeline для последовательного раскрытия clip-path карточек
   const guideTimeline = gsap__WEBPACK_IMPORTED_MODULE_0__["default"].timeline({
@@ -21688,18 +21606,6 @@ function initConsultAnimation() {
   const consult = document.querySelector(".consult");
   if (!consult) return;
 
-  // Анимация "наезжания" секции наверх с эффектом наложения
-  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(consult, {
-    y: 400,
-    ease: "power3.out",
-    scrollTrigger: {
-      trigger: consult,
-      start: "top 120%",
-      end: "top 50%",
-      scrub: 1.2
-    }
-  });
-
   // Анимация появления контента внутри секции через timeline
   const consultTimeline = gsap__WEBPACK_IMPORTED_MODULE_0__["default"].timeline({
     scrollTrigger: {
@@ -21708,12 +21614,7 @@ function initConsultAnimation() {
       toggleActions: "play none none none"
     }
   });
-  consultTimeline.from(".consult__title", {
-    duration: defaultDuration,
-    y: 40,
-    opacity: 0,
-    ease: defaultEase
-  }).from(".consult__desc", {
+  consultTimeline.from(".consult__desc", {
     duration: 0.7,
     y: 30,
     opacity: 0,
@@ -21735,19 +21636,6 @@ function initConsultAnimation() {
 function initFaqAnimation() {
   const faq = document.querySelector(".faq");
   if (!faq) return;
-
-  // Анимация заголовка
-  gsap__WEBPACK_IMPORTED_MODULE_0__["default"].from(".faq__title", {
-    scrollTrigger: {
-      trigger: faq,
-      start: "top 80%",
-      toggleActions: "play none none none"
-    },
-    duration: defaultDuration,
-    y: 40,
-    opacity: 0,
-    ease: defaultEase
-  });
 
   // Анимация карточек FAQ через timeline
   const faqTimeline = gsap__WEBPACK_IMPORTED_MODULE_0__["default"].timeline({
@@ -21800,12 +21688,6 @@ function initCtaAnimation() {
           toggleActions: "play none none none"
         }
       });
-      tl.from(".cta__title", {
-        duration: defaultDuration,
-        y: 50,
-        opacity: 0,
-        ease: defaultEase
-      });
       if (imgMobile) {
         tl.from(imgMobile, {
           duration: 0.7,
@@ -21848,12 +21730,6 @@ function initCtaAnimation() {
           start: "top 80%",
           toggleActions: "play none none none"
         }
-      });
-      tl.from(".cta__title", {
-        duration: defaultDuration,
-        y: 50,
-        opacity: 0,
-        ease: defaultEase
       });
       if (imgDesktop) {
         tl.from(imgDesktop, {
@@ -22170,6 +22046,83 @@ initCartSticky();
 
 /***/ },
 
+/***/ "./src/js/components/dropdown.js"
+/*!***************************************!*\
+  !*** ./src/js/components/dropdown.js ***!
+  \***************************************/
+(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+function initDropdowns() {
+  const wrappers = document.querySelectorAll("[data-dropdown-wrapper]");
+  if (!wrappers.length) return;
+  const isTouchDevice = () => "ontouchstart" in window || navigator.maxTouchPoints > 0;
+  wrappers.forEach(wrapper => {
+    const dropdown = wrapper.querySelector(".dropdown");
+    if (!dropdown) return;
+    const content = dropdown.querySelector(".dropdown__content");
+    if (!content) return;
+    let isOpen = false;
+    let hoverTimeout = null;
+    const setOpen = open => {
+      if (open === isOpen) return;
+      isOpen = open;
+      if (isOpen) {
+        const fullHeight = content.scrollHeight;
+        dropdown.style.maxHeight = `${fullHeight}px`;
+      } else {
+        dropdown.style.maxHeight = "0px";
+      }
+    };
+    const handleOpen = () => {
+      clearTimeout(hoverTimeout);
+      setOpen(true);
+    };
+    const handleCloseWithDelay = () => {
+      clearTimeout(hoverTimeout);
+      hoverTimeout = setTimeout(() => setOpen(false), 120);
+    };
+    if (isTouchDevice()) {
+      // На мобильных: клик по обёртке — toggle (открыть/закрыть),
+      // клик по пункту — закрыть, клик вне обёртки — закрыть.
+      wrapper.addEventListener("click", e => {
+        const target = e.target;
+        const isItem = target.closest(".dropdown__item");
+
+        // Клик по пункту: даём навигации сработать и закрываем меню
+        if (isItem) {
+          setOpen(false);
+          return;
+        }
+
+        // Клик по обёртке: переключаем состояние
+        e.preventDefault();
+        setOpen(!isOpen);
+      });
+      document.addEventListener("click", e => {
+        if (!isOpen) return;
+        const target = e.target;
+        if (!wrapper.contains(target)) {
+          setOpen(false);
+        }
+      });
+    } else {
+      // На десктопе: по hover
+      wrapper.addEventListener("mouseenter", handleOpen);
+      wrapper.addEventListener("mouseleave", handleCloseWithDelay);
+      dropdown.addEventListener("mouseenter", handleOpen);
+      dropdown.addEventListener("mouseleave", handleCloseWithDelay);
+    }
+  });
+}
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initDropdowns);
+} else {
+  initDropdowns();
+}
+
+/***/ },
+
 /***/ "./src/js/components/faq.js"
 /*!**********************************!*\
   !*** ./src/js/components/faq.js ***!
@@ -22253,6 +22206,8 @@ class FindForm {
     this.slides = form.querySelectorAll(".find-form__slide");
     this.btnNext = form.querySelector(".find-form__btn_next");
     this.btnPrev = form.querySelector(".find-form__btn_prev");
+    const findSection = form.closest(".find");
+    this.desktopVideo = findSection?.querySelector(".find__video:not(.find__video_mob)") || null;
     this.currentSlide = 0;
     this.isAnimating = false;
     this.init();
@@ -22265,6 +22220,7 @@ class FindForm {
 
     // Инициализируем первый слайд
     this.updateSlides();
+    this.updateDesktopVideoState();
 
     // Обработчики событий
     this.btnNext?.addEventListener("click", e => this.handleNext(e));
@@ -22328,6 +22284,11 @@ class FindForm {
       }
     });
   }
+  updateDesktopVideoState() {
+    if (!this.desktopVideo) return;
+    const isLast = this.currentSlide === this.slides.length - 1;
+    this.desktopVideo.classList.toggle("find__video--ready", isLast);
+  }
   isSlideValid(slideIndex) {
     const slide = this.slides[slideIndex];
     if (!slide) return false;
@@ -22359,16 +22320,27 @@ class FindForm {
     return true;
   }
   updateButtonsState() {
+    const isLastSlide = this.currentSlide === this.slides.length - 1;
+
     // Кнопка "Далее" активна только если текущий слайд валиден
     if (this.btnNext) {
-      const isValid = this.validateCurrentSlide();
-      this.btnNext.disabled = !isValid;
-      if (isValid) {
+      // На последнем слайде "посмотреть результат" всегда активна
+      if (isLastSlide) {
+        this.btnNext.disabled = false;
         this.btnNext.style.opacity = "1";
         this.btnNext.style.cursor = "pointer";
+        this.btnNext.textContent = "посмотреть результат";
       } else {
-        this.btnNext.style.opacity = "0.5";
-        this.btnNext.style.cursor = "not-allowed";
+        const isValid = this.validateCurrentSlide();
+        this.btnNext.disabled = !isValid;
+        if (isValid) {
+          this.btnNext.style.opacity = "1";
+          this.btnNext.style.cursor = "pointer";
+        } else {
+          this.btnNext.style.opacity = "0.5";
+          this.btnNext.style.cursor = "not-allowed";
+        }
+        this.btnNext.textContent = "Далее";
       }
     }
 
@@ -22383,6 +22355,7 @@ class FindForm {
         this.btnPrev.disabled = false;
         this.btnPrev.style.pointerEvents = "all";
       }
+      this.btnPrev.textContent = isLastSlide ? "пройти еще раз" : "назад";
     }
   }
   handleNext(e) {
@@ -22405,9 +22378,31 @@ class FindForm {
   handlePrev(e) {
     e.preventDefault();
     if (this.isAnimating) return;
+
+    // На последнем слайде "пройти еще раз" — сбрасываем квиз
+    const isLastSlide = this.currentSlide === this.slides.length - 1;
+    if (isLastSlide) {
+      this.resetQuiz();
+      return;
+    }
     if (this.currentSlide > 0) {
       this.goToSlide(this.currentSlide - 1);
     }
+  }
+  resetQuiz() {
+    // Сбрасываем ответы
+    this.slides.forEach(slide => {
+      const inputs = slide.querySelectorAll('input[type="checkbox"], input[type="radio"]');
+      inputs.forEach(input => {
+        input.checked = false;
+      });
+    });
+
+    // Возвращаемся на первый слайд без "раскачки"
+    this.currentSlide = 0;
+    this.updateSlides();
+    this.updateDesktopVideoState();
+    this.updateButtonsState();
   }
   goToSlide(targetIndex) {
     if (this.isAnimating || targetIndex < 0 || targetIndex >= this.slides.length) {
@@ -22425,6 +22420,7 @@ class FindForm {
       // Шаг 2: Переключаем слайды
       this.currentSlide = targetIndex;
       this.updateSlides();
+      this.updateDesktopVideoState();
       // Обновляем состояние кнопок сразу при переключении слайда
       this.updateButtonsState();
 
@@ -22547,6 +22543,88 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ },
 
+/***/ "./src/js/components/hero-sound.js"
+/*!*****************************************!*\
+  !*** ./src/js/components/hero-sound.js ***!
+  \*****************************************/
+(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+function initHeroSoundToggle() {
+  const hero = document.querySelector(".hero");
+  if (!hero) return;
+  const video = hero.querySelector(".hero__media video");
+  const btn = hero.querySelector("[data-hero-sound-toggle]");
+  if (!video || !btn) return;
+  const TARGET_VOLUME = 0.7;
+  const FADE_MS = 280;
+  let rafId = 0;
+  const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+  const fadeVolumeTo = (to, {
+    durationMs = FADE_MS,
+    onDone
+  } = {}) => {
+    if (rafId) cancelAnimationFrame(rafId);
+    const from = Number.isFinite(video.volume) ? video.volume : TARGET_VOLUME;
+    const start = performance.now();
+    const tick = now => {
+      const t = Math.min(1, (now - start) / durationMs);
+      const k = easeOutCubic(t);
+      video.volume = from + (to - from) * k;
+      if (t < 1) {
+        rafId = requestAnimationFrame(tick);
+      } else {
+        rafId = 0;
+        if (typeof onDone === "function") onDone();
+      }
+    };
+    rafId = requestAnimationFrame(tick);
+  };
+  const applyState = () => {
+    const isMuted = video.muted;
+    btn.classList.toggle("is-unmuted", !isMuted);
+    btn.setAttribute("aria-pressed", String(!isMuted));
+    btn.setAttribute("aria-label", isMuted ? "Включить звук" : "Выключить звук");
+  };
+
+  // Базовые настройки (видео в hero обычно muted, но выставим безопасно)
+  video.volume = TARGET_VOLUME;
+  applyState();
+  btn.addEventListener("click", () => {
+    const nextMuted = !video.muted;
+    if (nextMuted) {
+      // Плавно загасить и потом замьютить
+      fadeVolumeTo(0, {
+        onDone: () => {
+          video.muted = true;
+          video.volume = TARGET_VOLUME;
+          applyState();
+        }
+      });
+      return;
+    }
+
+    // Размьютить: стартуем с 0 и плавно поднимаем до TARGET_VOLUME
+    video.muted = false;
+    video.volume = 0;
+
+    // На iOS/Chrome звук может потребовать явного play() после user gesture
+    const p = video.play();
+    if (p && typeof p.catch === "function") p.catch(() => {});
+    fadeVolumeTo(TARGET_VOLUME);
+    applyState();
+  });
+}
+
+// Инициализация
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initHeroSoundToggle);
+} else {
+  initHeroSoundToggle();
+}
+
+/***/ },
+
 /***/ "./src/js/components/notes.js"
 /*!************************************!*\
   !*** ./src/js/components/notes.js ***!
@@ -22604,6 +22682,99 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ },
 
+/***/ "./src/js/components/preloader.js"
+/*!****************************************!*\
+  !*** ./src/js/components/preloader.js ***!
+  \****************************************/
+(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+function initPreloader() {
+  const preloader = document.querySelector("[data-preloader]");
+  if (!preloader) return;
+  const splitOverlay = document.querySelector(".split-overlay");
+  const bars = document.querySelectorAll("[data-preloader-bar]");
+  const values = document.querySelectorAll("[data-preloader-percent]");
+  if (!bars.length || !values.length) return;
+  let isWindowLoaded = false;
+  let isFinished = false;
+  const DURATION_MS = 2200;
+  const HOLD_BEFORE_SPLIT_MS = 350;
+  const start = performance.now();
+  const easeOut = t => 1 - Math.pow(1 - t, 3);
+  const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+  const setProgress = p => {
+    const percent = Math.round(clamp(p, 0, 1) * 100);
+    bars.forEach(bar => {
+      bar.style.width = `${percent}%`;
+    });
+    values.forEach(valueNode => {
+      valueNode.textContent = String(percent);
+    });
+  };
+  const finish = () => {
+    if (isFinished) return;
+    isFinished = true;
+    setProgress(1);
+
+    // Шторка: сначала делим экран по центру через clip-path
+    setTimeout(() => {
+      preloader.classList.add("preloader--split");
+      if (splitOverlay) {
+        splitOverlay.classList.add("split-overlay--split");
+      }
+    }, HOLD_BEFORE_SPLIT_MS);
+
+    // Затем верхняя часть уезжает вверх, нижняя — вниз
+    setTimeout(() => {
+      preloader.classList.add("preloader--fly-up");
+      if (splitOverlay) {
+        splitOverlay.classList.add("split-overlay--fly-down");
+      }
+    }, HOLD_BEFORE_SPLIT_MS + 700);
+
+    // Полностью убираем прелоадер и возвращаем скролл
+    setTimeout(() => {
+      preloader.classList.add("is-hidden");
+      if (splitOverlay) {
+        splitOverlay.classList.add("is-hidden");
+      }
+      document.body.style.overflow = "";
+    }, HOLD_BEFORE_SPLIT_MS + 2100);
+  };
+  const tick = () => {
+    if (isFinished) return;
+    const now = performance.now();
+    const elapsed = now - start;
+    let t = clamp(elapsed / DURATION_MS, 0, 1);
+    t = easeOut(t);
+
+    // Пока страница не догрузилась, не даём прогрессу уйти дальше 90%
+    const maxWhileLoading = isWindowLoaded ? 1 : 0.9;
+    const logicalT = Math.min(t, maxWhileLoading);
+    setProgress(logicalT);
+    if (logicalT >= 1 && isWindowLoaded) {
+      finish();
+    } else {
+      requestAnimationFrame(tick);
+    }
+  };
+
+  // Блокируем скролл, пока прелоадер активен
+  document.body.style.overflow = "hidden";
+  window.addEventListener("load", () => {
+    isWindowLoaded = true;
+  });
+  requestAnimationFrame(tick);
+}
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initPreloader);
+} else {
+  initPreloader();
+}
+
+/***/ },
+
 /***/ "./src/js/components/sliders.js"
 /*!**************************************!*\
   !*** ./src/js/components/sliders.js ***!
@@ -22642,19 +22813,50 @@ new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(".packs__slider", {
     }
   }
 });
-const categorySliders = document.querySelectorAll('.category__slider');
-if (categorySliders.length > 0) {
-  categorySliders.forEach(slider => {
-    new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(slider, {
+const categorySliders = document.querySelectorAll(".category__slider");
+const categorySwiperInstances = [];
+const createCategorySliders = slidersList => {
+  const list = slidersList || document.querySelectorAll(".category__slider");
+  list.forEach(slider => {
+    const instance = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(slider, {
       slidesPerView: 3,
-      spaceBetween: 40
+      spaceBetween: 40,
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 30
+        },
+        577: {
+          slidesPerView: 3,
+          spaceBetween: 40
+        }
+      }
     });
+    categorySwiperInstances.push(instance);
   });
+};
+const destroyCategorySliders = () => {
+  categorySwiperInstances.forEach(swiper => {
+    if (swiper && typeof swiper.destroy === "function") {
+      swiper.destroy(true, true);
+    }
+  });
+  categorySwiperInstances.length = 0;
+};
+if (categorySliders.length > 0) {
+  createCategorySliders(categorySliders);
+  window.reinitCategorySliders = () => {
+    destroyCategorySliders();
+    createCategorySliders();
+  };
+
+  // Триггер по кастомному событию (вызвать: dispatchEvent(new CustomEvent('reinitCategorySliders')))
+  window.addEventListener("reinitCategorySliders", window.reinitCategorySliders);
 }
-const modalSlider = document.querySelector('.modal__media');
+const modalSlider = document.querySelector(".modal__media");
 if (modalSlider) {
-  const main = modalSlider.querySelector('.modal__slider');
-  const thumbs = modalSlider.querySelector('.modal__thumbs');
+  const main = modalSlider.querySelector(".modal__slider");
+  const thumbs = modalSlider.querySelector(".modal__thumbs");
   const thumbsSlider = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(thumbs, {
     slidesPerView: 4,
     spaceBetween: 9,
@@ -22678,431 +22880,46 @@ if (modalSlider) {
 
 /***/ },
 
-/***/ "./src/js/components/video-player.js"
-/*!*******************************************!*\
-  !*** ./src/js/components/video-player.js ***!
-  \*******************************************/
+/***/ "./src/js/components/video-embed.js"
+/*!******************************************!*\
+  !*** ./src/js/components/video-embed.js ***!
+  \******************************************/
 (__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
-class VideoPlayer {
-  constructor(container) {
-    this.container = container;
-    this.video = null;
-    this.isPlaying = false;
-    this.isDragging = false;
-    this.hideControlsTimeout = null;
-    this.init();
-  }
-  init() {
-    this.createMarkup();
-    this.video = this.container.querySelector(".video-player__video");
-    this.attachEvents();
-    this.loadVideoSource();
-  }
-  createMarkup() {
-    this.container.innerHTML = `
-      <div class="video-player">
-        <video class="video-player__video" preload="metadata" playsinline>
-          <source src="" type="video/mp4">
-        </video>
+function initVideoEmbed() {
+  const container = document.querySelector(".video-sec__video");
+  if (!container) return;
 
-        <div class="video-player__controls">
-          <div class="video-player__progress-wrapper">
-            <div class="video-player__progress">
-              <div class="video-player__progress-filled"></div>
-              <div class="video-player__progress-buffer"></div>
-              <div class="video-player__progress-handle"></div>
-            </div>
-          </div>
+  // Берём src для iframe из data-атрибута этого div.
+  // Ожидаем, что backend/шаблон положит в data-video-file полноценный URL,
+  // например: https://kinescope.io/embed/ID
+  const src = container.dataset.videoFile;
+  if (!src) return;
 
-          <div class="video-player__bottom-controls">
-            <div class="video-player__left">
-              <button class="video-player__btn video-player__btn_play" aria-label="Воспроизвести">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8 5V19L19 12L8 5Z" fill="currentColor"/>
-                </svg>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="video-player__icon-pause">
-                  <rect x="6" y="4" width="4" height="16" fill="currentColor"/>
-                  <rect x="14" y="4" width="4" height="16" fill="currentColor"/>
-                </svg>
-              </button>
+  // Очищаем контейнер и встраиваем iframe
+  container.innerHTML = "";
+  const iframe = document.createElement("iframe");
+  iframe.src = src;
+  iframe.allow = "autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;";
+  iframe.frameBorder = "0";
+  iframe.setAttribute("allowfullscreen", "true");
 
-              <div class="video-player__volume">
-                <button class="video-player__btn video-player__btn_volume" aria-label="Громкость">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="video-player__icon-volume"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2.9 9h4l5-6v18l-5-5h-5V9h1zM15.5 19.5a7.3 7.3 0 0 0 7-7.5 7.3 7.3 0 0 0-7-7.5"/><path d="M15.5 15a3 3 0 0 0 0-6"/></g></svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" class="video-player__icon-mute"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m22 10-2 2m0 0-2 2m2-2-2-2m2 2 2 2M8.5 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h5.5l6.5 5V3L8.5 8Z"/></svg>
-                </button>
-                <div class="video-player__volume-slider">
-                  <input type="range" class="video-player__volume-range" min="0" max="100" value="100" step="1">
-                </div>
-              </div>
+  // Базовый размер; через CSS контейнера можно переопределить под адаптив
+  iframe.width = "1920";
+  iframe.height = "1080";
 
-              <div class="video-player__time">
-                <span class="video-player__time-current">0:00</span>
-                <span class="video-player__time-separator">/</span>
-                <span class="video-player__time-total">0:00</span>
-              </div>
-            </div>
-
-            <div class="video-player__right">
-              <button class="video-player__btn video-player__btn_fullscreen" aria-label="Полноэкранный режим">
-                <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="video-player__icon-fullscreen">
-                  <path d="M3,15 L3.11662113,15.0067277 C3.57570299,15.0600494 3.93995063,15.424297 3.99327227,15.8833789 L4,16 L4,20 L8,20 L8.11662113,20.0067277 C8.61395981,20.0644928 9,20.4871642 9,21 C9,21.5128358 8.61395981,21.9355072 8.11662113,21.9932723 L8,22 L3,22 L2.88337887,21.9932723 C2.42429701,21.9399506 2.06004937,21.575703 2.00672773,21.1166211 L2,21 L2,16 L2.00672773,15.8833789 C2.06004937,15.424297 2.42429701,15.0600494 2.88337887,15.0067277 L3,15 Z M21,15 C21.5128358,15 21.9355072,15.3860402 21.9932723,15.8833789 L22,16 L22,21 C22,21.5128358 21.6139598,21.9355072 21.1166211,21.9932723 L21,22 L16,22 C15.4477153,22 15,21.5522847 15,21 C15,20.4871642 15.3860402,20.0644928 15.8833789,20.0067277 L16,20 L20,20 L20,16 C20,15.4871642 20.3860402,15.0644928 20.8833789,15.0067277 L21,15 Z M8,2 C8.55228475,2 9,2.44771525 9,3 C9,3.51283584 8.61395981,3.93550716 8.11662113,3.99327227 L8,4 L4,4 L4,8 C4,8.51283584 3.61395981,8.93550716 3.11662113,8.99327227 L3,9 C2.48716416,9 2.06449284,8.61395981 2.00672773,8.11662113 L2,8 L2,3 C2,2.48716416 2.38604019,2.06449284 2.88337887,2.00672773 L3,2 L8,2 Z M21,2 L21.1166211,2.00672773 C21.575703,2.06004937 21.9399506,2.42429701 21.9932723,2.88337887 L22,3 L22,8 L21.9932723,8.11662113 C21.9399506,8.57570299 21.575703,8.93995063 21.1166211,8.99327227 L21,9 L20.8833789,8.99327227 C20.424297,8.93995063 20.0600494,8.57570299 20.0067277,8.11662113 L20,8 L20,4 L16,4 L15.8833789,3.99327227 C15.3860402,3.93550716 15,3.51283584 15,3 C15,2.48716416 15.3860402,2.06449284 15.8833789,2.00672773 L16,2 L21,2 Z" fill="currentColor"/>
-                </svg>
-                <svg fill="currentColor" height="24" width="24" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 385.331 385.331" xml:space="preserve" class="video-player__icon-exit-fullscreen">
-                  <path d="M264.943,156.665h108.273c6.833,0,11.934-5.39,11.934-12.211c0-6.833-5.101-11.85-11.934-11.838h-96.242V36.181
-                      c0-6.833-5.197-12.03-12.03-12.03s-12.03,5.197-12.03,12.03v108.273c0,0.036,0.012,0.06,0.012,0.084
-                      c0,0.036-0.012,0.06-0.012,0.096C252.913,151.347,258.23,156.677,264.943,156.665z"/>
-                  <path d="M120.291,24.247c-6.821,0-11.838,5.113-11.838,11.934v96.242H12.03c-6.833,0-12.03,5.197-12.03,12.03
-                      c0,6.833,5.197,12.03,12.03,12.03h108.273c0.036,0,0.06-0.012,0.084-0.012c0.036,0,0.06,0.012,0.096,0.012
-                      c6.713,0,12.03-5.317,12.03-12.03V36.181C132.514,29.36,127.124,24.259,120.291,24.247z"/>
-                  <path d="M120.387,228.666H12.115c-6.833,0.012-11.934,5.39-11.934,12.223c0,6.833,5.101,11.85,11.934,11.838h96.242v96.423
-                      c0,6.833,5.197,12.03,12.03,12.03c6.833,0,12.03-5.197,12.03-12.03V240.877c0-0.036-0.012-0.06-0.012-0.084
-                      c0-0.036,0.012-0.06,0.012-0.096C132.418,233.983,127.1,228.666,120.387,228.666z"/>
-                  <path d="M373.3,228.666H265.028c-0.036,0-0.06,0.012-0.084,0.012c-0.036,0-0.06-0.012-0.096-0.012
-                      c-6.713,0-12.03,5.317-12.03,12.03v108.273c0,6.833,5.39,11.922,12.223,11.934c6.821,0.012,11.838-5.101,11.838-11.922v-96.242
-                      H373.3c6.833,0,12.03-5.197,12.03-12.03S380.134,228.678,373.3,228.666z"/>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="video-player__skip-indicator video-player__skip-indicator_left">
-          <span class="video-player__skip-text">-10 сек</span>
-        </div>
-        <div class="video-player__skip-indicator video-player__skip-indicator_right">
-          <span class="video-player__skip-text">+10 сек</span>
-        </div>
-      </div>
-    `;
-  }
-  loadVideoSource() {
-    const file = this.container.dataset.videoFile || new URLSearchParams(window.location.search).get("file") || (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" ? "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" : "");
-    const poster = this.container.dataset.videoPoster || "";
-    if (file) {
-      this.video.src = file;
-      if (poster) {
-        this.video.poster = poster;
-      }
-    }
-  }
-  attachEvents() {
-    const playBtn = this.container.querySelector(".video-player__btn_play");
-    const volumeBtn = this.container.querySelector(".video-player__btn_volume");
-    const volumeRange = this.container.querySelector(".video-player__volume-range");
-    const progress = this.container.querySelector(".video-player__progress");
-    const fullscreenBtn = this.container.querySelector(".video-player__btn_fullscreen");
-    const player = this.container.querySelector(".video-player");
-
-    // Play/Pause
-    playBtn.addEventListener("click", () => this.togglePlay());
-    this.video.addEventListener("click", () => this.togglePlay());
-    this.video.addEventListener("play", () => this.updatePlayState(true));
-    this.video.addEventListener("pause", () => this.updatePlayState(false));
-
-    // Progress
-    this.video.addEventListener("timeupdate", () => this.updateProgress());
-    this.video.addEventListener("loadedmetadata", () => this.updateDuration());
-    this.video.addEventListener("progress", () => this.updateBuffer());
-    progress.addEventListener("mousedown", e => {
-      e.preventDefault();
-      this.startSeek(e);
-    });
-    progress.addEventListener("click", e => {
-      if (!this.isDragging) {
-        this.seek(e);
-      }
-    });
-    const handleMouseMove = e => {
-      if (this.isDragging) {
-        e.preventDefault();
-        this.seek(e);
-      }
-    };
-    const handleMouseUp = () => {
-      this.stopSeek();
-    };
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseup", handleMouseUp);
-
-    // Volume
-    volumeBtn.addEventListener("click", () => this.toggleMute());
-    volumeRange.addEventListener("input", e => this.setVolume(e.target.value));
-    this.video.volume = 1;
-
-    // Fullscreen
-    fullscreenBtn.addEventListener("click", () => this.toggleFullscreen());
-    document.addEventListener("fullscreenchange", () => this.updateFullscreenIcon());
-    document.addEventListener("webkitfullscreenchange", () => this.updateFullscreenIcon());
-    document.addEventListener("mozfullscreenchange", () => this.updateFullscreenIcon());
-    document.addEventListener("MSFullscreenChange", () => this.updateFullscreenIcon());
-
-    // Double click skip
-    this.video.addEventListener("dblclick", e => this.handleDoubleClick(e));
-
-    // Controls visibility
-    player.addEventListener("mousemove", () => this.showControls());
-    player.addEventListener("mouseleave", () => this.hideControls());
-    this.video.addEventListener("play", () => this.hideControls());
-
-    // Keyboard
-    document.addEventListener("keydown", e => this.handleKeyboard(e));
-  }
-  togglePlay() {
-    if (this.video.paused) {
-      this.video.play();
-    } else {
-      this.video.pause();
-    }
-  }
-  updatePlayState(playing) {
-    this.isPlaying = playing;
-    const playBtn = this.container.querySelector(".video-player__btn_play");
-    const player = this.container.querySelector(".video-player");
-    if (playing) {
-      playBtn.classList.add("video-player__btn_playing");
-      player.classList.add("video-player_playing");
-    } else {
-      playBtn.classList.remove("video-player__btn_playing");
-      player.classList.remove("video-player_playing");
-    }
-  }
-  updateProgress() {
-    const progress = this.container.querySelector(".video-player__progress-filled");
-    const handle = this.container.querySelector(".video-player__progress-handle");
-    const currentTime = this.container.querySelector(".video-player__time-current");
-    if (!this.isDragging && this.video.duration) {
-      const percent = this.video.currentTime / this.video.duration * 100;
-      progress.style.width = `${percent}%`;
-      handle.style.left = `${percent}%`;
-    }
-    currentTime.textContent = this.formatTime(this.video.currentTime);
-  }
-  updateDuration() {
-    const totalTime = this.container.querySelector(".video-player__time-total");
-    totalTime.textContent = this.formatTime(this.video.duration);
-  }
-  updateBuffer() {
-    const buffer = this.container.querySelector(".video-player__progress-buffer");
-    if (this.video.buffered.length > 0 && this.video.duration) {
-      const bufferedEnd = this.video.buffered.end(this.video.buffered.length - 1);
-      const percent = bufferedEnd / this.video.duration * 100;
-      buffer.style.width = `${percent}%`;
-    }
-  }
-  startSeek(e) {
-    this.isDragging = true;
-    this.seek(e);
-  }
-  stopSeek() {
-    this.isDragging = false;
-  }
-  seek(e) {
-    if (!this.isDragging && e.type !== "click") return;
-    const progress = this.container.querySelector(".video-player__progress");
-    const rect = progress.getBoundingClientRect();
-    const percent = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-    if (this.video.duration) {
-      this.video.currentTime = percent * this.video.duration;
-    }
-  }
-  toggleMute() {
-    this.video.muted = !this.video.muted;
-    const volumeBtn = this.container.querySelector(".video-player__btn_volume");
-    const volumeRange = this.container.querySelector(".video-player__volume-range");
-    if (this.video.muted) {
-      volumeBtn.classList.add("video-player__btn_muted");
-      volumeRange.value = 0;
-    } else {
-      volumeBtn.classList.remove("video-player__btn_muted");
-      volumeRange.value = this.video.volume * 100;
-    }
-  }
-  setVolume(value) {
-    const volume = value / 100;
-    this.video.volume = volume;
-    this.video.muted = volume === 0;
-    const volumeBtn = this.container.querySelector(".video-player__btn_volume");
-    if (volume === 0) {
-      volumeBtn.classList.add("video-player__btn_muted");
-    } else {
-      volumeBtn.classList.remove("video-player__btn_muted");
-    }
-  }
-  toggleFullscreen() {
-    const player = this.container.querySelector(".video-player");
-    if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement && !document.msFullscreenElement) {
-      if (player.requestFullscreen) {
-        player.requestFullscreen();
-      } else if (player.webkitRequestFullscreen) {
-        player.webkitRequestFullscreen();
-      } else if (player.mozRequestFullScreen) {
-        player.mozRequestFullScreen();
-      } else if (player.msRequestFullscreen) {
-        player.msRequestFullscreen();
-      }
-    } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-      } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-      } else if (document.msExitFullscreen) {
-        document.msExitFullscreen();
-      }
-    }
-  }
-  updateFullscreenIcon() {
-    const fullscreenBtn = this.container.querySelector(".video-player__btn_fullscreen");
-    const isFullscreen = !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
-    if (isFullscreen) {
-      fullscreenBtn.classList.add("video-player__btn_fullscreen-active");
-    } else {
-      fullscreenBtn.classList.remove("video-player__btn_fullscreen-active");
-    }
-  }
-  handleDoubleClick(e) {
-    const rect = this.video.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-    const videoWidth = rect.width;
-    const skipIndicator = this.container.querySelector(clickX < videoWidth / 2 ? ".video-player__skip-indicator_left" : ".video-player__skip-indicator_right");
-    if (clickX < videoWidth / 2) {
-      this.video.currentTime = Math.max(0, this.video.currentTime - 10);
-    } else {
-      this.video.currentTime = Math.min(this.video.duration, this.video.currentTime + 10);
-    }
-    skipIndicator.classList.add("video-player__skip-indicator_active");
-    setTimeout(() => {
-      skipIndicator.classList.remove("video-player__skip-indicator_active");
-    }, 600);
-  }
-  showControls() {
-    const controls = this.container.querySelector(".video-player__controls");
-    controls.classList.add("video-player__controls_visible");
-    if (this.hideControlsTimeout) {
-      clearTimeout(this.hideControlsTimeout);
-    }
-    this.hideControlsTimeout = setTimeout(() => {
-      if (this.isPlaying) {
-        controls.classList.remove("video-player__controls_visible");
-      }
-    }, 3000);
-  }
-  hideControls() {
-    const controls = this.container.querySelector(".video-player__controls");
-    if (this.isPlaying) {
-      controls.classList.remove("video-player__controls_visible");
-    }
-  }
-  handleKeyboard(e) {
-    const player = this.container.querySelector(".video-player");
-    if (!player.contains(document.activeElement) && document.activeElement !== document.body) {
-      return;
-    }
-    switch (e.code) {
-      case "Space":
-        e.preventDefault();
-        this.togglePlay();
-        break;
-      case "ArrowLeft":
-        e.preventDefault();
-        this.video.currentTime = Math.max(0, this.video.currentTime - 10);
-        break;
-      case "ArrowRight":
-        e.preventDefault();
-        this.video.currentTime = Math.min(this.video.duration, this.video.currentTime + 10);
-        break;
-      case "ArrowUp":
-        e.preventDefault();
-        this.setVolume(Math.min(100, this.video.volume * 100 + 10));
-        break;
-      case "ArrowDown":
-        e.preventDefault();
-        this.setVolume(Math.max(0, this.video.volume * 100 - 10));
-        break;
-      case "KeyF":
-        e.preventDefault();
-        this.toggleFullscreen();
-        break;
-      case "KeyM":
-        e.preventDefault();
-        this.toggleMute();
-        break;
-    }
-  }
-  formatTime(seconds) {
-    if (!isFinite(seconds)) return "0:00";
-    const h = Math.floor(seconds / 3600);
-    const m = Math.floor(seconds % 3600 / 60);
-    const s = Math.floor(seconds % 60);
-    if (h > 0) {
-      return `${h}:${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
-    }
-    return `${m}:${s.toString().padStart(2, "0")}`;
-  }
+  // На всякий случай на всю ширину контейнера
+  iframe.style.width = "100%";
+  iframe.style.height = "100%";
+  iframe.style.border = "none";
+  container.appendChild(iframe);
 }
-const videoPlayerInstances = new WeakMap();
-function initVideoPlayerInstance(container) {
-  if (!container) return null;
-  let instance = videoPlayerInstances.get(container);
-  if (!instance) {
-    instance = new VideoPlayer(container);
-    videoPlayerInstances.set(container, instance);
-  } else {
-    // Переинициализация: перечитать data-атрибуты и обновить src/poster
-    instance.loadVideoSource();
-  }
-  return instance;
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initVideoEmbed);
+} else {
+  initVideoEmbed();
 }
-
-// Глобальный объект для управления плеерами
-window.GiviVideoPlayer = {
-  // Инициализировать все плееры по data-атрибуту
-  initAll() {
-    const containers = document.querySelectorAll("[data-video-player]");
-    containers.forEach(container => initVideoPlayerInstance(container));
-  },
-  // Инициализировать один/несколько плееров
-  // target: Element | NodeList | Array<Element> | CSS‑селектор (string)
-  init(target) {
-    if (!target) return;
-    if (typeof target === "string") {
-      document.querySelectorAll(target).forEach(el => initVideoPlayerInstance(el));
-    } else if (target instanceof Element) {
-      initVideoPlayerInstance(target);
-    } else if (target.length && target.forEach) {
-      target.forEach(el => {
-        if (el instanceof Element) {
-          initVideoPlayerInstance(el);
-        }
-      });
-    }
-  },
-  // Переинициализировать конкретный блок: перечитать его data-video-* и обновить видео
-  // target: Element | CSS‑селектор (string)
-  reload(target) {
-    if (!target) return;
-    let el = target;
-    if (typeof target === "string") {
-      el = document.querySelector(target);
-    }
-    if (!el || !(el instanceof Element)) return;
-    const instance = videoPlayerInstances.get(el) || initVideoPlayerInstance(el);
-    if (instance) {
-      instance.loadVideoSource();
-    }
-  }
-};
-
-// Автоинициализация по data-атрибуту
-(function initVideoPlayers() {
-  if (window.GiviVideoPlayer && typeof window.GiviVideoPlayer.initAll === "function") {
-    window.GiviVideoPlayer.initAll();
-  }
-})();
 
 /***/ },
 

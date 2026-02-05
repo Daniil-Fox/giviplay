@@ -54,31 +54,81 @@
 
     // Лёгкая “рандомизация” через разные длительности/задержки
     // desktop: медленнее и плавнее
-    .showcase__item_1 img { animation-duration: 7.6s; animation-delay: 0.05s; }
-    .showcase__item_2 img { animation-duration: 6.8s; animation-delay: 0.18s; }
-    .showcase__item_3 img { animation-duration: 8.4s; animation-delay: 0.12s; }
-    .showcase__item_4 img { animation-duration: 7.1s; animation-delay: 0.22s; }
+    .showcase__item_1 img {
+      animation-duration: 7.6s;
+      animation-delay: 0.05s;
+    }
+    .showcase__item_2 img {
+      animation-duration: 6.8s;
+      animation-delay: 0.18s;
+    }
+    .showcase__item_3 img {
+      animation-duration: 8.4s;
+      animation-delay: 0.12s;
+    }
+    .showcase__item_4 img {
+      animation-duration: 7.1s;
+      animation-delay: 0.22s;
+    }
 
-    .showcase__decor_1 img { animation-duration: 9.0s; animation-delay: 0.08s; }
-    .showcase__decor_2 img { animation-duration: 8.2s; animation-delay: 0.16s; }
-    .showcase__decor_3 img { animation-duration: 9.6s; animation-delay: 0.10s; }
-    .showcase__decor_4 img { animation-duration: 7.9s; animation-delay: 0.20s; }
-    .showcase__decor_5 img { animation-duration: 8.7s; animation-delay: 0.14s; }
-    .showcase__decor_6 img { animation-duration: 8.4s; animation-delay: 0.06s; }
+    .showcase__decor_1 img {
+      animation-duration: 9s;
+      animation-delay: 0.08s;
+    }
+    .showcase__decor_2 img {
+      animation-duration: 8.2s;
+      animation-delay: 0.16s;
+    }
+    .showcase__decor_3 img {
+      animation-duration: 9.6s;
+      animation-delay: 0.1s;
+    }
+    .showcase__decor_4 img {
+      animation-duration: 7.9s;
+      animation-delay: 0.2s;
+    }
+    .showcase__decor_5 img {
+      animation-duration: 8.7s;
+      animation-delay: 0.14s;
+    }
+    .showcase__decor_6 img {
+      animation-duration: 8.4s;
+      animation-delay: 0.06s;
+    }
 
     // mobile: оставляем текущую скорость (чуть быстрее, чем desktop)
     @include mobile {
-      .showcase__item_1 img { animation-duration: 5.2s; }
-      .showcase__item_2 img { animation-duration: 4.6s; }
-      .showcase__item_3 img { animation-duration: 5.8s; }
-      .showcase__item_4 img { animation-duration: 4.9s; }
+      .showcase__item_1 img {
+        animation-duration: 5.2s;
+      }
+      .showcase__item_2 img {
+        animation-duration: 4.6s;
+      }
+      .showcase__item_3 img {
+        animation-duration: 5.8s;
+      }
+      .showcase__item_4 img {
+        animation-duration: 4.9s;
+      }
 
-      .showcase__decor_1 img { animation-duration: 6.2s; }
-      .showcase__decor_2 img { animation-duration: 5.6s; }
-      .showcase__decor_3 img { animation-duration: 6.8s; }
-      .showcase__decor_4 img { animation-duration: 5.3s; }
-      .showcase__decor_5 img { animation-duration: 6.0s; }
-      .showcase__decor_6 img { animation-duration: 5.9s; }
+      .showcase__decor_1 img {
+        animation-duration: 6.2s;
+      }
+      .showcase__decor_2 img {
+        animation-duration: 5.6s;
+      }
+      .showcase__decor_3 img {
+        animation-duration: 6.8s;
+      }
+      .showcase__decor_4 img {
+        animation-duration: 5.3s;
+      }
+      .showcase__decor_5 img {
+        animation-duration: 6s;
+      }
+      .showcase__decor_6 img {
+        animation-duration: 5.9s;
+      }
     }
   }
 
@@ -87,11 +137,19 @@
       transform: translate3d(0, 0, 0) rotateZ(0deg);
     }
     50% {
-      transform: translate3d(var(--showcase-wiggle-x-pos), var(--showcase-wiggle-y-pos), 0)
+      transform: translate3d(
+          var(--showcase-wiggle-x-pos),
+          var(--showcase-wiggle-y-pos),
+          0
+        )
         rotateZ(var(--showcase-wiggle-rot-pos));
     }
     100% {
-      transform: translate3d(var(--showcase-wiggle-x-neg), var(--showcase-wiggle-y-neg), 0)
+      transform: translate3d(
+          var(--showcase-wiggle-x-neg),
+          var(--showcase-wiggle-y-neg),
+          0
+        )
         rotateZ(var(--showcase-wiggle-rot-neg));
     }
   }
@@ -154,12 +212,14 @@
     width: 40rem;
     left: 0;
     top: 2rem;
-    transform: translate3d(25rem, 6rem, -10rem) rotateX(-10deg) rotateY(30deg) rotateZ(5deg)  skewX(5deg);
+    transform: translate3d(25rem, 6rem, -10rem) rotateX(-10deg) rotateY(30deg)
+      rotateZ(5deg) skewX(5deg);
 
     @include mobile {
       width: 24rem;
 
-      transform: translate3d(-0.5rem, 0rem, 0rem) rotateX(-10deg) rotateY(35deg) rotateZ(3deg)  skewX(0deg);
+      transform: translate3d(-0.5rem, 0rem, 0rem) rotateX(-10deg) rotateY(35deg)
+        rotateZ(3deg) skewX(0deg);
     }
   }
   &__item_2 {
@@ -167,12 +227,14 @@
     right: 0;
     top: 0;
 
-    transform: translate3d(0rem, 0, -10rem) rotateX(-10deg) rotateY(-40deg) rotateZ(-4deg) skewX(0deg);
+    transform: translate3d(0rem, 0, -10rem) rotateX(-10deg) rotateY(-40deg)
+      rotateZ(-4deg) skewX(0deg);
 
     @include mobile {
       width: 32rem;
       right: -8rem;
-      transform: translate3d(-2rem, 0rem, 4rem) rotateX(15deg) rotateY(-28deg) rotateZ(5deg) skewX(0deg);
+      transform: translate3d(-2rem, 0rem, 4rem) rotateX(15deg) rotateY(-28deg)
+        rotateZ(5deg) skewX(0deg);
     }
   }
   &__item_3 {
@@ -180,13 +242,15 @@
     left: 0;
     bottom: 0;
 
-    transform: translate3d(18rem, 3rem, -10rem) rotateX(5deg) rotateY(42deg) rotateZ(-6deg) skewX(0deg);
+    transform: translate3d(18rem, 3rem, -10rem) rotateX(5deg) rotateY(42deg)
+      rotateZ(-6deg) skewX(0deg);
 
     @include mobile {
       width: 38rem;
       left: -10rem;
 
-      transform: translate3d(0rem, 0rem, -10rem) rotateX(5deg) rotateY(42deg) rotateZ(-6deg) skewX(0deg);
+      transform: translate3d(0rem, 0rem, -10rem) rotateX(5deg) rotateY(42deg)
+        rotateZ(-6deg) skewX(0deg);
     }
   }
   &__item_4 {
@@ -194,16 +258,16 @@
     right: 0;
     bottom: 0;
 
-    transform: translate3d(-18rem, 4rem, -10rem) rotateX(30deg) rotateY(-45deg) rotateZ(18deg)  skewX(0deg);
+    transform: translate3d(-18rem, 4rem, -10rem) rotateX(30deg) rotateY(-45deg)
+      rotateZ(18deg) skewX(0deg);
 
     @include mobile {
       width: 26rem;
       bottom: 2rem;
-      transform: translate3d(2rem, 0rem, 0rem) rotateX(23deg) rotateY(
-        -45deg) rotateZ(20deg) skewX(0deg);
+      transform: translate3d(2rem, 0rem, 0rem) rotateX(23deg) rotateY(-45deg)
+        rotateZ(20deg) skewX(0deg);
     }
   }
-
 
   &__decor {
     position: absolute;
@@ -237,13 +301,15 @@
     width: 5rem;
     height: auto;
     z-index: 4;
-    transform: rotateZ(-17deg) translateX(10rem) translateY(50rem) translateZ(20rem);
+    transform: rotateZ(-17deg) translateX(10rem) translateY(50rem)
+      translateZ(20rem);
 
     @include mobile {
       width: 3.2rem;
       top: unset;
       bottom: 4rem;
-      transform: rotateZ(-17deg) translateX(0rem) translateY(0rem) translateZ(20rem);
+      transform: rotateZ(-17deg) translateX(0rem) translateY(0rem)
+        translateZ(20rem);
     }
   }
 
@@ -271,10 +337,11 @@
     @include mobile {
       width: 8rem;
       top: 40%;
-      transform: rotateZ(11deg) translateX(0rem) translateY(0rem) translateZ(4rem);
+      transform: rotateZ(11deg) translateX(0rem) translateY(0rem)
+        translateZ(4rem);
       right: -1rem;
     }
-   }
+  }
 
   &__decor_5 {
     top: -4.5rem;
@@ -282,7 +349,8 @@
     width: 19rem;
     height: auto;
     z-index: 4;
-    transform: rotateZ(11deg) translateX(0rem) translateY(0rem) translateZ(14rem);
+    transform: rotateZ(11deg) translateX(0rem) translateY(0rem)
+      translateZ(14rem);
 
     @include mobile {
       width: 15rem;
@@ -297,7 +365,8 @@
     width: 19rem;
     height: auto;
     z-index: 4;
-    transform: rotateZ(3deg) translateX(0rem) translateY(0rem) translateZ(-12rem);
+    transform: rotateZ(3deg) translateX(0rem) translateY(0rem)
+      translateZ(-12rem);
 
     @include mobile {
       width: 11rem;
@@ -321,7 +390,7 @@
   }
 
   &__desc {
-    font-size: 22px;
+    font-size: 2.2rem;
     line-height: 1.5;
     color: var(--givi-black);
 

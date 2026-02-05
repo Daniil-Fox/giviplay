@@ -1,4 +1,5 @@
 .cta {
+  overflow: hidden;
   padding: 8rem 0 15rem;
   @include mobile {
     padding-top: 7.5rem;
@@ -57,26 +58,70 @@
     }
 
     // “рандомизация” скоростей/задержек (десктоп)
-    .cta__megaphone img { animation-duration: 8.6s; animation-delay: 0.06s; }
-    .cta__playback img { animation-duration: 7.9s; animation-delay: 0.14s; }
+    .cta__megaphone img {
+      animation-duration: 8.6s;
+      animation-delay: 0.06s;
+    }
+    .cta__playback img {
+      animation-duration: 7.9s;
+      animation-delay: 0.14s;
+    }
 
-    .cta__img-item_1 { animation-duration: 7.8s; animation-delay: 0.04s; }
-    .cta__img-item_2 { animation-duration: 7.1s; animation-delay: 0.18s; }
-    .cta__img-item_3 { animation-duration: 8.3s; animation-delay: 0.10s; }
-    .cta__img-item_4 { animation-duration: 7.4s; animation-delay: 0.22s; }
-    .cta__img-item_5 { animation-duration: 8.8s; animation-delay: 0.08s; }
-    .cta__img-item_6 { animation-duration: 7.6s; animation-delay: 0.16s; }
-    .cta__img-item_7 { animation-duration: 9.2s; animation-delay: 0.12s; }
-    .cta__img-item_8 { animation-duration: 7.9s; animation-delay: 0.20s; }
-    .cta__img-item_9 { animation-duration: 8.5s; animation-delay: 0.06s; }
-    .cta__img-item_10 { animation-duration: 7.3s; animation-delay: 0.15s; }
-    .cta__img-item_11 { animation-duration: 8.9s; animation-delay: 0.09s; }
+    .cta__img-item_1 {
+      animation-duration: 7.8s;
+      animation-delay: 0.04s;
+    }
+    .cta__img-item_2 {
+      animation-duration: 7.1s;
+      animation-delay: 0.18s;
+    }
+    .cta__img-item_3 {
+      animation-duration: 8.3s;
+      animation-delay: 0.1s;
+    }
+    .cta__img-item_4 {
+      animation-duration: 7.4s;
+      animation-delay: 0.22s;
+    }
+    .cta__img-item_5 {
+      animation-duration: 8.8s;
+      animation-delay: 0.08s;
+    }
+    .cta__img-item_6 {
+      animation-duration: 7.6s;
+      animation-delay: 0.16s;
+    }
+    .cta__img-item_7 {
+      animation-duration: 9.2s;
+      animation-delay: 0.12s;
+    }
+    .cta__img-item_8 {
+      animation-duration: 7.9s;
+      animation-delay: 0.2s;
+    }
+    .cta__img-item_9 {
+      animation-duration: 8.5s;
+      animation-delay: 0.06s;
+    }
+    .cta__img-item_10 {
+      animation-duration: 7.3s;
+      animation-delay: 0.15s;
+    }
+    .cta__img-item_11 {
+      animation-duration: 8.9s;
+      animation-delay: 0.09s;
+    }
 
-    .cta__img_mob img { animation-duration: 6.8s; animation-delay: 0.08s; }
+    .cta__img_mob img {
+      animation-duration: 6.8s;
+      animation-delay: 0.08s;
+    }
 
     // mobile: чуть быстрее, чтобы не “тянулось”
     @include mobile {
-      .cta__img_mob img { animation-duration: 5.6s; }
+      .cta__img_mob img {
+        animation-duration: 5.6s;
+      }
     }
   }
 
@@ -85,11 +130,19 @@
       transform: translate3d(0, 0, 0) rotateZ(0deg);
     }
     50% {
-      transform: translate3d(var(--cta-wiggle-x-pos), var(--cta-wiggle-y-pos), 0)
+      transform: translate3d(
+          var(--cta-wiggle-x-pos),
+          var(--cta-wiggle-y-pos),
+          0
+        )
         rotateZ(var(--cta-wiggle-rot-pos));
     }
     100% {
-      transform: translate3d(var(--cta-wiggle-x-neg), var(--cta-wiggle-y-neg), 0)
+      transform: translate3d(
+          var(--cta-wiggle-x-neg),
+          var(--cta-wiggle-y-neg),
+          0
+        )
         rotateZ(var(--cta-wiggle-rot-neg));
     }
   }
@@ -156,9 +209,7 @@
       display: none;
       margin-left: calc(-1 * var(--container-offset));
       margin-right: calc(-1 * var(--container-offset));
-
     }
-
 
     &_mob {
       display: none;
@@ -178,7 +229,9 @@
     width: 26rem;
     height: auto;
     @include mobile {
-      display: none;
+      left: -4rem;
+      top: -7rem;
+      width: 16rem;
     }
     img {
       width: 100%;
@@ -197,7 +250,9 @@
     height: auto;
 
     @include mobile {
-      display: none;
+      width: 12rem;
+      right: -4rem;
+      bottom: -2rem;
     }
     img {
       width: 100%;
@@ -211,7 +266,6 @@
     height: auto;
     user-select: none;
     pointer-events: none;
-
   }
 
   &__img-item_1 {
@@ -260,7 +314,7 @@
 
   &__img-item_5 {
     left: 0;
-    top: .5rem;
+    top: 0.5rem;
     width: 28.5rem;
 
     @include mobile {

@@ -40,7 +40,26 @@
     line-height: 1;
     color: var(--givi-black);
   }
+  &__ready {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
 
+    font-weight: 400;
+    font-size: 2.2rem;
+    color: var(--givi-black);
+    & > div {
+      width: 4.8rem;
+      height: 4.8rem;
+      background-color: var(--givi-yellow);
+      flex-shrink: 0;
+
+      background-image: url("./../img/svg/check.svg");
+      background-size: 60%;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
   &__capture {
     margin: 0;
     font-family: var(--second-family);

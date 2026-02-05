@@ -7,6 +7,10 @@ class FindForm {
     this.btnNext = form.querySelector(".find-form__btn_next");
     this.btnPrev = form.querySelector(".find-form__btn_prev");
 
+    const findSection = form.closest(".find");
+    this.desktopVideo =
+      findSection?.querySelector(".find__video:not(.find__video_mob)") || null;
+
     this.currentSlide = 0;
     this.isAnimating = false;
 
@@ -21,6 +25,7 @@ class FindForm {
 
     // Инициализируем первый слайд
     this.updateSlides();
+    this.updateDesktopVideoState();
 
     // Обработчики событий
     this.btnNext?.addEventListener("click", (e) => this.handleNext(e));
@@ -91,6 +96,12 @@ class FindForm {
     });
   }
 
+  updateDesktopVideoState() {
+    if (!this.desktopVideo) return;
+    const isLast = this.currentSlide === this.slides.length - 1;
+    this.desktopVideo.classList.toggle("find__video--ready", isLast);
+  }
+
   isSlideValid(slideIndex) {
     const slide = this.slides[slideIndex];
     if (!slide) return false;
@@ -129,17 +140,29 @@ class FindForm {
   }
 
   updateButtonsState() {
+    const isLastSlide = this.currentSlide === this.slides.length - 1;
+
     // Кнопка "Далее" активна только если текущий слайд валиден
     if (this.btnNext) {
-      const isValid = this.validateCurrentSlide();
-      this.btnNext.disabled = !isValid;
-
-      if (isValid) {
+      // На последнем слайде "посмотреть результат" всегда активна
+      if (isLastSlide) {
+        this.btnNext.disabled = false;
         this.btnNext.style.opacity = "1";
         this.btnNext.style.cursor = "pointer";
+        this.btnNext.textContent = "посмотреть результат";
       } else {
-        this.btnNext.style.opacity = "0.5";
-        this.btnNext.style.cursor = "not-allowed";
+        const isValid = this.validateCurrentSlide();
+        this.btnNext.disabled = !isValid;
+
+        if (isValid) {
+          this.btnNext.style.opacity = "1";
+          this.btnNext.style.cursor = "pointer";
+        } else {
+          this.btnNext.style.opacity = "0.5";
+          this.btnNext.style.cursor = "not-allowed";
+        }
+
+        this.btnNext.textContent = "Далее";
       }
     }
 
@@ -154,6 +177,8 @@ class FindForm {
         this.btnPrev.disabled = false;
         this.btnPrev.style.pointerEvents = "all";
       }
+
+      this.btnPrev.textContent = isLastSlide ? "пройти еще раз" : "назад";
     }
   }
 
@@ -182,9 +207,34 @@ class FindForm {
 
     if (this.isAnimating) return;
 
+    // На последнем слайде "пройти еще раз" — сбрасываем квиз
+    const isLastSlide = this.currentSlide === this.slides.length - 1;
+    if (isLastSlide) {
+      this.resetQuiz();
+      return;
+    }
+
     if (this.currentSlide > 0) {
       this.goToSlide(this.currentSlide - 1);
     }
+  }
+
+  resetQuiz() {
+    // Сбрасываем ответы
+    this.slides.forEach((slide) => {
+      const inputs = slide.querySelectorAll(
+        'input[type="checkbox"], input[type="radio"]'
+      );
+      inputs.forEach((input) => {
+        input.checked = false;
+      });
+    });
+
+    // Возвращаемся на первый слайд без "раскачки"
+    this.currentSlide = 0;
+    this.updateSlides();
+    this.updateDesktopVideoState();
+    this.updateButtonsState();
   }
 
   goToSlide(targetIndex) {
@@ -210,6 +260,7 @@ class FindForm {
       // Шаг 2: Переключаем слайды
       this.currentSlide = targetIndex;
       this.updateSlides();
+      this.updateDesktopVideoState();
       // Обновляем состояние кнопок сразу при переключении слайда
       this.updateButtonsState();
 

@@ -118,7 +118,7 @@ function initHeroAnimation() {
       scrub: 0.5,
     },
   });
-  gsap.to(".hero__img", {
+  gsap.to(".hero__media", {
     yPercent: 10,
 
     scrollTrigger: {
@@ -201,19 +201,6 @@ function initShowcaseAnimation() {
     showcase.classList.add(WIGGLE_CLASS);
   });
 
-  // Анимация контента
-  gsap.from(".showcase__title", {
-    scrollTrigger: {
-      trigger: showcase,
-      start: "top 80%",
-      toggleActions: "play none none none",
-    },
-    duration: defaultDuration,
-    y: 50,
-    opacity: 0,
-    ease: defaultEase,
-  });
-
   gsap.from(".showcase__desc li", {
     scrollTrigger: {
       trigger: showcase,
@@ -235,18 +222,6 @@ function initTakeAnimation() {
   if (!take) return;
   const takeItems = document.querySelectorAll(".take__item");
 
-  gsap.from(".take__title", {
-    scrollTrigger: {
-      trigger: take,
-      start: "top 80%",
-      toggleActions: "play none none none",
-    },
-    duration: defaultDuration,
-    y: 40,
-    opacity: 0,
-    ease: defaultEase,
-  });
-
   gsap.from(takeItems, {
     scrollTrigger: {
       trigger: take,
@@ -266,10 +241,10 @@ function initTakeAnimation() {
 
     onComplete: () => {
       takeItems.forEach((item, idx) => {
-        item.style.setProperty('--highlight', '1')
-        item.style.setProperty('--delay', idx * 100 + 'ms')
-      })
-    }
+        item.style.setProperty("--highlight", "1");
+        item.style.setProperty("--delay", idx * 100 + "ms");
+      });
+    },
   });
 }
 
@@ -277,18 +252,6 @@ function initTakeAnimation() {
 function initCatalogAnimation() {
   const catalog = document.querySelector(".catalog");
   if (!catalog) return;
-
-  gsap.from(".catalog__title", {
-    scrollTrigger: {
-      trigger: catalog,
-      start: "top 80%",
-      toggleActions: "play none none none",
-    },
-    duration: defaultDuration,
-    y: 40,
-    opacity: 0,
-    ease: defaultEase,
-  });
 
   gsap.from(".catalog__desc", {
     scrollTrigger: {
@@ -339,18 +302,6 @@ function initFindAnimation() {
   const find = document.querySelector(".find");
   if (!find) return;
 
-  gsap.from(".find__title", {
-    scrollTrigger: {
-      trigger: find,
-      start: "top 80%",
-      toggleActions: "play none none none",
-    },
-    duration: defaultDuration,
-    y: 50,
-    opacity: 0,
-    ease: defaultEase,
-  });
-
   gsap.from(".find__desc", {
     scrollTrigger: {
       trigger: find,
@@ -395,19 +346,6 @@ function initFindAnimation() {
 function initPacksAnimation() {
   const packs = document.querySelector(".packs");
   if (!packs) return;
-
-  // Анимация заголовка
-  gsap.from(".packs__title", {
-    scrollTrigger: {
-      trigger: packs,
-      start: "top 80%",
-      toggleActions: "play none none none",
-    },
-    duration: defaultDuration,
-    y: 50,
-    opacity: 0,
-    ease: defaultEase,
-  });
 
   // Анимация карточек (слайдов)
   gsap.from(".pack", {
@@ -527,18 +465,6 @@ function initBenefitsAnimation() {
   //   y: 200,
   // });
 
-  // Анимация "наезжания" секции наверх с эффектом наложения
-  gsap.from(benefits, {
-    y: 400,
-    ease: "power3.out",
-    scrollTrigger: {
-      trigger: benefits,
-      start: "top 120%",
-      end: "top 50%",
-      scrub: 1.2,
-    },
-  });
-
   // Анимация появления контента внутри секции через timeline
   const benefitsTimeline = gsap.timeline({
     scrollTrigger: {
@@ -549,12 +475,6 @@ function initBenefitsAnimation() {
   });
 
   benefitsTimeline
-    .from(".benefits__title", {
-      duration: defaultDuration,
-      y: 40,
-      opacity: 0,
-      ease: defaultEase,
-    })
     .from(
       ".benefits__item",
       {
@@ -598,19 +518,6 @@ function initGuideAnimation() {
 
   const guideItems = guide.querySelectorAll(".guide__item");
   const guideImg = guide.querySelector(".guide__img");
-
-  // Анимация заголовка
-  gsap.from(".guide__title", {
-    scrollTrigger: {
-      trigger: guide,
-      start: "top 80%",
-      toggleActions: "play none none none",
-    },
-    duration: defaultDuration,
-    y: 40,
-    opacity: 0,
-    ease: defaultEase,
-  });
 
   // Timeline для последовательного раскрытия clip-path карточек
   const guideTimeline = gsap.timeline({
@@ -688,18 +595,6 @@ function initConsultAnimation() {
   const consult = document.querySelector(".consult");
   if (!consult) return;
 
-  // Анимация "наезжания" секции наверх с эффектом наложения
-  gsap.from(consult, {
-    y: 400,
-    ease: "power3.out",
-    scrollTrigger: {
-      trigger: consult,
-      start: "top 120%",
-      end: "top 50%",
-      scrub: 1.2,
-    },
-  });
-
   // Анимация появления контента внутри секции через timeline
   const consultTimeline = gsap.timeline({
     scrollTrigger: {
@@ -710,12 +605,6 @@ function initConsultAnimation() {
   });
 
   consultTimeline
-    .from(".consult__title", {
-      duration: defaultDuration,
-      y: 40,
-      opacity: 0,
-      ease: defaultEase,
-    })
     .from(
       ".consult__desc",
       {
@@ -752,19 +641,6 @@ function initConsultAnimation() {
 function initFaqAnimation() {
   const faq = document.querySelector(".faq");
   if (!faq) return;
-
-  // Анимация заголовка
-  gsap.from(".faq__title", {
-    scrollTrigger: {
-      trigger: faq,
-      start: "top 80%",
-      toggleActions: "play none none none",
-    },
-    duration: defaultDuration,
-    y: 40,
-    opacity: 0,
-    ease: defaultEase,
-  });
 
   // Анимация карточек FAQ через timeline
   const faqTimeline = gsap.timeline({
@@ -816,13 +692,6 @@ function initCtaAnimation() {
           start: "top 80%",
           toggleActions: "play none none none",
         },
-      });
-
-      tl.from(".cta__title", {
-        duration: defaultDuration,
-        y: 50,
-        opacity: 0,
-        ease: defaultEase,
       });
 
       if (imgMobile) {
@@ -887,13 +756,6 @@ function initCtaAnimation() {
         },
       });
 
-      tl.from(".cta__title", {
-        duration: defaultDuration,
-        y: 50,
-        opacity: 0,
-        ease: defaultEase,
-      });
-
       if (imgDesktop) {
         tl.from(
           imgDesktop,
@@ -947,7 +809,6 @@ function initCtaAnimation() {
       return () => tl.kill();
     },
   });
-
 }
 
 // Анимация get-pack секции (проявление полос слева направо)
