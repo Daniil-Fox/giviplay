@@ -35,6 +35,7 @@
     }
   }
   &__buttons {
+    flex-shrink: 0;
     display: flex;
     gap: 1rem;
   }
@@ -42,16 +43,22 @@
   &__btn {
     text-transform: lowercase;
     padding: 1.2rem 4rem 1.7rem;
-    flex-basis: 24.3rem;
+    min-width: 24.3rem;
     flex-shrink: 0;
+
+    @include mobile {
+      flex: 1;
+      min-width: unset;
+    }
   }
 
   &__search {
-    flex-basis: 50.8rem;
-
+    min-width: 50.8rem;
+    max-width: 50.8rem;
     @include mobile {
-      flex-basis: auto;
+      min-width: unset;
       width: 100%;
+      max-width: 100%;
     }
 
     .form__field {

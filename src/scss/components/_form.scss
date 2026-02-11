@@ -11,6 +11,12 @@
     &:not(:last-child) {
       margin-bottom: 2rem;
     }
+
+    &.entering {
+      height: 12rem;
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
   }
 
   &__label {
@@ -33,6 +39,7 @@
   }
 
   &__input {
+    resize: none;
     display: block;
     height: 100%;
     width: 100%;
@@ -54,6 +61,10 @@
     &:disabled {
       color: rgba(0, 0, 0, 0.25);
     }
+  }
+  textarea.form__input {
+    resize: none;
+    padding: 2.2rem 3rem;
   }
 
   &__btn {

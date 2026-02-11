@@ -9,7 +9,7 @@ new Swiper(".catalog__container", {
 
   breakpoints: {
     320: {
-      spaceBetween: 40,
+      spaceBetween: 20,
     },
     577: {
       spaceBetween: 20,
@@ -24,7 +24,7 @@ new Swiper(".packs__slider", {
   breakpoints: {
     320: {
       slidesPerView: "auto",
-      spaceBetween: 40,
+      spaceBetween: 20,
     },
     577: {
       slidesPerView: 4,
@@ -77,7 +77,7 @@ if (categorySliders.length > 0) {
   // Триггер по кастомному событию (вызвать: dispatchEvent(new CustomEvent('reinitCategorySliders')))
   window.addEventListener(
     "reinitCategorySliders",
-    window.reinitCategorySliders
+    window.reinitCategorySliders,
   );
 }
 

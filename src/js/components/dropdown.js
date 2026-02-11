@@ -38,6 +38,13 @@ function initDropdowns() {
     };
 
     if (isTouchDevice()) {
+      // Если этот wrapper одновременно является бургером (data-burger),
+      // то на мобильных управление берёт на себя логика бургера.
+      // Дропдаун у такого блока на touch-устройствах не инициализируем.
+      if (wrapper.hasAttribute("data-burger")) {
+        return;
+      }
+
       // На мобильных: клик по обёртке — toggle (открыть/закрыть),
       // клик по пункту — закрыть, клик вне обёртки — закрыть.
       wrapper.addEventListener("click", (e) => {
@@ -77,4 +84,3 @@ if (document.readyState === "loading") {
 } else {
   initDropdowns();
 }
-

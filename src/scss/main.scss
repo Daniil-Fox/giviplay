@@ -6,6 +6,10 @@
 @import "ui";
 
 // подключения компонентов страницы
+
+@import "./components/dropdown";
+@import "./components/cookies";
+@import "./components/content";
 @import "./components/header";
 @import "./components/nav";
 @import "./components/hero";
@@ -40,7 +44,6 @@
 @import "./components/main-catalog";
 @import "./components/modal";
 @import "./components/preloader";
-@import "./components/dropdown";
 @import "./components/profile-settings";
 .main-catalog__products-wrap {
   position: relative;
@@ -76,5 +79,45 @@
   to {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
+  }
+}
+
+.peremena {
+  &__title {
+    font-size: 4rem;
+    font-weight: 300;
+    color: #4a9b8e;
+    margin-bottom: 0;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  &__title span {
+    display: inline-block;
+    transition: font-weight 0.2s ease;
+    font-weight: 300;
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+    width: 0.6em;
+    text-align: right;
+
+    &.m {
+      width: 0.8em;
+    }
+  }
+
+  &__subtitle {
+    font-size: 4rem;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 0;
+    line-height: 1.1;
+  }
+
+  &__description {
+    font-size: 4rem;
+    font-weight: 300;
+    color: #000;
+    line-height: 1.1;
   }
 }

@@ -36,7 +36,8 @@
     </nav>
 
     <div class="header__actions">
-      <div class="btn-reset header__button header__button_profile" type="button" data-dropdown-wrapper>
+      <div class="btn-reset header__button header__button_profile" type="button" data-dropdown-wrapper
+        data-burger="profile">
         <svg class="" width="24" height="34">
           <use xlink:href="img/sprite.svg#profile"></use>
         </svg>
@@ -56,12 +57,14 @@
 
         <span class="header__button-counter">1</span>
       </button>
-      <button class="btn-reset burger header__burger" aria-label="Открыть меню" aria-expanded="false" data-burger>
+      <button class="btn-reset burger header__burger" aria-label="Открыть меню" aria-expanded="false"
+        data-burger="main">
         <span class="burger__line"></span>
       </button>
     </div>
 
   </div>
+  @include('./menu-profile.html')
   @include('./menu.html')
 </header>
 

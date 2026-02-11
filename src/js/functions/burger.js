@@ -2,45 +2,83 @@ import { disableScroll } from "../functions/disable-scroll.js";
 import { enableScroll } from "../functions/enable-scroll.js";
 
 (function () {
-  const burger = document?.querySelector("[data-burger]");
-  const menu = document?.querySelector("[data-menu]");
-  const menuItems = document?.querySelectorAll("[data-menu-item]");
-  const overlay = document?.querySelector("[data-menu-overlay]");
+  const burgers = document.querySelectorAll("[data-burger]");
+  if (!burgers.length) return;
 
-  burger?.addEventListener("click", (e) => {
-    burger?.classList.toggle("burger--active");
-    menu?.classList.toggle("menu--active");
+  const body = document.body;
 
-    if (menu?.classList.contains("menu--active")) {
-      burger?.setAttribute("aria-expanded", "true");
-      burger?.setAttribute("aria-label", "Закрыть меню");
+  const isTouchDevice = () =>
+    "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
-      document.body.classList.add("menu-open");
-    } else {
-      burger?.setAttribute("aria-expanded", "false");
-      burger?.setAttribute("aria-label", "Открыть меню");
+  const getPair = (burger) => {
+    const id = burger.getAttribute("data-burger") ?? "";
+    const menu = document.querySelector(`[data-menu="${id}"]`);
+    const overlay =
+      document.querySelector(`[data-menu-overlay="${id}"]`) ||
+      menu?.querySelector("[data-menu-overlay]");
+    const items = menu?.querySelectorAll("[data-menu-item]") || [];
 
-      document.body.classList.remove("menu-open");
-    }
-  });
+    return { id, menu, overlay, items };
+  };
 
-  overlay?.addEventListener("click", () => {
-    burger?.setAttribute("aria-expanded", "false");
-    burger?.setAttribute("aria-label", "Открыть меню");
+  const closeMenu = (burger, menu) => {
+    if (!burger || !menu) return;
     burger.classList.remove("burger--active");
     menu.classList.remove("menu--active");
-    document.body.style.overflow = null;
-    document.body.classList.remove("menu-open");
-  });
+    burger.setAttribute("aria-expanded", "false");
+    burger.setAttribute("aria-label", "Открыть меню");
+  };
 
-  menuItems?.forEach((el) => {
-    el.addEventListener("click", () => {
-      burger?.setAttribute("aria-expanded", "false");
-      burger?.setAttribute("aria-label", "Открыть меню");
-      burger.classList.remove("burger--active");
-      menu.classList.remove("menu--active");
+  const openMenu = (burger, menu) => {
+    if (!burger || !menu) return;
+    burger.classList.add("burger--active");
+    menu.classList.add("menu--active");
+    burger.setAttribute("aria-expanded", "true");
+    burger.setAttribute("aria-label", "Закрыть меню");
+  };
 
-      document.body.classList.remove("menu-open");
+  const closeAllMenus = () => {
+    burgers.forEach((b) => {
+      const { menu } = getPair(b);
+      closeMenu(b, menu);
+    });
+    enableScroll();
+    body.classList.remove("menu-open");
+  };
+
+  burgers.forEach((burger) => {
+    const { menu, overlay, items } = getPair(burger);
+    if (!menu) return;
+
+    // Если элемент одновременно является dropdown-обёрткой,
+    // то на десктопе его поведение контролируется модулем dropdown,
+    // а как бургер он должен работать только на мобильных.
+    const isDropdownWrapper = burger.hasAttribute("data-dropdown-wrapper");
+    if (isDropdownWrapper && !isTouchDevice()) {
+      return;
+    }
+
+    burger.addEventListener("click", () => {
+      const isActive = burger.classList.contains("burger--active");
+
+      if (isActive) {
+        closeAllMenus();
+      } else {
+        closeAllMenus();
+        openMenu(burger, menu);
+        disableScroll();
+        body.classList.add("menu-open");
+      }
+    });
+
+    overlay?.addEventListener("click", () => {
+      closeAllMenus();
+    });
+
+    items.forEach((el) => {
+      el.addEventListener("click", () => {
+        closeAllMenus();
+      });
     });
   });
 })();

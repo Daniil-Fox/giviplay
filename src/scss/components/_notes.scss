@@ -1,5 +1,4 @@
 .notes {
-
   &__top {
     margin-bottom: 5rem;
   }
@@ -8,21 +7,62 @@
     margin: 0;
     margin-bottom: 1rem;
   }
+
+  &__item-wrapper {
+    &:not(:last-child) {
+      margin-bottom: 5rem;
+    }
+  }
   &__item {
     display: block;
     width: 100%;
     position: relative;
     z-index: 2;
-    background-color: #F5F5F5;
-    min-height: 7rem;
-    padding: 3rem 2rem;
+    background-color: #f5f5f5;
+    min-height: 5rem;
+    padding: 2.4rem 2rem;
+    textarea {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: none;
+      resize: none;
+      border: none;
+      scrollbar-width: none;
+      font-size: 1.8rem;
 
-
-    &:not(:last-child){
-      margin-bottom: 5rem;
+      &:focus {
+        outline: none;
+      }
     }
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+    // &_is-editing {
+    // }
+  }
+  &__list {
+    max-height: 47rem;
+    overflow-y: auto;
+    padding-right: 1.5rem;
+    @include mobile {
+      padding-right: 0.5rem;
+    }
+  }
+  &__actions {
+    display: none;
+    // display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
 
-
+    &_edit {
+      display: flex;
+    }
+  }
+  &__btn-cancel,
+  &__btn-add {
+    padding: 1.3rem 2rem;
+    min-width: 14.5rem;
   }
   &__item-date {
     display: block;
@@ -49,9 +89,9 @@
 
     span {
       display: block;
-      width: .6rem;
-      height: .6rem;
-      background-color: #BFBFBF;
+      width: 0.6rem;
+      height: 0.6rem;
+      background-color: #bfbfbf;
     }
   }
   &__item-actions__dropdown-wrapper {
@@ -77,14 +117,11 @@
 
     padding: 2.2rem;
 
-
     background: var(--white);
 
     font-weight: 400;
     font-size: 1.6rem;
     color: var(--givi-black);
-
-
   }
   &__item-actions__change {
     transition-property: color;

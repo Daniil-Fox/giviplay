@@ -77,14 +77,14 @@
           <use xlink:href="img/sprite.svg#cart"></use>
         </svg>
       </button>
-      <button class="btn-reset burger header__burger" aria-label="Открыть меню" aria-expanded="false" data-burger>
+      <button class="btn-reset burger header__burger" aria-label="Открыть меню" aria-expanded="false" data-burger="main">
         <span class="burger__line"></span>
       </button>
     </div>
 
   </div>
-  <div class="menu" data-menu>
-  <div class="menu__overlay" data-menu-overlay></div>
+  <div class="menu" data-menu="main">
+  <div class="menu__overlay" data-menu-overlay="main"></div>
 
   <div class="menu__content">
     <nav class="menu__nav nav">
@@ -1156,6 +1156,7 @@
             </a>
           </li>
         </ul>
+
       </div>
 
       <nav class="footer__nav nav">
@@ -1192,6 +1193,14 @@
       </nav>
 
       <div class="footer__right">
+        <div class="peremena">
+          <div class="peremena__title">
+            <span>п</span><span>е</span><span>р</span><span>е</span><span
+              class="m">м</span><span>е</span><span>н</span><span>а</span>
+          </div>
+          <div class="peremena__subtitle">разработала</div>
+          <div class="peremena__description">этот сайт</div>
+        </div>
         <div class="footer__item">
           <a href="#" class="footer__link">
             Политика конфиденциальности
@@ -1206,6 +1215,146 @@
     </div>
   </div>
 </footer>
+<script>
+  const titleSpans = document.querySelectorAll('.peremena__title span');
+  let currentIndex = -4; // Начинаем с позиции до первой буквы
+  const totalLength = titleSpans.length;
+  const cycleLength = totalLength + 8; // Добавляем паузу в начале и конце
+
+  function animateLetters() {
+    titleSpans.forEach((span, index) => {
+      // Вычисляем расстояние от текущей активной позиции
+      let distance = Math.abs(index - currentIndex);
+
+      // Определяем толщину в зависимости от расстояния
+      let weight;
+      if (distance === 0) {
+        weight = 700;
+      } else if (distance === 1) {
+        weight = 600;
+      } else if (distance === 2) {
+        weight = 500;
+      } else if (distance === 3) {
+        weight = 400;
+      } else {
+        weight = 300;
+      }
+
+      span.style.fontWeight = weight;
+    });
+
+    currentIndex++;
+
+    if (currentIndex >= totalLength + 4) {
+      currentIndex = -4;
+    }
+  }
+
+  setInterval(animateLetters, 100);
+
+  titleSpans.forEach(span => {
+    span.style.fontWeight = 300;
+  });
+</script>
+
+<div class="cookies" data-cookies-banner hidden>
+  <div class="container">
+    <div class="cookies__container">
+      <div class="cookies__text">
+        Мы используем cookies, чтобы сайт работал быстрее и удобнее.
+        Подробнее — в
+        <a class="cookies__link link-btn" href="#" target="_blank" rel="noopener noreferrer">
+          политике конфиденциальности
+        </a>.
+      </div>
+
+      <div class="cookies__actions">
+        <button class="btn btn-reset cookies__btn" type="button" data-cookies-accept>
+          принять
+        </button>
+        <button class="btn btn_grey btn-reset cookies__btn" type="button" data-cookies-decline>
+          отклонить
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var banner = document.querySelector("[data-cookies-banner]");
+      if (!banner) return;
+
+      var acceptBtn = banner.querySelector("[data-cookies-accept]");
+      var declineBtn = banner.querySelector("[data-cookies-decline]");
+
+      var STORAGE_KEY = "givi.cookiesConsent.v1";
+      var COOKIE_NAME = "givi_cookies";
+      var ONE_YEAR = 60 * 60 * 24 * 365;
+
+      function getStoredValue() {
+        try {
+          return window.localStorage.getItem(STORAGE_KEY);
+        } catch (e) {
+          return null;
+        }
+      }
+
+      function setStoredValue(value) {
+        try {
+          window.localStorage.setItem(STORAGE_KEY, value);
+        } catch (e) {}
+      }
+
+      function setCookie(value) {
+        try {
+          document.cookie =
+            COOKIE_NAME +
+            "=" +
+            encodeURIComponent(value) +
+            "; max-age=" +
+            ONE_YEAR +
+            "; path=/; samesite=lax";
+        } catch (e) {}
+      }
+
+      function hide() {
+        // Плавно уезжаем вниз, затем скрываем элемент
+        banner.classList.add("is-hiding");
+        window.setTimeout(function () {
+          banner.hidden = true;
+        }, 460);
+      }
+
+      function show() {
+        banner.classList.remove("is-hiding");
+        banner.hidden = false;
+      }
+
+      if (getStoredValue()) {
+        hide();
+        return;
+      }
+
+      show();
+
+      if (acceptBtn) {
+        acceptBtn.addEventListener("click", function () {
+          setStoredValue("accepted");
+          setCookie("accepted");
+          hide();
+        });
+      }
+
+      if (declineBtn) {
+        declineBtn.addEventListener("click", function () {
+          setStoredValue("declined");
+          setCookie("declined");
+          hide();
+        });
+      }
+    })();
+  </script>
+</div>
   </div>
 </body>
 

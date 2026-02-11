@@ -20,6 +20,7 @@
             </a>
           </li>
         </ul>
+
       </div>
 
       <nav class="footer__nav nav">
@@ -56,6 +57,14 @@
       </nav>
 
       <div class="footer__right">
+        <div class="peremena">
+          <div class="peremena__title">
+            <span>п</span><span>е</span><span>р</span><span>е</span><span
+              class="m">м</span><span>е</span><span>н</span><span>а</span>
+          </div>
+          <div class="peremena__subtitle">разработала</div>
+          <div class="peremena__description">этот сайт</div>
+        </div>
         <div class="footer__item">
           <a href="#" class="footer__link">
             Политика конфиденциальности
@@ -70,3 +79,46 @@
     </div>
   </div>
 </footer>
+<script>
+  const titleSpans = document.querySelectorAll('.peremena__title span');
+  let currentIndex = -4; // Начинаем с позиции до первой буквы
+  const totalLength = titleSpans.length;
+  const cycleLength = totalLength + 8; // Добавляем паузу в начале и конце
+
+  function animateLetters() {
+    titleSpans.forEach((span, index) => {
+      // Вычисляем расстояние от текущей активной позиции
+      let distance = Math.abs(index - currentIndex);
+
+      // Определяем толщину в зависимости от расстояния
+      let weight;
+      if (distance === 0) {
+        weight = 700;
+      } else if (distance === 1) {
+        weight = 600;
+      } else if (distance === 2) {
+        weight = 500;
+      } else if (distance === 3) {
+        weight = 400;
+      } else {
+        weight = 300;
+      }
+
+      span.style.fontWeight = weight;
+    });
+
+    currentIndex++;
+
+    if (currentIndex >= totalLength + 4) {
+      currentIndex = -4;
+    }
+  }
+
+  setInterval(animateLetters, 100);
+
+  titleSpans.forEach(span => {
+    span.style.fontWeight = 300;
+  });
+</script>
+
+@include('./cookies.html')

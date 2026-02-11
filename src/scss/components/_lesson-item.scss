@@ -1,16 +1,19 @@
 .lesson-item {
   display: flex;
   flex-direction: column;
+  position: relative;
   &__cover {
-    aspect-ratio: 560 / 315;
-
+    height: 31.5rem;
+    @include mobile {
+      height: 28rem;
+    }
     img {
       display: block;
       width: 100%;
       height: 100%;
     }
 
-    &:not(:last-child){
+    &:not(:last-child) {
       margin-bottom: 2rem;
     }
   }
@@ -23,13 +26,19 @@
     transition-duration: 0.3s;
     transition-timing-function: 0.3s;
 
-
-    &:not(:last-child){
+    &:not(:last-child) {
       margin-bottom: 1rem;
     }
 
     a {
       color: inherit;
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+      }
     }
 
     @include hover {

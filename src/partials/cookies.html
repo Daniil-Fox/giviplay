@@ -1,0 +1,98 @@
+<div class="cookies" data-cookies-banner hidden>
+  <div class="container">
+    <div class="cookies__container">
+      <div class="cookies__text">
+        Мы используем cookies, чтобы сайт работал быстрее и удобнее.
+        Подробнее — в
+        <a class="cookies__link link-btn" href="#" target="_blank" rel="noopener noreferrer">
+          политике конфиденциальности
+        </a>.
+      </div>
+
+      <div class="cookies__actions">
+        <button class="btn btn-reset cookies__btn" type="button" data-cookies-accept>
+          принять
+        </button>
+        <button class="btn btn_grey btn-reset cookies__btn" type="button" data-cookies-decline>
+          отклонить
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var banner = document.querySelector("[data-cookies-banner]");
+      if (!banner) return;
+
+      var acceptBtn = banner.querySelector("[data-cookies-accept]");
+      var declineBtn = banner.querySelector("[data-cookies-decline]");
+
+      var STORAGE_KEY = "givi.cookiesConsent.v1";
+      var COOKIE_NAME = "givi_cookies";
+      var ONE_YEAR = 60 * 60 * 24 * 365;
+
+      function getStoredValue() {
+        try {
+          return window.localStorage.getItem(STORAGE_KEY);
+        } catch (e) {
+          return null;
+        }
+      }
+
+      function setStoredValue(value) {
+        try {
+          window.localStorage.setItem(STORAGE_KEY, value);
+        } catch (e) {}
+      }
+
+      function setCookie(value) {
+        try {
+          document.cookie =
+            COOKIE_NAME +
+            "=" +
+            encodeURIComponent(value) +
+            "; max-age=" +
+            ONE_YEAR +
+            "; path=/; samesite=lax";
+        } catch (e) {}
+      }
+
+      function hide() {
+        // Плавно уезжаем вниз, затем скрываем элемент
+        banner.classList.add("is-hiding");
+        window.setTimeout(function () {
+          banner.hidden = true;
+        }, 460);
+      }
+
+      function show() {
+        banner.classList.remove("is-hiding");
+        banner.hidden = false;
+      }
+
+      if (getStoredValue()) {
+        hide();
+        return;
+      }
+
+      show();
+
+      if (acceptBtn) {
+        acceptBtn.addEventListener("click", function () {
+          setStoredValue("accepted");
+          setCookie("accepted");
+          hide();
+        });
+      }
+
+      if (declineBtn) {
+        declineBtn.addEventListener("click", function () {
+          setStoredValue("declined");
+          setCookie("declined");
+          hide();
+        });
+      }
+    })();
+  </script>
+</div>

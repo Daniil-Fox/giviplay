@@ -34,11 +34,15 @@
                   <p class="notes__title">Заметки</p>
                   <form action="#" class="video-sec__form form">
                     <label class="form__field">
-                      <input type="text" name="message" class="form__input">
+                      <textarea type="text" name="message" class="form__input" resize="none"></textarea>
                       <span class="form__label">
                         введите текст сообщения
                       </span>
                     </label>
+                    <div class="notes__actions">
+                      <button class="btn-reset btn btn_grey notes__btn-cancel">Отмена</button>
+                      <button class="btn-reset btn notes__btn-cancel">Добавить</button>
+                    </div>
                   </form>
                 </div>
 
